@@ -1,0 +1,35 @@
+{
+  "weeks": [
+    {
+      "week": 1,
+      "tournament": "Cognizant Classic in The Palm Beaches",
+      "course": "PGA National Resort (Champion Course)",
+      "dates": "Feb 26 - Mar 1, 2026",
+      "winnerPick": {
+        "player": "Shane Lowry",
+        "odds": "+1600",
+        "result": null,
+        "hit": null
+      },
+      "otherPicks": [
+        { "player": "Nicolai Hojgaard", "type": "outright", "odds": "+2000" },
+        { "player": "Ryan Gerard", "type": "outright", "odds": "+1600" },
+        { "player": "Keith Mitchell", "type": "outright", "odds": "+2800" },
+        { "player": "Rasmus Neergaard-Petersen", "type": "outright", "odds": "+3500" },
+        { "player": "Sam Ryder", "type": "top10", "odds": "+500" },
+        { "player": "Haotong Li", "type": "top20", "odds": "+175" },
+        { "player": "Christiaan Bezuidenhout", "type": "top20", "odds": "+200" },
+        { "player": "Shane Lowry over Ryan Gerard", "type": "matchup", "odds": "-105" },
+        { "player": "Nicolai Hojgaard Top 10", "type": "prop", "odds": "+250" },
+        { "player": "Luke Clanton", "type": "longshot", "odds": "+12500" }
+      ],
+      "fades": ["Brooks Koepka", "Will Zalatoris", "Max Homa"],
+      "actualWinner": null
+    }
+  ],
+  "seasonRecord": { "correct": 0, "total": 1 },
+  "metadata": {
+    "created": "2026-02-25",
+    "description": "The Golf Analyst — weekly winner picks and season record"
+  }
+}

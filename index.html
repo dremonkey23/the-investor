@@ -6,23 +6,35 @@
   <title>The Investor — Pick Tracker</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { background: #0a0a0a; color: #e0e0e0; font-family: 'Segoe UI', system-ui, sans-serif; padding: 20px; }
-    .header { text-align: center; margin-bottom: 30px; }
-    .header h1 { font-size: 2rem; color: #fff; }
-    .header h1 span { color: #00ff88; }
+    body { background: #0a0a0a; color: #e0e0e0; font-family: 'Segoe UI', system-ui, sans-serif; padding: 20px; max-width: 1400px; margin: 0 auto; }
+    
+    .header { text-align: center; margin-bottom: 35px; }
+    .header h1 { font-size: 2.2rem; color: #fff; }
+    .header h1 .green { color: #00ff88; }
+    .header h1 .purple { color: #bf5af2; }
     .header p { color: #888; margin-top: 5px; }
     
+    .tabs { display: flex; gap: 0; margin-bottom: 25px; border-bottom: 2px solid #222; }
+    .tab { padding: 12px 28px; cursor: pointer; font-weight: 600; font-size: 0.95rem; color: #888; border-bottom: 2px solid transparent; margin-bottom: -2px; transition: all 0.2s; }
+    .tab:hover { color: #ccc; }
+    .tab.active-stocks { color: #00ff88; border-bottom-color: #00ff88; }
+    .tab.active-crypto { color: #bf5af2; border-bottom-color: #bf5af2; }
+    
+    .section { display: none; }
+    .section.active { display: block; }
+    
     .stats-row { display: flex; gap: 15px; margin-bottom: 25px; flex-wrap: wrap; }
-    .stat-card { background: #141414; border: 1px solid #222; border-radius: 10px; padding: 18px; flex: 1; min-width: 150px; }
-    .stat-card .label { color: #888; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; }
-    .stat-card .value { font-size: 1.6rem; font-weight: 700; margin-top: 5px; }
-    .stat-card .value.green { color: #00ff88; }
-    .stat-card .value.red { color: #ff4444; }
-    .stat-card .value.neutral { color: #fff; }
+    .stat-card { background: #141414; border: 1px solid #222; border-radius: 10px; padding: 18px; flex: 1; min-width: 140px; }
+    .stat-card .label { color: #888; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; }
+    .stat-card .value { font-size: 1.5rem; font-weight: 700; margin-top: 5px; }
+    .green { color: #00ff88; }
+    .red { color: #ff4444; }
+    .purple { color: #bf5af2; }
+    .neutral { color: #fff; }
     
     .picks-table { width: 100%; border-collapse: collapse; background: #141414; border-radius: 10px; overflow: hidden; }
     .picks-table thead { background: #1a1a1a; }
-    .picks-table th { padding: 12px 16px; text-align: left; color: #888; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; border-bottom: 1px solid #222; }
+    .picks-table th { padding: 12px 16px; text-align: left; color: #888; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; border-bottom: 1px solid #222; }
     .picks-table td { padding: 12px 16px; border-bottom: 1px solid #1a1a1a; }
     .picks-table tr:hover { background: #1a1a2a; }
     .ticker { font-weight: 700; color: #fff; font-size: 1rem; }
@@ -30,120 +42,177 @@
     .pnl-positive { color: #00ff88; font-weight: 700; }
     .pnl-negative { color: #ff4444; font-weight: 700; }
     .pnl-neutral { color: #888; }
-    .badge { display: inline-block; padding: 3px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: 600; }
+    
+    .badge { display: inline-block; padding: 3px 8px; border-radius: 4px; font-size: 0.72rem; font-weight: 600; }
     .badge-stock { background: #1a2a1a; color: #00ff88; }
     .badge-option { background: #2a1a2a; color: #ff88ff; }
+    .badge-crypto { background: #1a1a2a; color: #bf5af2; }
+    .badge-degen { background: #2a1a1a; color: #ff6644; }
     .badge-active { background: #1a1a2a; color: #88aaff; }
     .badge-closed { background: #2a2a1a; color: #ffaa44; }
     
-    .updated { text-align: center; color: #555; margin-top: 20px; font-size: 0.8rem; }
+    .updated { text-align: center; color: #555; margin-top: 25px; font-size: 0.8rem; }
     .empty { text-align: center; padding: 60px; color: #555; }
+    .contract { font-size: 0.7rem; color: #666; font-family: monospace; }
+    
+    .section-icon { font-size: 1.2rem; margin-right: 6px; }
     
     @media (max-width: 600px) {
       .stats-row { flex-direction: column; }
       .picks-table { font-size: 0.85rem; }
       .picks-table th, .picks-table td { padding: 8px 10px; }
+      .tab { padding: 10px 16px; font-size: 0.85rem; }
     }
   </style>
 </head>
 <body>
   <div class="header">
-    <h1>📈 The <span>Investor</span></h1>
-    <p>Daily stock picks & performance tracker</p>
+    <h1>📈 The <span class="green">Investor</span></h1>
+    <p>Daily stock picks & Solana meme coin alpha — tracked with P&L</p>
   </div>
   
-  <div class="stats-row" id="stats">
-    <div class="stat-card"><div class="label">Total Picks</div><div class="value neutral" id="totalPicks">—</div></div>
-    <div class="stat-card"><div class="label">Win Rate</div><div class="value neutral" id="winRate">—</div></div>
-    <div class="stat-card"><div class="label">Avg Return</div><div class="value neutral" id="avgReturn">—</div></div>
-    <div class="stat-card"><div class="label">Best Pick</div><div class="value green" id="bestPick">—</div></div>
-    <div class="stat-card"><div class="label">Worst Pick</div><div class="value red" id="worstPick">—</div></div>
+  <div class="tabs">
+    <div class="tab active-stocks" id="tab-stocks" onclick="switchTab('stocks')">
+      <span class="section-icon">📊</span> Stocks
+    </div>
+    <div class="tab" id="tab-crypto" onclick="switchTab('crypto')">
+      <span class="section-icon">🪙</span> Solana Meme Coins
+    </div>
   </div>
   
-  <table class="picks-table" id="picksTable">
-    <thead>
-      <tr>
-        <th>Date</th>
-        <th>Ticker</th>
-        <th>Type</th>
-        <th>Entry</th>
-        <th>Current</th>
-        <th>P&L</th>
-        <th>Status</th>
-        <th>Thesis</th>
-      </tr>
-    </thead>
-    <tbody id="picksBody">
-      <tr><td colspan="8" class="empty">Loading picks...</td></tr>
-    </tbody>
-  </table>
+  <!-- STOCKS SECTION -->
+  <div class="section active" id="section-stocks">
+    <div class="stats-row">
+      <div class="stat-card"><div class="label">Total Picks</div><div class="value neutral" id="s-totalPicks">—</div></div>
+      <div class="stat-card"><div class="label">Win Rate</div><div class="value neutral" id="s-winRate">—</div></div>
+      <div class="stat-card"><div class="label">Avg Return</div><div class="value neutral" id="s-avgReturn">—</div></div>
+      <div class="stat-card"><div class="label">Best Pick</div><div class="value green" id="s-bestPick">—</div></div>
+      <div class="stat-card"><div class="label">Worst Pick</div><div class="value red" id="s-worstPick">—</div></div>
+    </div>
+    <table class="picks-table">
+      <thead>
+        <tr><th>Date</th><th>Ticker</th><th>Type</th><th>Entry</th><th>Current</th><th>P&L</th><th>Status</th><th>Thesis</th></tr>
+      </thead>
+      <tbody id="s-body"><tr><td colspan="8" class="empty">No stock picks yet — The Investor drops his first picks tomorrow at 7 AM</td></tr></tbody>
+    </table>
+  </div>
   
-  <div class="updated" id="updated"></div>
+  <!-- CRYPTO SECTION -->
+  <div class="section" id="section-crypto">
+    <div class="stats-row">
+      <div class="stat-card"><div class="label">Total Picks</div><div class="value neutral" id="c-totalPicks">—</div></div>
+      <div class="stat-card"><div class="label">Win Rate</div><div class="value neutral" id="c-winRate">—</div></div>
+      <div class="stat-card"><div class="label">Avg Return</div><div class="value neutral" id="c-avgReturn">—</div></div>
+      <div class="stat-card"><div class="label">Best Pick</div><div class="value purple" id="c-bestPick">—</div></div>
+      <div class="stat-card"><div class="label">Worst Pick</div><div class="value red" id="c-worstPick">—</div></div>
+    </div>
+    <table class="picks-table">
+      <thead>
+        <tr><th>Date</th><th>Token</th><th>Type</th><th>Entry</th><th>Current</th><th>P&L</th><th>Mcap</th><th>Thesis</th></tr>
+      </thead>
+      <tbody id="c-body"><tr><td colspan="8" class="empty">No meme coin picks yet — Solana degen plays start tomorrow at 7 AM 🪙</td></tr></tbody>
+    </table>
+  </div>
+  
+  <div class="updated" id="updated">Powered by The One 🔴</div>
 
   <script>
+    function switchTab(tab) {
+      document.getElementById('section-stocks').classList.toggle('active', tab === 'stocks');
+      document.getElementById('section-crypto').classList.toggle('active', tab === 'crypto');
+      const st = document.getElementById('tab-stocks');
+      const ct = document.getElementById('tab-crypto');
+      st.className = tab === 'stocks' ? 'tab active-stocks' : 'tab';
+      ct.className = tab === 'crypto' ? 'tab active-crypto' : 'tab';
+    }
+    
     async function loadPicks() {
       try {
         const res = await fetch('picks.json?t=' + Date.now());
         const data = await res.json();
-        render(data);
-      } catch (e) {
-        document.getElementById('picksBody').innerHTML = '<tr><td colspan="8" class="empty">No picks yet — The Investor starts tomorrow at 7 AM</td></tr>';
-      }
+        renderSection(data.stocks || [], 's', 'stock');
+        renderSection(data.crypto || [], 'c', 'crypto');
+        if (data.metadata?.lastUpdated) {
+          document.getElementById('updated').textContent = 'Last updated: ' + new Date(data.metadata.lastUpdated).toLocaleString() + ' • Powered by The One 🔴';
+        }
+      } catch (e) {}
     }
     
-    function render(data) {
-      const picks = data.picks || [];
-      if (picks.length === 0) {
-        document.getElementById('picksBody').innerHTML = '<tr><td colspan="8" class="empty">No picks yet — The Investor starts tomorrow at 7 AM</td></tr>';
-        return;
-      }
+    function renderSection(picks, prefix, sectionType) {
+      if (picks.length === 0) return;
       
-      // Stats
       const withPnl = picks.filter(p => p.pnl !== undefined && p.pnl !== null);
       const wins = withPnl.filter(p => p.pnl > 0);
       const totalPnl = withPnl.reduce((s, p) => s + p.pnl, 0);
       const best = withPnl.length ? withPnl.reduce((a, b) => a.pnl > b.pnl ? a : b) : null;
       const worst = withPnl.length ? withPnl.reduce((a, b) => a.pnl < b.pnl ? a : b) : null;
       
-      document.getElementById('totalPicks').textContent = picks.length;
-      document.getElementById('winRate').textContent = withPnl.length ? Math.round(wins.length / withPnl.length * 100) + '%' : '—';
+      document.getElementById(prefix + '-totalPicks').textContent = picks.length;
+      document.getElementById(prefix + '-winRate').textContent = withPnl.length ? Math.round(wins.length / withPnl.length * 100) + '%' : '—';
       
       const avgRet = withPnl.length ? (totalPnl / withPnl.length) : null;
-      const avgEl = document.getElementById('avgReturn');
+      const avgEl = document.getElementById(prefix + '-avgReturn');
       if (avgRet !== null) {
         avgEl.textContent = (avgRet >= 0 ? '+' : '') + avgRet.toFixed(1) + '%';
         avgEl.className = 'value ' + (avgRet >= 0 ? 'green' : 'red');
       }
       
-      if (best) document.getElementById('bestPick').textContent = best.ticker + ' +' + best.pnl.toFixed(1) + '%';
-      if (worst) document.getElementById('worstPick').textContent = worst.ticker + ' ' + worst.pnl.toFixed(1) + '%';
+      const bestName = sectionType === 'crypto' ? 'token' : 'ticker';
+      if (best) document.getElementById(prefix + '-bestPick').textContent = (best[bestName] || best.ticker) + ' +' + best.pnl.toFixed(1) + '%';
+      if (worst) document.getElementById(prefix + '-worstPick').textContent = (worst[bestName] || worst.ticker) + ' ' + worst.pnl.toFixed(1) + '%';
       
-      // Table
       let html = '';
       for (const p of picks.sort((a, b) => new Date(b.date) - new Date(a.date))) {
         const pnlClass = p.pnl > 0 ? 'pnl-positive' : p.pnl < 0 ? 'pnl-negative' : 'pnl-neutral';
         const pnlText = p.pnl !== undefined && p.pnl !== null ? (p.pnl >= 0 ? '+' : '') + p.pnl.toFixed(1) + '%' : '—';
-        const typeClass = p.type === 'option' ? 'badge-option' : 'badge-stock';
         const statusClass = p.status === 'closed' ? 'badge-closed' : 'badge-active';
-        const currentText = p.currentPrice ? '$' + p.currentPrice.toFixed(2) : '—';
         
-        html += `<tr>
-          <td>${p.date || '—'}</td>
-          <td class="ticker">${p.ticker || '—'}</td>
-          <td><span class="badge ${typeClass}">${(p.type || 'stock').toUpperCase()}</span></td>
-          <td>$${p.entryPrice ? p.entryPrice.toFixed(2) : '—'}</td>
-          <td>${currentText}</td>
-          <td class="${pnlClass}">${pnlText}</td>
-          <td><span class="badge ${statusClass}">${(p.status || 'active').toUpperCase()}</span></td>
-          <td class="thesis">${p.thesis || ''}</td>
-        </tr>`;
+        if (sectionType === 'crypto') {
+          const typeClass = p.type === 'degen' ? 'badge-degen' : 'badge-crypto';
+          const name = p.token || p.ticker || '—';
+          const contract = p.contract ? '<div class="contract">' + p.contract.slice(0, 8) + '...' + p.contract.slice(-4) + '</div>' : '';
+          const entryText = p.entryPrice ? (p.entryPrice < 0.01 ? '$' + p.entryPrice.toPrecision(3) : '$' + p.entryPrice.toFixed(4)) : '—';
+          const currentText = p.currentPrice ? (p.currentPrice < 0.01 ? '$' + p.currentPrice.toPrecision(3) : '$' + p.currentPrice.toFixed(4)) : '—';
+          const mcapText = p.mcap ? formatMcap(p.mcap) : '—';
+          
+          html += `<tr>
+            <td>${p.date || '—'}</td>
+            <td class="ticker">${name}${contract}</td>
+            <td><span class="badge ${typeClass}">${(p.type || 'crypto').toUpperCase()}</span></td>
+            <td>${entryText}</td>
+            <td>${currentText}</td>
+            <td class="${pnlClass}">${pnlText}</td>
+            <td>${mcapText}</td>
+            <td class="thesis">${p.thesis || ''}</td>
+          </tr>`;
+        } else {
+          const typeClass = p.type === 'option' ? 'badge-option' : 'badge-stock';
+          const currentText = p.currentPrice ? '$' + p.currentPrice.toFixed(2) : '—';
+          
+          html += `<tr>
+            <td>${p.date || '—'}</td>
+            <td class="ticker">${p.ticker || '—'}</td>
+            <td><span class="badge ${typeClass}">${(p.type || 'stock').toUpperCase()}</span></td>
+            <td>$${p.entryPrice ? p.entryPrice.toFixed(2) : '—'}</td>
+            <td>${currentText}</td>
+            <td class="${pnlClass}">${pnlText}</td>
+            <td><span class="badge ${statusClass}">${(p.status || 'active').toUpperCase()}</span></td>
+            <td class="thesis">${p.thesis || ''}</td>
+          </tr>`;
+        }
       }
-      document.getElementById('picksBody').innerHTML = html;
-      document.getElementById('updated').textContent = 'Last updated: ' + new Date(data.metadata?.lastUpdated || Date.now()).toLocaleString();
+      document.getElementById(prefix + '-body').innerHTML = html;
+    }
+    
+    function formatMcap(n) {
+      if (n >= 1e9) return '$' + (n / 1e9).toFixed(1) + 'B';
+      if (n >= 1e6) return '$' + (n / 1e6).toFixed(1) + 'M';
+      if (n >= 1e3) return '$' + (n / 1e3).toFixed(0) + 'K';
+      return '$' + n;
     }
     
     loadPicks();
-    setInterval(loadPicks, 60000); // refresh every minute
+    setInterval(loadPicks, 60000);
   </script>
 </body>
 </html>
