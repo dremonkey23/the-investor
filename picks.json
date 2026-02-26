@@ -4,11 +4,12 @@
       "ticker": "AAPL",
       "type": "stock",
       "risk": "safe",
-      "entry": 274.30,
+      "entry": 274.3,
       "date": "2026-02-26",
       "thesis": "Ecosystem strength, $4T market cap, steady buybacks. Trading near ATH support.",
-      "current": 274.30,
-      "pnl": 0
+      "current": 274.3,
+      "pnl": 0,
+      "currentPrice": 274.23
     },
     {
       "ticker": "MSFT",
@@ -18,7 +19,8 @@
       "date": "2026-02-26",
       "thesis": "Cloud dominance + AI integration across Azure/Copilot. Broad market rotation beneficiary.",
       "current": 399.54,
-      "pnl": 0
+      "pnl": 0,
+      "currentPrice": 400.6
     },
     {
       "ticker": "NVDA",
@@ -28,7 +30,8 @@
       "date": "2026-02-26",
       "thesis": "AI infrastructure king. Pre-market up 0.8%, still the backbone of every AI buildout.",
       "current": 197.18,
-      "pnl": 0
+      "pnl": 0,
+      "currentPrice": 195.56
     },
     {
       "ticker": "IONQ",
@@ -38,17 +41,19 @@
       "date": "2026-02-26",
       "thesis": "Quantum computing momentum play. Pre-market +15.5% on volume spike. High beta, big upside if quantum narrative holds.",
       "current": 38.78,
-      "pnl": 0
+      "pnl": 0,
+      "currentPrice": 33.59
     },
     {
       "ticker": "CELH",
       "type": "stock",
       "risk": "risky",
-      "entry": 58.50,
+      "entry": 58.5,
       "date": "2026-02-26",
       "thesis": "Earnings catalyst ahead, up 140% from 2025 lows. Pre-market +15.6%. Energy drink growth story still intact.",
-      "current": 58.50,
-      "pnl": 0
+      "current": 58.5,
+      "pnl": 0,
+      "currentPrice": 50.61
     },
     {
       "ticker": "JOBY",
@@ -58,7 +63,8 @@
       "date": "2026-02-26",
       "thesis": "eVTOL play with $1.2B raise, Cathie Wood buying heavy. Pre-market +9.9%. FAA certification catalysts ahead.",
       "current": 10.79,
-      "pnl": 0
+      "pnl": 0,
+      "currentPrice": 9.82
     },
     {
       "ticker": "IONQ 45C 3/20",
@@ -81,7 +87,9 @@
       "thesis": "AI agent meme coin at ATH territory ($842M mcap). Binance Alpha listed. Strongest Solana meme by market cap.",
       "contract": "8wwCnqDZJCy5PT7AkhUpAFKnV2TxCA9Sq6YbkGzLbVDt",
       "current": 0.73,
-      "pnl": 0
+      "pnl": 0,
+      "currentPrice": 0.8473,
+      "mcap": 847342116
     },
     {
       "ticker": "WIF",
@@ -92,7 +100,9 @@
       "thesis": "OG Solana meme, $211M mcap with $122M daily volume. Still liquid, still traded. Good base for a bounce.",
       "contract": "EKpQGSJtjMFqKZ9KQanSqYXRcF8fBopzLHYxdM65zcjm",
       "current": 0.21,
-      "pnl": 0
+      "pnl": 0,
+      "currentPrice": 0.2103,
+      "mcap": 210128598
     },
     {
       "ticker": "BONK",
@@ -103,7 +113,9 @@
       "thesis": "Solana's community meme OG. High liquidity, $97M daily volume. Ecosystem integration across wallets/DEXs.",
       "contract": "DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263",
       "current": 0.000006243,
-      "pnl": 0
+      "pnl": 0,
+      "currentPrice": 0.000006259,
+      "mcap": 556205716
     },
     {
       "ticker": "NIRE",
@@ -114,7 +126,9 @@
       "thesis": "NotInRetardEducation — trending #11 on DexScreener. $26.9M 24h volume, +44.58% on the day, $3.3M mcap. Narrative + volume spike.",
       "contract": "GwQf2oUBkvwuVVpkP4NIVcAgZMfUs845Kx5CWFJRzw8D",
       "current": 0.003359,
-      "pnl": 0
+      "pnl": 0,
+      "currentPrice": 0.004041,
+      "mcap": 4011020
     },
     {
       "ticker": "JANESTREET",
@@ -125,12 +139,14 @@
       "thesis": "Jane Street meme — trending #8 on DexScreener. $44.2M mcap, +84,001% lifetime, +47.7% today. Finance meme narrative is hot.",
       "contract": "4lQo14ZB7Mg6TZm6P48d9nD3l4aKaHcG3QYj44FxUVAa",
       "current": 0.04427,
-      "pnl": 0
+      "pnl": 0,
+      "currentPrice": 0.04431,
+      "mcap": 44315077
     }
   ],
   "metadata": {
     "created": "2026-02-25",
-    "lastUpdated": "2026-02-26",
+    "lastUpdated": "2026-02-26T12:04:43.746Z",
     "description": "The Investor pick history — stocks & Solana meme coins"
   }
 }
