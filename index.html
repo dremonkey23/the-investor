@@ -7,18 +7,15 @@
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { background: #0a0a0a; color: #e0e0e0; font-family: 'SF Pro Display', 'Segoe UI', system-ui, sans-serif; }
-    
     .container { max-width: 1200px; margin: 0 auto; padding: 24px 20px; }
-    .main-grid { display: grid; grid-template-columns: 1fr 340px; gap: 24px; }
-    @media (max-width: 900px) { .main-grid { grid-template-columns: 1fr; } }
     
-    /* Header */
     .header { text-align: center; padding: 30px 0 20px; }
     .header h1 { font-size: 1.8rem; font-weight: 700; color: #fff; }
     .header h1 span { color: #00ff88; }
     .header .tagline { color: #666; font-size: 0.85rem; margin-top: 4px; }
+    .header .live-dot { display: inline-block; width: 8px; height: 8px; background: #00ff88; border-radius: 50%; margin-right: 6px; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
     
-    /* Portfolio Summary */
     .portfolio-bar { display: flex; justify-content: space-between; align-items: center; background: #111; border: 1px solid #1a1a1a; border-radius: 12px; padding: 20px 24px; margin-bottom: 24px; flex-wrap: wrap; gap: 16px; }
     .port-item { text-align: center; }
     .port-label { font-size: 0.7rem; color: #666; text-transform: uppercase; letter-spacing: 1px; }
@@ -26,67 +23,52 @@
     .port-value.green { color: #00ff88; }
     .port-value.red { color: #ff4444; }
     .port-value.white { color: #fff; }
-    .port-value.purple { color: #bf5af2; }
     
-    /* Tab Bar */
-    .tabs { display: flex; gap: 0; border-bottom: 1px solid #1a1a1a; margin-bottom: 20px; }
-    .tab { padding: 10px 24px; cursor: pointer; font-size: 0.85rem; font-weight: 600; color: #555; border-bottom: 2px solid transparent; margin-bottom: -1px; transition: all 0.15s; }
-    .tab:hover { color: #999; }
-    .tab.active { color: #00ff88; border-bottom-color: #00ff88; }
-    .tab.active-crypto { color: #bf5af2; border-bottom-color: #bf5af2; }
+    .main-grid { display: grid; grid-template-columns: 1fr 340px; gap: 24px; }
+    @media (max-width: 900px) { .main-grid { grid-template-columns: 1fr; } }
     
-    /* Plays List */
+    .section-title { font-size: 0.85rem; font-weight: 700; color: #fff; margin-bottom: 12px; border-bottom: 1px solid #1a1a1a; padding-bottom: 8px; }
+    
+    /* Positions */
     .plays { display: flex; flex-direction: column; gap: 8px; }
     .play { display: flex; align-items: center; background: #111; border: 1px solid #1a1a1a; border-radius: 10px; padding: 14px 18px; transition: background 0.15s; }
     .play:hover { background: #151518; }
     .play-left { flex: 1; }
     .play-ticker { font-size: 1rem; font-weight: 700; color: #fff; }
-    .play-ticker .risk-tag { font-size: 0.65rem; font-weight: 600; padding: 2px 6px; border-radius: 3px; margin-left: 8px; vertical-align: middle; }
-    .risk-safe { background: #0a2a0a; color: #00ff88; }
-    .risk-risky { background: #2a0a0a; color: #ff6644; }
-    .risk-crypto { background: #1a0a2a; color: #bf5af2; }
-    .risk-degen { background: #2a1a0a; color: #ffaa00; }
+    .play-ticker .qty-tag { font-size: 0.7rem; font-weight: 600; color: #888; margin-left: 8px; }
     .play-meta { font-size: 0.75rem; color: #555; margin-top: 3px; }
     .play-right { text-align: right; }
-    .play-invested { font-size: 0.75rem; color: #888; }
     .play-pnl { font-size: 1.1rem; font-weight: 700; }
     .play-pnl.green { color: #00ff88; }
     .play-pnl.red { color: #ff4444; }
     .play-pnl.flat { color: #555; }
     .play-prices { font-size: 0.7rem; color: #555; margin-top: 2px; }
+    .play-value { font-size: 0.75rem; color: #888; }
     
-    /* Empty State */
     .empty { text-align: center; padding: 60px 20px; color: #444; }
     .empty .emoji { font-size: 2rem; margin-bottom: 12px; }
     
-    /* Footer */
-    .footer { text-align: center; padding: 30px 0 20px; color: #333; font-size: 0.7rem; }
-    .footer span { color: #ff3333; }
-    
-    .updated { text-align: center; color: #333; font-size: 0.7rem; margin-top: 16px; }
-    
     /* History Panel */
     .history-panel { background: #111; border: 1px solid #1a1a1a; border-radius: 12px; padding: 18px; height: fit-content; position: sticky; top: 24px; }
-    .history-title { font-size: 0.85rem; font-weight: 700; color: #fff; margin-bottom: 14px; border-bottom: 1px solid #1a1a1a; padding-bottom: 8px; }
     .history-item { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid #0f0f0f; }
     .history-item:last-child { border-bottom: none; }
-    .hi-left { }
-    .hi-action { font-size: 0.7rem; font-weight: 700; padding: 2px 6px; border-radius: 3px; display: inline-block; margin-right: 6px; }
+    .hi-action { font-size: 0.65rem; font-weight: 700; padding: 2px 6px; border-radius: 3px; display: inline-block; margin-right: 6px; }
     .hi-buy { background: #0a2a0a; color: #00ff88; }
     .hi-sell { background: #2a0a0a; color: #ff4444; }
     .hi-ticker { font-size: 0.85rem; font-weight: 600; color: #fff; }
+    .hi-qty { font-size: 0.7rem; color: #666; margin-left: 4px; }
     .hi-date { font-size: 0.65rem; color: #555; margin-top: 2px; }
     .hi-price { font-size: 0.85rem; font-weight: 600; color: #ccc; text-align: right; }
-    .hi-pnl { font-size: 0.7rem; text-align: right; }
-    .hi-pnl.green { color: #00ff88; }
-    .hi-pnl.red { color: #ff4444; }
     .history-empty { color: #444; font-size: 0.8rem; text-align: center; padding: 20px 0; }
+    
+    .footer { text-align: center; padding: 30px 0 20px; color: #333; font-size: 0.7rem; }
+    .footer span { color: #ff3333; }
+    .updated { text-align: center; color: #333; font-size: 0.7rem; margin-top: 16px; }
     
     @media (max-width: 600px) {
       .portfolio-bar { flex-direction: column; text-align: center; gap: 12px; }
       .play { flex-direction: column; text-align: center; gap: 8px; }
       .play-right { text-align: center; }
-      .tab { padding: 10px 14px; font-size: 0.8rem; }
     }
   </style>
 </head>
@@ -94,61 +76,49 @@
   <div class="container">
     <div class="header">
       <h1>📈 The <span>Investor</span></h1>
-      <div class="tagline">AI-powered picks • Live P&L • Full transparency</div>
+      <div class="tagline"><span class="live-dot"></span>Live portfolio • Real trades • Full transparency</div>
     </div>
     
     <div class="portfolio-bar">
       <div class="port-item">
         <div class="port-label">Portfolio Value</div>
-        <div class="port-value white" id="portfolio-val">$1,000</div>
+        <div class="port-value white" id="port-val">$100,000</div>
+      </div>
+      <div class="port-item">
+        <div class="port-label">Cash</div>
+        <div class="port-value white" id="cash-val">$100,000</div>
       </div>
       <div class="port-item">
         <div class="port-label">Invested</div>
         <div class="port-value white" id="invested-val">$0</div>
       </div>
       <div class="port-item">
-        <div class="port-label">Cash</div>
-        <div class="port-value white" id="cash-val">$1,000</div>
-      </div>
-      <div class="port-item">
         <div class="port-label">Total P&L</div>
         <div class="port-value green" id="pnl-val">$0.00</div>
       </div>
       <div class="port-item">
-        <div class="port-label">Win Rate</div>
-        <div class="port-value green" id="winrate-val">—</div>
+        <div class="port-label">Return</div>
+        <div class="port-value green" id="return-val">0.00%</div>
       </div>
       <div class="port-item">
-        <div class="port-label">Active Plays</div>
-        <div class="port-value white" id="plays-val">0</div>
+        <div class="port-label">Positions</div>
+        <div class="port-value white" id="positions-val">0</div>
       </div>
     </div>
     
     <div class="main-grid">
       <div class="left-col">
-        <div class="tabs">
-          <div class="tab active" id="tab-all" onclick="showTab('all')">All Plays</div>
-          <div class="tab" id="tab-stocks" onclick="showTab('stocks')">Stocks</div>
-    
-        </div>
-        
-        <div class="plays" id="plays-list">
+        <div class="section-title">📊 Active Positions</div>
+        <div class="plays" id="positions-list">
           <div class="empty">
-            <div class="emoji">📊</div>
-            <div>First picks drop tomorrow at 7 AM ET</div>
+            <div class="emoji">🎯</div>
+            <div>No positions yet — The Investor is warming up</div>
           </div>
-        </div>
-        
-        <!-- Daily Briefing -->
-        <div id="briefing-section" style="margin-top:30px;display:none;">
-          <div style="font-size:0.85rem;font-weight:700;color:#fff;margin-bottom:12px;border-bottom:1px solid #1a1a1a;padding-bottom:8px;">📋 Today's Briefing</div>
-          <div id="briefing-content" style="background:#111;border:1px solid #1a1a1a;border-radius:10px;padding:18px;font-size:0.85rem;line-height:1.7;color:#ccc;white-space:pre-wrap;"></div>
-          <div id="briefing-history" style="margin-top:16px;"></div>
         </div>
       </div>
       
       <div class="history-panel">
-        <div class="history-title">📜 Trade History</div>
+        <div class="section-title">📜 Trade History</div>
         <div id="history-list">
           <div class="history-empty">No trades yet</div>
         </div>
@@ -156,175 +126,78 @@
     </div>
     
     <div class="updated" id="updated"></div>
-    
-    <div class="footer">Powered by The One <span>🔴</span> • Updated hourly • Not financial advice</div>
+    <div class="footer">Powered by The One <span>🔴</span> • AI-managed portfolio • Not financial advice</div>
   </div>
 
   <script>
-    let allPicks = [];
-    
-    function showTab(tab) {
-      document.querySelectorAll('.tab').forEach(t => { t.className = 'tab'; });
-      if (tab === 'crypto') {
-        document.getElementById('tab-crypto').className = 'tab active-crypto';
-      } else {
-        document.getElementById('tab-' + tab).className = 'tab active';
-      }
-      renderPlays(tab);
-    }
-    
-    function formatPrice(p) {
-      if (!p && p !== 0) return '—';
-      if (p < 0.01) return '$' + p.toPrecision(3);
-      if (p < 1) return '$' + p.toFixed(4);
-      return '$' + p.toFixed(2);
-    }
-    
-    function renderPlays(filter) {
-      let picks = allPicks;
-      if (filter === 'stocks') picks = picks.filter(p => p.asset === 'stock');
-      if (filter === 'crypto') picks = picks.filter(p => p.asset === 'crypto');
-      
-      const el = document.getElementById('plays-list');
-      
-      if (!picks.length) {
-        el.innerHTML = '<div class="empty"><div class="emoji">📊</div><div>No ' + (filter === 'all' ? '' : filter + ' ') + 'picks yet</div></div>';
-        return;
-      }
-      
-      // Sort: active first, then by date desc
-      picks.sort((a, b) => {
-        if (a.status === 'closed' && b.status !== 'closed') return 1;
-        if (a.status !== 'closed' && b.status === 'closed') return -1;
-        return new Date(b.date) - new Date(a.date);
-      });
-      
-      el.innerHTML = picks.map(p => {
-        const pnl = p.pnl;
-        const pnlClass = pnl > 0 ? 'green' : pnl < 0 ? 'red' : 'flat';
-        const pnlText = pnl != null ? (pnl >= 0 ? '+' : '') + pnl.toFixed(1) + '%' : '—';
-        const name = p.ticker || p.token || '—';
-        
-        let riskClass = 'risk-safe';
-        let riskLabel = 'SAFE';
-        if (p.risk === 'risky') { riskClass = 'risk-risky'; riskLabel = 'RISKY'; }
-        if (p.type === 'option') { riskClass = 'risk-risky'; riskLabel = 'OPTIONS'; }
-        if (p.type === 'crypto') { riskClass = 'risk-crypto'; riskLabel = 'CRYPTO'; }
-        if (p.type === 'degen') { riskClass = 'risk-degen'; riskLabel = 'DEGEN'; }
-        
-        const invested = p.entryPrice ? formatPrice(p.entryPrice) + '/share' : '—';
-        const current = p.currentPrice ? formatPrice(p.currentPrice) : '—';
-        
-        return `<div class="play">
-          <div class="play-left">
-            <div class="play-ticker">${name} <span class="risk-tag ${riskClass}">${riskLabel}</span></div>
-            <div class="play-meta">${p.date || '—'} · ${p.thesis || ''}</div>
-          </div>
-          <div class="play-right">
-            <div class="play-pnl ${pnlClass}">${pnlText}</div>
-            <div class="play-prices">${formatPrice(p.entryPrice)} → ${current}</div>
-          </div>
-        </div>`;
-      }).join('');
-    }
+    function fmt(n) { return n.toLocaleString('en-US', { style: 'currency', currency: 'USD' }); }
+    function fmtPct(n) { return (n >= 0 ? '+' : '') + n.toFixed(2) + '%'; }
     
     async function loadData() {
       try {
-        const res = await fetch('picks.json?t=' + Date.now());
+        const res = await fetch('alpaca-data.json?t=' + Date.now());
         const data = await res.json();
-        const stocks = (data.stocks || []).map(p => ({ ...p, asset: 'stock' }));
-        allPicks = [...stocks];
+        const a = data.account;
         
-        // Portfolio stats
-        const active = allPicks.filter(p => p.status !== 'closed');
-        const withPnl = allPicks.filter(p => p.pnl != null);
-        const wins = withPnl.filter(p => p.pnl > 0);
-        const totalPnlPct = withPnl.length ? withPnl.reduce((s, p) => s + p.pnl, 0) / withPnl.length : 0;
+        // Portfolio bar
+        document.getElementById('port-val').textContent = fmt(a.portfolioValue);
+        document.getElementById('cash-val').textContent = fmt(a.cash);
+        document.getElementById('invested-val').textContent = fmt(a.longMarketValue);
         
-        // Simple portfolio calc (assume equal weight $1K starting)
-        const startingCash = 1000;
-        const perPlay = active.length ? startingCash / Math.max(active.length, 1) : 0;
-        const totalInvested = active.length * perPlay;
-        const totalValue = active.reduce((sum, p) => {
-          if (p.pnl != null) return sum + perPlay * (1 + p.pnl / 100);
-          return sum + perPlay;
-        }, startingCash - totalInvested);
-        
-        document.getElementById('portfolio-val').textContent = '$' + totalValue.toFixed(0);
-        document.getElementById('invested-val').textContent = '$' + totalInvested.toFixed(0);
-        document.getElementById('cash-val').textContent = '$' + (startingCash - totalInvested).toFixed(0);
-        
-        const pnlDollar = totalValue - startingCash;
         const pnlEl = document.getElementById('pnl-val');
-        pnlEl.textContent = (pnlDollar >= 0 ? '+' : '') + '$' + pnlDollar.toFixed(2);
-        pnlEl.className = 'port-value ' + (pnlDollar >= 0 ? 'green' : 'red');
+        pnlEl.textContent = (a.pnl >= 0 ? '+' : '') + fmt(a.pnl);
+        pnlEl.className = 'port-value ' + (a.pnl >= 0 ? 'green' : 'red');
         
-        document.getElementById('winrate-val').textContent = withPnl.length ? Math.round(wins.length / withPnl.length * 100) + '%' : '—';
-        document.getElementById('plays-val').textContent = active.length;
+        const retEl = document.getElementById('return-val');
+        retEl.textContent = fmtPct(a.pnlPct);
+        retEl.className = 'port-value ' + (a.pnlPct >= 0 ? 'green' : 'red');
+        
+        document.getElementById('positions-val').textContent = data.positions.length;
+        
+        // Positions
+        const posEl = document.getElementById('positions-list');
+        if (data.positions.length) {
+          data.positions.sort((a, b) => Math.abs(b.marketValue) - Math.abs(a.marketValue));
+          posEl.innerHTML = data.positions.map(p => {
+            const pnlClass = p.unrealizedPnlPct > 0 ? 'green' : p.unrealizedPnlPct < 0 ? 'red' : 'flat';
+            return `<div class="play">
+              <div class="play-left">
+                <div class="play-ticker">${p.symbol}<span class="qty-tag">${p.qty} shares</span></div>
+                <div class="play-meta">Avg entry: ${fmt(p.avgEntry)} · Today: ${p.change >= 0 ? '+' : ''}${p.change.toFixed(2)}%</div>
+              </div>
+              <div class="play-right">
+                <div class="play-pnl ${pnlClass}">${fmtPct(p.unrealizedPnlPct)}</div>
+                <div class="play-prices">${fmt(p.avgEntry)} → ${fmt(p.currentPrice)}</div>
+                <div class="play-value">${fmt(p.marketValue)}</div>
+              </div>
+            </div>`;
+          }).join('');
+        } else {
+          posEl.innerHTML = '<div class="empty"><div class="emoji">🎯</div><div>No positions yet — The Investor is warming up</div></div>';
+        }
+        
+        // Trade history
+        const histEl = document.getElementById('history-list');
+        if (data.history && data.history.length) {
+          histEl.innerHTML = data.history.slice(0, 30).map(h => {
+            const isBuy = h.action === 'BUY';
+            return `<div class="history-item">
+              <div>
+                <div><span class="hi-action ${isBuy ? 'hi-buy' : 'hi-sell'}">${h.action}</span><span class="hi-ticker">${h.ticker}</span><span class="hi-qty">×${h.qty}</span></div>
+                <div class="hi-date">${h.date}</div>
+              </div>
+              <div>
+                <div class="hi-price">${fmt(h.price)}</div>
+              </div>
+            </div>`;
+          }).join('');
+        } else {
+          histEl.innerHTML = '<div class="history-empty">No trades yet</div>';
+        }
         
         if (data.metadata?.lastUpdated) {
           document.getElementById('updated').textContent = 'Last updated: ' + new Date(data.metadata.lastUpdated).toLocaleString();
         }
-        
-        // Render current tab
-        const activeTab = document.querySelector('.tab.active, .tab.active-crypto');
-        const filter = activeTab?.id?.replace('tab-', '') || 'all';
-        renderPlays(filter);
-        
-        // Render briefings
-        const briefings = data.briefings || [];
-        if (briefings.length) {
-          document.getElementById('briefing-section').style.display = 'block';
-          const today = briefings[briefings.length - 1];
-          document.getElementById('briefing-content').textContent = today.content || '';
-          
-          // History (older briefings)
-          if (briefings.length > 1) {
-            const hist = document.getElementById('briefing-history');
-            hist.innerHTML = '<div style="font-size:0.75rem;font-weight:600;color:#555;margin-bottom:8px;">Previous Briefings</div>' +
-              briefings.slice(0, -1).reverse().map(b => 
-                `<details style="margin-bottom:6px;background:#111;border:1px solid #1a1a1a;border-radius:8px;padding:10px 14px;">
-                  <summary style="cursor:pointer;font-size:0.8rem;color:#888;font-weight:600;">${b.date || 'Briefing'}</summary>
-                  <div style="margin-top:8px;font-size:0.8rem;color:#999;white-space:pre-wrap;line-height:1.6;">${b.content || ''}</div>
-                </details>`
-              ).join('');
-          }
-        }
-        
-        // Render trade history
-        const history = data.history || [];
-        // Also auto-generate history from picks if no explicit history
-        const allHistory = [...history];
-        if (!allHistory.length) {
-          // Build from picks data
-          allPicks.forEach(p => {
-            const name = p.ticker || p.token || '—';
-            allHistory.push({ action: 'BUY', ticker: name, price: p.entryPrice || p.entry, date: p.date });
-            if (p.status === 'closed' && p.exitPrice) {
-              allHistory.push({ action: 'SELL', ticker: name, price: p.exitPrice, date: p.exitDate || p.date, pnl: p.pnl });
-            }
-          });
-        }
-        
-        const histEl = document.getElementById('history-list');
-        if (allHistory.length) {
-          allHistory.sort((a, b) => new Date(b.date) - new Date(a.date));
-          histEl.innerHTML = allHistory.slice(0, 30).map(h => {
-            const isBuy = h.action === 'BUY';
-            const pnlHtml = h.pnl != null ? `<div class="hi-pnl ${h.pnl >= 0 ? 'green' : 'red'}">${h.pnl >= 0 ? '+' : ''}${h.pnl.toFixed(1)}%</div>` : '';
-            return `<div class="history-item">
-              <div class="hi-left">
-                <div><span class="hi-action ${isBuy ? 'hi-buy' : 'hi-sell'}">${h.action}</span><span class="hi-ticker">${h.ticker}</span></div>
-                <div class="hi-date">${h.date || ''}</div>
-              </div>
-              <div>
-                <div class="hi-price">${formatPrice(h.price)}</div>
-                ${pnlHtml}
-              </div>
-            </div>`;
-          }).join('');
-        }
-        
       } catch (e) { console.log('Load error:', e); }
     }
     
