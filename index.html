@@ -3,216 +3,243 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Investor — Pick Tracker</title>
+  <title>The Investor — Live Portfolio</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { background: #0a0a0a; color: #e0e0e0; font-family: 'Segoe UI', system-ui, sans-serif; padding: 20px; max-width: 1400px; margin: 0 auto; }
+    body { background: #0a0a0a; color: #e0e0e0; font-family: 'SF Pro Display', 'Segoe UI', system-ui, sans-serif; }
     
-    .header { text-align: center; margin-bottom: 35px; }
-    .header h1 { font-size: 2.2rem; color: #fff; }
-    .header h1 .green { color: #00ff88; }
-    .header h1 .purple { color: #bf5af2; }
-    .header p { color: #888; margin-top: 5px; }
+    .container { max-width: 900px; margin: 0 auto; padding: 24px 20px; }
     
-    .tabs { display: flex; gap: 0; margin-bottom: 25px; border-bottom: 2px solid #222; }
-    .tab { padding: 12px 28px; cursor: pointer; font-weight: 600; font-size: 0.95rem; color: #888; border-bottom: 2px solid transparent; margin-bottom: -2px; transition: all 0.2s; }
-    .tab:hover { color: #ccc; }
-    .tab.active-stocks { color: #00ff88; border-bottom-color: #00ff88; }
+    /* Header */
+    .header { text-align: center; padding: 30px 0 20px; }
+    .header h1 { font-size: 1.8rem; font-weight: 700; color: #fff; }
+    .header h1 span { color: #00ff88; }
+    .header .tagline { color: #666; font-size: 0.85rem; margin-top: 4px; }
+    
+    /* Portfolio Summary */
+    .portfolio-bar { display: flex; justify-content: space-between; align-items: center; background: #111; border: 1px solid #1a1a1a; border-radius: 12px; padding: 20px 24px; margin-bottom: 24px; flex-wrap: wrap; gap: 16px; }
+    .port-item { text-align: center; }
+    .port-label { font-size: 0.7rem; color: #666; text-transform: uppercase; letter-spacing: 1px; }
+    .port-value { font-size: 1.5rem; font-weight: 700; margin-top: 2px; }
+    .port-value.green { color: #00ff88; }
+    .port-value.red { color: #ff4444; }
+    .port-value.white { color: #fff; }
+    .port-value.purple { color: #bf5af2; }
+    
+    /* Tab Bar */
+    .tabs { display: flex; gap: 0; border-bottom: 1px solid #1a1a1a; margin-bottom: 20px; }
+    .tab { padding: 10px 24px; cursor: pointer; font-size: 0.85rem; font-weight: 600; color: #555; border-bottom: 2px solid transparent; margin-bottom: -1px; transition: all 0.15s; }
+    .tab:hover { color: #999; }
+    .tab.active { color: #00ff88; border-bottom-color: #00ff88; }
     .tab.active-crypto { color: #bf5af2; border-bottom-color: #bf5af2; }
     
-    .section { display: none; }
-    .section.active { display: block; }
+    /* Plays List */
+    .plays { display: flex; flex-direction: column; gap: 8px; }
+    .play { display: flex; align-items: center; background: #111; border: 1px solid #1a1a1a; border-radius: 10px; padding: 14px 18px; transition: background 0.15s; }
+    .play:hover { background: #151518; }
+    .play-left { flex: 1; }
+    .play-ticker { font-size: 1rem; font-weight: 700; color: #fff; }
+    .play-ticker .risk-tag { font-size: 0.65rem; font-weight: 600; padding: 2px 6px; border-radius: 3px; margin-left: 8px; vertical-align: middle; }
+    .risk-safe { background: #0a2a0a; color: #00ff88; }
+    .risk-risky { background: #2a0a0a; color: #ff6644; }
+    .risk-crypto { background: #1a0a2a; color: #bf5af2; }
+    .risk-degen { background: #2a1a0a; color: #ffaa00; }
+    .play-meta { font-size: 0.75rem; color: #555; margin-top: 3px; }
+    .play-right { text-align: right; }
+    .play-invested { font-size: 0.75rem; color: #888; }
+    .play-pnl { font-size: 1.1rem; font-weight: 700; }
+    .play-pnl.green { color: #00ff88; }
+    .play-pnl.red { color: #ff4444; }
+    .play-pnl.flat { color: #555; }
+    .play-prices { font-size: 0.7rem; color: #555; margin-top: 2px; }
     
-    .stats-row { display: flex; gap: 15px; margin-bottom: 25px; flex-wrap: wrap; }
-    .stat-card { background: #141414; border: 1px solid #222; border-radius: 10px; padding: 18px; flex: 1; min-width: 140px; }
-    .stat-card .label { color: #888; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; }
-    .stat-card .value { font-size: 1.5rem; font-weight: 700; margin-top: 5px; }
-    .green { color: #00ff88; }
-    .red { color: #ff4444; }
-    .purple { color: #bf5af2; }
-    .neutral { color: #fff; }
+    /* Empty State */
+    .empty { text-align: center; padding: 60px 20px; color: #444; }
+    .empty .emoji { font-size: 2rem; margin-bottom: 12px; }
     
-    .picks-table { width: 100%; border-collapse: collapse; background: #141414; border-radius: 10px; overflow: hidden; }
-    .picks-table thead { background: #1a1a1a; }
-    .picks-table th { padding: 12px 16px; text-align: left; color: #888; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; border-bottom: 1px solid #222; }
-    .picks-table td { padding: 12px 16px; border-bottom: 1px solid #1a1a1a; }
-    .picks-table tr:hover { background: #1a1a2a; }
-    .ticker { font-weight: 700; color: #fff; font-size: 1rem; }
-    .thesis { color: #999; font-size: 0.85rem; max-width: 250px; }
-    .pnl-positive { color: #00ff88; font-weight: 700; }
-    .pnl-negative { color: #ff4444; font-weight: 700; }
-    .pnl-neutral { color: #888; }
+    /* Footer */
+    .footer { text-align: center; padding: 30px 0 20px; color: #333; font-size: 0.7rem; }
+    .footer span { color: #ff3333; }
     
-    .badge { display: inline-block; padding: 3px 8px; border-radius: 4px; font-size: 0.72rem; font-weight: 600; }
-    .badge-stock { background: #1a2a1a; color: #00ff88; }
-    .badge-option { background: #2a1a2a; color: #ff88ff; }
-    .badge-crypto { background: #1a1a2a; color: #bf5af2; }
-    .badge-degen { background: #2a1a1a; color: #ff6644; }
-    .badge-active { background: #1a1a2a; color: #88aaff; }
-    .badge-closed { background: #2a2a1a; color: #ffaa44; }
-    
-    .updated { text-align: center; color: #555; margin-top: 25px; font-size: 0.8rem; }
-    .empty { text-align: center; padding: 60px; color: #555; }
-    .contract { font-size: 0.7rem; color: #666; font-family: monospace; }
-    
-    .section-icon { font-size: 1.2rem; margin-right: 6px; }
+    .updated { text-align: center; color: #333; font-size: 0.7rem; margin-top: 16px; }
     
     @media (max-width: 600px) {
-      .stats-row { flex-direction: column; }
-      .picks-table { font-size: 0.85rem; }
-      .picks-table th, .picks-table td { padding: 8px 10px; }
-      .tab { padding: 10px 16px; font-size: 0.85rem; }
+      .portfolio-bar { flex-direction: column; text-align: center; gap: 12px; }
+      .play { flex-direction: column; text-align: center; gap: 8px; }
+      .play-right { text-align: center; }
+      .tab { padding: 10px 14px; font-size: 0.8rem; }
     }
   </style>
 </head>
 <body>
-  <div class="header">
-    <h1>📈 The <span class="green">Investor</span></h1>
-    <p>Daily stock picks & Solana meme coin alpha — tracked with P&L</p>
-  </div>
-  
-  <div class="tabs">
-    <div class="tab active-stocks" id="tab-stocks" onclick="switchTab('stocks')">
-      <span class="section-icon">📊</span> Stocks
+  <div class="container">
+    <div class="header">
+      <h1>📈 The <span>Investor</span></h1>
+      <div class="tagline">AI-powered picks • Live P&L • Full transparency</div>
     </div>
-    <div class="tab" id="tab-crypto" onclick="switchTab('crypto')">
-      <span class="section-icon">🪙</span> Solana Meme Coins
+    
+    <div class="portfolio-bar">
+      <div class="port-item">
+        <div class="port-label">Portfolio Value</div>
+        <div class="port-value white" id="portfolio-val">$1,000</div>
+      </div>
+      <div class="port-item">
+        <div class="port-label">Invested</div>
+        <div class="port-value white" id="invested-val">$0</div>
+      </div>
+      <div class="port-item">
+        <div class="port-label">Cash</div>
+        <div class="port-value white" id="cash-val">$1,000</div>
+      </div>
+      <div class="port-item">
+        <div class="port-label">Total P&L</div>
+        <div class="port-value green" id="pnl-val">$0.00</div>
+      </div>
+      <div class="port-item">
+        <div class="port-label">Win Rate</div>
+        <div class="port-value green" id="winrate-val">—</div>
+      </div>
+      <div class="port-item">
+        <div class="port-label">Active Plays</div>
+        <div class="port-value white" id="plays-val">0</div>
+      </div>
     </div>
-  </div>
-  
-  <!-- STOCKS SECTION -->
-  <div class="section active" id="section-stocks">
-    <div class="stats-row">
-      <div class="stat-card"><div class="label">Total Picks</div><div class="value neutral" id="s-totalPicks">—</div></div>
-      <div class="stat-card"><div class="label">Win Rate</div><div class="value neutral" id="s-winRate">—</div></div>
-      <div class="stat-card"><div class="label">Avg Return</div><div class="value neutral" id="s-avgReturn">—</div></div>
-      <div class="stat-card"><div class="label">Best Pick</div><div class="value green" id="s-bestPick">—</div></div>
-      <div class="stat-card"><div class="label">Worst Pick</div><div class="value red" id="s-worstPick">—</div></div>
+    
+    <div class="tabs">
+      <div class="tab active" id="tab-all" onclick="showTab('all')">All Plays</div>
+      <div class="tab" id="tab-stocks" onclick="showTab('stocks')">Stocks</div>
+      <div class="tab" id="tab-crypto" onclick="showTab('crypto')">Crypto</div>
     </div>
-    <table class="picks-table">
-      <thead>
-        <tr><th>Date</th><th>Ticker</th><th>Type</th><th>Entry</th><th>Current</th><th>P&L</th><th>Status</th><th>Thesis</th></tr>
-      </thead>
-      <tbody id="s-body"><tr><td colspan="8" class="empty">No stock picks yet — The Investor drops his first picks tomorrow at 7 AM</td></tr></tbody>
-    </table>
-  </div>
-  
-  <!-- CRYPTO SECTION -->
-  <div class="section" id="section-crypto">
-    <div class="stats-row">
-      <div class="stat-card"><div class="label">Total Picks</div><div class="value neutral" id="c-totalPicks">—</div></div>
-      <div class="stat-card"><div class="label">Win Rate</div><div class="value neutral" id="c-winRate">—</div></div>
-      <div class="stat-card"><div class="label">Avg Return</div><div class="value neutral" id="c-avgReturn">—</div></div>
-      <div class="stat-card"><div class="label">Best Pick</div><div class="value purple" id="c-bestPick">—</div></div>
-      <div class="stat-card"><div class="label">Worst Pick</div><div class="value red" id="c-worstPick">—</div></div>
+    
+    <div class="plays" id="plays-list">
+      <div class="empty">
+        <div class="emoji">📊</div>
+        <div>First picks drop tomorrow at 7 AM ET</div>
+      </div>
     </div>
-    <table class="picks-table">
-      <thead>
-        <tr><th>Date</th><th>Token</th><th>Type</th><th>Entry</th><th>Current</th><th>P&L</th><th>Mcap</th><th>Thesis</th></tr>
-      </thead>
-      <tbody id="c-body"><tr><td colspan="8" class="empty">No meme coin picks yet — Solana degen plays start tomorrow at 7 AM 🪙</td></tr></tbody>
-    </table>
+    
+    <div class="updated" id="updated"></div>
+    
+    <div class="footer">Powered by The One <span>🔴</span> • Updated hourly • Not financial advice</div>
   </div>
-  
-  <div class="updated" id="updated">Powered by The One 🔴</div>
 
   <script>
-    function switchTab(tab) {
-      document.getElementById('section-stocks').classList.toggle('active', tab === 'stocks');
-      document.getElementById('section-crypto').classList.toggle('active', tab === 'crypto');
-      const st = document.getElementById('tab-stocks');
-      const ct = document.getElementById('tab-crypto');
-      st.className = tab === 'stocks' ? 'tab active-stocks' : 'tab';
-      ct.className = tab === 'crypto' ? 'tab active-crypto' : 'tab';
+    let allPicks = [];
+    
+    function showTab(tab) {
+      document.querySelectorAll('.tab').forEach(t => { t.className = 'tab'; });
+      if (tab === 'crypto') {
+        document.getElementById('tab-crypto').className = 'tab active-crypto';
+      } else {
+        document.getElementById('tab-' + tab).className = 'tab active';
+      }
+      renderPlays(tab);
     }
     
-    async function loadPicks() {
+    function formatPrice(p) {
+      if (!p && p !== 0) return '—';
+      if (p < 0.01) return '$' + p.toPrecision(3);
+      if (p < 1) return '$' + p.toFixed(4);
+      return '$' + p.toFixed(2);
+    }
+    
+    function renderPlays(filter) {
+      let picks = allPicks;
+      if (filter === 'stocks') picks = picks.filter(p => p.asset === 'stock');
+      if (filter === 'crypto') picks = picks.filter(p => p.asset === 'crypto');
+      
+      const el = document.getElementById('plays-list');
+      
+      if (!picks.length) {
+        el.innerHTML = '<div class="empty"><div class="emoji">📊</div><div>No ' + (filter === 'all' ? '' : filter + ' ') + 'picks yet</div></div>';
+        return;
+      }
+      
+      // Sort: active first, then by date desc
+      picks.sort((a, b) => {
+        if (a.status === 'closed' && b.status !== 'closed') return 1;
+        if (a.status !== 'closed' && b.status === 'closed') return -1;
+        return new Date(b.date) - new Date(a.date);
+      });
+      
+      el.innerHTML = picks.map(p => {
+        const pnl = p.pnl;
+        const pnlClass = pnl > 0 ? 'green' : pnl < 0 ? 'red' : 'flat';
+        const pnlText = pnl != null ? (pnl >= 0 ? '+' : '') + pnl.toFixed(1) + '%' : '—';
+        const name = p.ticker || p.token || '—';
+        
+        let riskClass = 'risk-safe';
+        let riskLabel = 'SAFE';
+        if (p.risk === 'risky') { riskClass = 'risk-risky'; riskLabel = 'RISKY'; }
+        if (p.type === 'option') { riskClass = 'risk-risky'; riskLabel = 'OPTIONS'; }
+        if (p.type === 'crypto') { riskClass = 'risk-crypto'; riskLabel = 'CRYPTO'; }
+        if (p.type === 'degen') { riskClass = 'risk-degen'; riskLabel = 'DEGEN'; }
+        
+        const invested = p.entryPrice ? formatPrice(p.entryPrice) + '/share' : '—';
+        const current = p.currentPrice ? formatPrice(p.currentPrice) : '—';
+        
+        return `<div class="play">
+          <div class="play-left">
+            <div class="play-ticker">${name} <span class="risk-tag ${riskClass}">${riskLabel}</span></div>
+            <div class="play-meta">${p.date || '—'} · ${p.thesis || ''}</div>
+          </div>
+          <div class="play-right">
+            <div class="play-pnl ${pnlClass}">${pnlText}</div>
+            <div class="play-prices">${formatPrice(p.entryPrice)} → ${current}</div>
+          </div>
+        </div>`;
+      }).join('');
+    }
+    
+    async function loadData() {
       try {
         const res = await fetch('picks.json?t=' + Date.now());
         const data = await res.json();
-        renderSection(data.stocks || [], 's', 'stock');
-        renderSection(data.crypto || [], 'c', 'crypto');
-        if (data.metadata?.lastUpdated) {
-          document.getElementById('updated').textContent = 'Last updated: ' + new Date(data.metadata.lastUpdated).toLocaleString() + ' • Powered by The One 🔴';
-        }
-      } catch (e) {}
-    }
-    
-    function renderSection(picks, prefix, sectionType) {
-      if (picks.length === 0) return;
-      
-      const withPnl = picks.filter(p => p.pnl !== undefined && p.pnl !== null);
-      const wins = withPnl.filter(p => p.pnl > 0);
-      const totalPnl = withPnl.reduce((s, p) => s + p.pnl, 0);
-      const best = withPnl.length ? withPnl.reduce((a, b) => a.pnl > b.pnl ? a : b) : null;
-      const worst = withPnl.length ? withPnl.reduce((a, b) => a.pnl < b.pnl ? a : b) : null;
-      
-      document.getElementById(prefix + '-totalPicks').textContent = picks.length;
-      document.getElementById(prefix + '-winRate').textContent = withPnl.length ? Math.round(wins.length / withPnl.length * 100) + '%' : '—';
-      
-      const avgRet = withPnl.length ? (totalPnl / withPnl.length) : null;
-      const avgEl = document.getElementById(prefix + '-avgReturn');
-      if (avgRet !== null) {
-        avgEl.textContent = (avgRet >= 0 ? '+' : '') + avgRet.toFixed(1) + '%';
-        avgEl.className = 'value ' + (avgRet >= 0 ? 'green' : 'red');
-      }
-      
-      const bestName = sectionType === 'crypto' ? 'token' : 'ticker';
-      if (best) document.getElementById(prefix + '-bestPick').textContent = (best[bestName] || best.ticker) + ' +' + best.pnl.toFixed(1) + '%';
-      if (worst) document.getElementById(prefix + '-worstPick').textContent = (worst[bestName] || worst.ticker) + ' ' + worst.pnl.toFixed(1) + '%';
-      
-      let html = '';
-      for (const p of picks.sort((a, b) => new Date(b.date) - new Date(a.date))) {
-        const pnlClass = p.pnl > 0 ? 'pnl-positive' : p.pnl < 0 ? 'pnl-negative' : 'pnl-neutral';
-        const pnlText = p.pnl !== undefined && p.pnl !== null ? (p.pnl >= 0 ? '+' : '') + p.pnl.toFixed(1) + '%' : '—';
-        const statusClass = p.status === 'closed' ? 'badge-closed' : 'badge-active';
+        const stocks = (data.stocks || []).map(p => ({ ...p, asset: 'stock' }));
+        const crypto = (data.crypto || []).map(p => ({ ...p, asset: 'crypto' }));
+        allPicks = [...stocks, ...crypto];
         
-        if (sectionType === 'crypto') {
-          const typeClass = p.type === 'degen' ? 'badge-degen' : 'badge-crypto';
-          const name = p.token || p.ticker || '—';
-          const contract = p.contract ? '<div class="contract">' + p.contract.slice(0, 8) + '...' + p.contract.slice(-4) + '</div>' : '';
-          const entryText = p.entryPrice ? (p.entryPrice < 0.01 ? '$' + p.entryPrice.toPrecision(3) : '$' + p.entryPrice.toFixed(4)) : '—';
-          const currentText = p.currentPrice ? (p.currentPrice < 0.01 ? '$' + p.currentPrice.toPrecision(3) : '$' + p.currentPrice.toFixed(4)) : '—';
-          const mcapText = p.mcap ? formatMcap(p.mcap) : '—';
-          
-          html += `<tr>
-            <td>${p.date || '—'}</td>
-            <td class="ticker">${name}${contract}</td>
-            <td><span class="badge ${typeClass}">${(p.type || 'crypto').toUpperCase()}</span></td>
-            <td>${entryText}</td>
-            <td>${currentText}</td>
-            <td class="${pnlClass}">${pnlText}</td>
-            <td>${mcapText}</td>
-            <td class="thesis">${p.thesis || ''}</td>
-          </tr>`;
-        } else {
-          const typeClass = p.type === 'option' ? 'badge-option' : 'badge-stock';
-          const currentText = p.currentPrice ? '$' + p.currentPrice.toFixed(2) : '—';
-          
-          html += `<tr>
-            <td>${p.date || '—'}</td>
-            <td class="ticker">${p.ticker || '—'}</td>
-            <td><span class="badge ${typeClass}">${(p.type || 'stock').toUpperCase()}</span></td>
-            <td>$${p.entryPrice ? p.entryPrice.toFixed(2) : '—'}</td>
-            <td>${currentText}</td>
-            <td class="${pnlClass}">${pnlText}</td>
-            <td><span class="badge ${statusClass}">${(p.status || 'active').toUpperCase()}</span></td>
-            <td class="thesis">${p.thesis || ''}</td>
-          </tr>`;
+        // Portfolio stats
+        const active = allPicks.filter(p => p.status !== 'closed');
+        const withPnl = allPicks.filter(p => p.pnl != null);
+        const wins = withPnl.filter(p => p.pnl > 0);
+        const totalPnlPct = withPnl.length ? withPnl.reduce((s, p) => s + p.pnl, 0) / withPnl.length : 0;
+        
+        // Simple portfolio calc (assume equal weight $1K starting)
+        const startingCash = 1000;
+        const perPlay = active.length ? startingCash / Math.max(active.length, 1) : 0;
+        const totalInvested = active.length * perPlay;
+        const totalValue = active.reduce((sum, p) => {
+          if (p.pnl != null) return sum + perPlay * (1 + p.pnl / 100);
+          return sum + perPlay;
+        }, startingCash - totalInvested);
+        
+        document.getElementById('portfolio-val').textContent = '$' + totalValue.toFixed(0);
+        document.getElementById('invested-val').textContent = '$' + totalInvested.toFixed(0);
+        document.getElementById('cash-val').textContent = '$' + (startingCash - totalInvested).toFixed(0);
+        
+        const pnlDollar = totalValue - startingCash;
+        const pnlEl = document.getElementById('pnl-val');
+        pnlEl.textContent = (pnlDollar >= 0 ? '+' : '') + '$' + pnlDollar.toFixed(2);
+        pnlEl.className = 'port-value ' + (pnlDollar >= 0 ? 'green' : 'red');
+        
+        document.getElementById('winrate-val').textContent = withPnl.length ? Math.round(wins.length / withPnl.length * 100) + '%' : '—';
+        document.getElementById('plays-val').textContent = active.length;
+        
+        if (data.metadata?.lastUpdated) {
+          document.getElementById('updated').textContent = 'Last updated: ' + new Date(data.metadata.lastUpdated).toLocaleString();
         }
-      }
-      document.getElementById(prefix + '-body').innerHTML = html;
+        
+        // Render current tab
+        const activeTab = document.querySelector('.tab.active, .tab.active-crypto');
+        const filter = activeTab?.id?.replace('tab-', '') || 'all';
+        renderPlays(filter);
+        
+      } catch (e) { console.log('Load error:', e); }
     }
     
-    function formatMcap(n) {
-      if (n >= 1e9) return '$' + (n / 1e9).toFixed(1) + 'B';
-      if (n >= 1e6) return '$' + (n / 1e6).toFixed(1) + 'M';
-      if (n >= 1e3) return '$' + (n / 1e3).toFixed(0) + 'K';
-      return '$' + n;
-    }
-    
-    loadPicks();
-    setInterval(loadPicks, 60000);
+    loadData();
+    setInterval(loadData, 60000);
   </script>
 </body>
 </html>
