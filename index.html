@@ -118,6 +118,13 @@
       </div>
     </div>
     
+    <!-- Daily Briefing -->
+    <div id="briefing-section" style="margin-top:30px;display:none;">
+      <div style="font-size:0.85rem;font-weight:700;color:#fff;margin-bottom:12px;border-bottom:1px solid #1a1a1a;padding-bottom:8px;">📋 Today's Briefing</div>
+      <div id="briefing-content" style="background:#111;border:1px solid #1a1a1a;border-radius:10px;padding:18px;font-size:0.85rem;line-height:1.7;color:#ccc;white-space:pre-wrap;"></div>
+      <div id="briefing-history" style="margin-top:16px;"></div>
+    </div>
+    
     <div class="updated" id="updated"></div>
     
     <div class="footer">Powered by The One <span>🔴</span> • Updated hourly • Not financial advice</div>
@@ -234,6 +241,26 @@
         const activeTab = document.querySelector('.tab.active, .tab.active-crypto');
         const filter = activeTab?.id?.replace('tab-', '') || 'all';
         renderPlays(filter);
+        
+        // Render briefings
+        const briefings = data.briefings || [];
+        if (briefings.length) {
+          document.getElementById('briefing-section').style.display = 'block';
+          const today = briefings[briefings.length - 1];
+          document.getElementById('briefing-content').textContent = today.content || '';
+          
+          // History (older briefings)
+          if (briefings.length > 1) {
+            const hist = document.getElementById('briefing-history');
+            hist.innerHTML = '<div style="font-size:0.75rem;font-weight:600;color:#555;margin-bottom:8px;">Previous Briefings</div>' +
+              briefings.slice(0, -1).reverse().map(b => 
+                `<details style="margin-bottom:6px;background:#111;border:1px solid #1a1a1a;border-radius:8px;padding:10px 14px;">
+                  <summary style="cursor:pointer;font-size:0.8rem;color:#888;font-weight:600;">${b.date || 'Briefing'}</summary>
+                  <div style="margin-top:8px;font-size:0.8rem;color:#999;white-space:pre-wrap;line-height:1.6;">${b.content || ''}</div>
+                </details>`
+              ).join('');
+          }
+        }
         
       } catch (e) { console.log('Load error:', e); }
     }
