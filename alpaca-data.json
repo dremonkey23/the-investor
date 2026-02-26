@@ -1,19 +1,331 @@
 {
   "account": {
-    "portfolioValue": 100000,
-    "cash": 100000,
-    "buyingPower": 200000,
-    "equity": 100000,
-    "longMarketValue": 0,
+    "portfolioValue": 99990.6,
+    "cash": 64000,
+    "buyingPower": 163990.6,
+    "equity": 99990.6,
+    "longMarketValue": 35990.6,
     "shortMarketValue": 0,
-    "pnl": 0,
-    "pnlPct": 0
+    "pnl": -9.39999999999418,
+    "pnlPct": -0.009399999999994179
   },
-  "positions": [],
-  "orders": [],
-  "history": [],
+  "positions": [
+    {
+      "symbol": "CGAU",
+      "qty": 207.468879668,
+      "side": "long",
+      "avgEntry": 19.28,
+      "currentPrice": 19.23,
+      "marketValue": 3989.626556,
+      "unrealizedPnl": -10.373444,
+      "unrealizedPnlPct": -0.259,
+      "change": 0.261
+    },
+    {
+      "symbol": "COHR",
+      "qty": 18.601190476,
+      "side": "long",
+      "avgEntry": 268.8,
+      "currentPrice": 266.43,
+      "marketValue": 4955.915179,
+      "unrealizedPnl": -44.084821,
+      "unrealizedPnlPct": -0.882,
+      "change": -0.549
+    },
+    {
+      "symbol": "FSLY",
+      "qty": 217.381185426,
+      "side": "long",
+      "avgEntry": 18.400857,
+      "currentPrice": 18.41,
+      "marketValue": 4001.987624,
+      "unrealizedPnl": 1.987516,
+      "unrealizedPnlPct": 0.05,
+      "change": 1.433
+    },
+    {
+      "symbol": "GS",
+      "qty": 7.476715372,
+      "side": "long",
+      "avgEntry": 936.24,
+      "currentPrice": 937.6,
+      "marketValue": 7010.168333,
+      "unrealizedPnl": 10.168333,
+      "unrealizedPnlPct": 0.145,
+      "change": 1.76
+    },
+    {
+      "symbol": "MSFT",
+      "qty": 19.920209189,
+      "side": "long",
+      "avgEntry": 401.602208,
+      "currentPrice": 401.46,
+      "marketValue": 7997.167181,
+      "unrealizedPnl": -2.832813,
+      "unrealizedPnlPct": -0.034999999999999996,
+      "change": 0.215
+    },
+    {
+      "symbol": "NVDA",
+      "qty": 42.089756405,
+      "side": "long",
+      "avgEntry": 190.07,
+      "currentPrice": 190.919,
+      "marketValue": 8035.734203,
+      "unrealizedPnl": 35.734203,
+      "unrealizedPnlPct": 0.447,
+      "change": -2.373
+    }
+  ],
+  "orders": [
+    {
+      "id": "58cfabae-a53c-4d72-bd07-cb4b00081143",
+      "symbol": "CGAU",
+      "side": "buy",
+      "qty": 4000,
+      "type": "market",
+      "status": "filled",
+      "filledQty": 207.468879668,
+      "filledAvgPrice": 19.28,
+      "submittedAt": "2026-02-26T14:38:14.39782Z",
+      "filledAt": "2026-02-26T14:38:15.351563Z"
+    },
+    {
+      "id": "dc35e63f-c1b2-4469-81b0-356b1e42f807",
+      "symbol": "FSLY",
+      "side": "buy",
+      "qty": 4000,
+      "type": "market",
+      "status": "filled",
+      "filledQty": 217.381185426,
+      "filledAvgPrice": 18.400857,
+      "submittedAt": "2026-02-26T14:38:14.055517Z",
+      "filledAt": "2026-02-26T14:38:17.835911Z"
+    },
+    {
+      "id": "9d148d24-7a57-4c73-a361-a2582f800324",
+      "symbol": "COHR",
+      "side": "buy",
+      "qty": 5000,
+      "type": "market",
+      "status": "filled",
+      "filledQty": 18.601190476,
+      "filledAvgPrice": 268.8,
+      "submittedAt": "2026-02-26T14:38:13.717337Z",
+      "filledAt": "2026-02-26T14:38:14.311096Z"
+    },
+    {
+      "id": "d279f1a8-784a-4cb2-b094-52fd7a135339",
+      "symbol": "GS",
+      "side": "buy",
+      "qty": 7000,
+      "type": "market",
+      "status": "filled",
+      "filledQty": 7.476715372,
+      "filledAvgPrice": 936.24,
+      "submittedAt": "2026-02-26T14:38:13.529429Z",
+      "filledAt": "2026-02-26T14:38:13.912033Z"
+    },
+    {
+      "id": "e916128a-8164-4c3a-b891-5427267517eb",
+      "symbol": "MSFT",
+      "side": "buy",
+      "qty": 8000,
+      "type": "market",
+      "status": "filled",
+      "filledQty": 19.920209189,
+      "filledAvgPrice": 401.602208,
+      "submittedAt": "2026-02-26T14:38:13.343649Z",
+      "filledAt": "2026-02-26T14:38:14.948105Z"
+    },
+    {
+      "id": "60edaea5-fce7-49e5-87e2-b2f4f9d35118",
+      "symbol": "NVDA",
+      "side": "buy",
+      "qty": 8000,
+      "type": "market",
+      "status": "filled",
+      "filledQty": 42.089756405,
+      "filledAvgPrice": 190.07,
+      "submittedAt": "2026-02-26T14:38:13.132325Z",
+      "filledAt": "2026-02-26T14:38:14.259653Z"
+    }
+  ],
+  "history": [
+    {
+      "action": "BUY",
+      "ticker": "FSLY",
+      "qty": 1.381185426,
+      "price": 18.39,
+      "date": "2026-02-26",
+      "time": "2026-02-26T14:38:17.837986Z",
+      "orderId": "dc35e63f-c1b2-4469-81b0-356b1e42f807"
+    },
+    {
+      "action": "BUY",
+      "ticker": "FSLY",
+      "qty": 1,
+      "price": 18.39,
+      "date": "2026-02-26",
+      "time": "2026-02-26T14:38:17.835911Z",
+      "orderId": "dc35e63f-c1b2-4469-81b0-356b1e42f807"
+    },
+    {
+      "action": "BUY",
+      "ticker": "FSLY",
+      "qty": 2,
+      "price": 18.39,
+      "date": "2026-02-26",
+      "time": "2026-02-26T14:38:17.360245Z",
+      "orderId": "dc35e63f-c1b2-4469-81b0-356b1e42f807"
+    },
+    {
+      "action": "BUY",
+      "ticker": "FSLY",
+      "qty": 5,
+      "price": 18.39,
+      "date": "2026-02-26",
+      "time": "2026-02-26T14:38:16.52746Z",
+      "orderId": "dc35e63f-c1b2-4469-81b0-356b1e42f807"
+    },
+    {
+      "action": "BUY",
+      "ticker": "FSLY",
+      "qty": 9,
+      "price": 18.39,
+      "date": "2026-02-26",
+      "time": "2026-02-26T14:38:15.951373Z",
+      "orderId": "dc35e63f-c1b2-4469-81b0-356b1e42f807"
+    },
+    {
+      "action": "BUY",
+      "ticker": "CGAU",
+      "qty": 1.468879668,
+      "price": 19.28,
+      "date": "2026-02-26",
+      "time": "2026-02-26T14:38:15.355053Z",
+      "orderId": "58cfabae-a53c-4d72-bd07-cb4b00081143"
+    },
+    {
+      "action": "BUY",
+      "ticker": "CGAU",
+      "qty": 152,
+      "price": 19.28,
+      "date": "2026-02-26",
+      "time": "2026-02-26T14:38:15.351563Z",
+      "orderId": "58cfabae-a53c-4d72-bd07-cb4b00081143"
+    },
+    {
+      "action": "BUY",
+      "ticker": "FSLY",
+      "qty": 81,
+      "price": 18.39,
+      "date": "2026-02-26",
+      "time": "2026-02-26T14:38:15.283894Z",
+      "orderId": "dc35e63f-c1b2-4469-81b0-356b1e42f807"
+    },
+    {
+      "action": "BUY",
+      "ticker": "MSFT",
+      "qty": 1.920209189,
+      "price": 401.55,
+      "date": "2026-02-26",
+      "time": "2026-02-26T14:38:14.950219Z",
+      "orderId": "e916128a-8164-4c3a-b891-5427267517eb"
+    },
+    {
+      "action": "BUY",
+      "ticker": "MSFT",
+      "qty": 5,
+      "price": 401.55,
+      "date": "2026-02-26",
+      "time": "2026-02-26T14:38:14.948105Z",
+      "orderId": "e916128a-8164-4c3a-b891-5427267517eb"
+    },
+    {
+      "action": "BUY",
+      "ticker": "CGAU",
+      "qty": 54,
+      "price": 19.28,
+      "date": "2026-02-26",
+      "time": "2026-02-26T14:38:14.720762Z",
+      "orderId": "58cfabae-a53c-4d72-bd07-cb4b00081143"
+    },
+    {
+      "action": "BUY",
+      "ticker": "FSLY",
+      "qty": 118,
+      "price": 18.41,
+      "date": "2026-02-26",
+      "time": "2026-02-26T14:38:14.655446Z",
+      "orderId": "dc35e63f-c1b2-4469-81b0-356b1e42f807"
+    },
+    {
+      "action": "BUY",
+      "ticker": "COHR",
+      "qty": 1.601190476,
+      "price": 268.8,
+      "date": "2026-02-26",
+      "time": "2026-02-26T14:38:14.313442Z",
+      "orderId": "9d148d24-7a57-4c73-a361-a2582f800324"
+    },
+    {
+      "action": "BUY",
+      "ticker": "COHR",
+      "qty": 17,
+      "price": 268.8,
+      "date": "2026-02-26",
+      "time": "2026-02-26T14:38:14.311096Z",
+      "orderId": "9d148d24-7a57-4c73-a361-a2582f800324"
+    },
+    {
+      "action": "BUY",
+      "ticker": "NVDA",
+      "qty": 1.089756405,
+      "price": 190.07,
+      "date": "2026-02-26",
+      "time": "2026-02-26T14:38:14.262106Z",
+      "orderId": "60edaea5-fce7-49e5-87e2-b2f4f9d35118"
+    },
+    {
+      "action": "BUY",
+      "ticker": "NVDA",
+      "qty": 41,
+      "price": 190.07,
+      "date": "2026-02-26",
+      "time": "2026-02-26T14:38:14.259653Z",
+      "orderId": "60edaea5-fce7-49e5-87e2-b2f4f9d35118"
+    },
+    {
+      "action": "BUY",
+      "ticker": "GS",
+      "qty": 1.476715372,
+      "price": 936.24,
+      "date": "2026-02-26",
+      "time": "2026-02-26T14:38:13.914267Z",
+      "orderId": "d279f1a8-784a-4cb2-b094-52fd7a135339"
+    },
+    {
+      "action": "BUY",
+      "ticker": "GS",
+      "qty": 6,
+      "price": 936.24,
+      "date": "2026-02-26",
+      "time": "2026-02-26T14:38:13.912033Z",
+      "orderId": "d279f1a8-784a-4cb2-b094-52fd7a135339"
+    },
+    {
+      "action": "BUY",
+      "ticker": "MSFT",
+      "qty": 13,
+      "price": 401.63,
+      "date": "2026-02-26",
+      "time": "2026-02-26T14:38:13.842231Z",
+      "orderId": "e916128a-8164-4c3a-b891-5427267517eb"
+    }
+  ],
   "metadata": {
-    "lastUpdated": "2026-02-26T14:12:09.514Z",
+    "lastUpdated": "2026-02-26T14:38:48.762Z",
     "startingCapital": 100000
   }
 }
