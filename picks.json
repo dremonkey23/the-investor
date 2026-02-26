@@ -1,9 +1,136 @@
 {
-  "stocks": [],
-  "crypto": [],
+  "stocks": [
+    {
+      "ticker": "AAPL",
+      "type": "stock",
+      "risk": "safe",
+      "entry": 274.30,
+      "date": "2026-02-26",
+      "thesis": "Ecosystem strength, $4T market cap, steady buybacks. Trading near ATH support.",
+      "current": 274.30,
+      "pnl": 0
+    },
+    {
+      "ticker": "MSFT",
+      "type": "stock",
+      "risk": "safe",
+      "entry": 399.54,
+      "date": "2026-02-26",
+      "thesis": "Cloud dominance + AI integration across Azure/Copilot. Broad market rotation beneficiary.",
+      "current": 399.54,
+      "pnl": 0
+    },
+    {
+      "ticker": "NVDA",
+      "type": "stock",
+      "risk": "safe",
+      "entry": 197.18,
+      "date": "2026-02-26",
+      "thesis": "AI infrastructure king. Pre-market up 0.8%, still the backbone of every AI buildout.",
+      "current": 197.18,
+      "pnl": 0
+    },
+    {
+      "ticker": "IONQ",
+      "type": "stock",
+      "risk": "risky",
+      "entry": 38.78,
+      "date": "2026-02-26",
+      "thesis": "Quantum computing momentum play. Pre-market +15.5% on volume spike. High beta, big upside if quantum narrative holds.",
+      "current": 38.78,
+      "pnl": 0
+    },
+    {
+      "ticker": "CELH",
+      "type": "stock",
+      "risk": "risky",
+      "entry": 58.50,
+      "date": "2026-02-26",
+      "thesis": "Earnings catalyst ahead, up 140% from 2025 lows. Pre-market +15.6%. Energy drink growth story still intact.",
+      "current": 58.50,
+      "pnl": 0
+    },
+    {
+      "ticker": "JOBY",
+      "type": "stock",
+      "risk": "risky",
+      "entry": 10.79,
+      "date": "2026-02-26",
+      "thesis": "eVTOL play with $1.2B raise, Cathie Wood buying heavy. Pre-market +9.9%. FAA certification catalysts ahead.",
+      "current": 10.79,
+      "pnl": 0
+    },
+    {
+      "ticker": "IONQ 45C 3/20",
+      "type": "option",
+      "risk": "risky",
+      "entry": null,
+      "date": "2026-02-26",
+      "thesis": "IONQ Mar 20 $45 calls. Stock ripping +15.5% pre-market on 1.4M volume. Quantum hype cycle has legs. Ride the momentum with defined risk.",
+      "current": null,
+      "pnl": null
+    }
+  ],
+  "crypto": [
+    {
+      "ticker": "PIPPIN",
+      "type": "crypto",
+      "risk": "safe",
+      "entry": 0.73,
+      "date": "2026-02-26",
+      "thesis": "AI agent meme coin at ATH territory ($842M mcap). Binance Alpha listed. Strongest Solana meme by market cap.",
+      "contract": "8wwCnqDZJCy5PT7AkhUpAFKnV2TxCA9Sq6YbkGzLbVDt",
+      "current": 0.73,
+      "pnl": 0
+    },
+    {
+      "ticker": "WIF",
+      "type": "crypto",
+      "risk": "safe",
+      "entry": 0.21,
+      "date": "2026-02-26",
+      "thesis": "OG Solana meme, $211M mcap with $122M daily volume. Still liquid, still traded. Good base for a bounce.",
+      "contract": "EKpQGSJtjMFqKZ9KQanSqYXRcF8fBopzLHYxdM65zcjm",
+      "current": 0.21,
+      "pnl": 0
+    },
+    {
+      "ticker": "BONK",
+      "type": "crypto",
+      "risk": "safe",
+      "entry": 0.000006243,
+      "date": "2026-02-26",
+      "thesis": "Solana's community meme OG. High liquidity, $97M daily volume. Ecosystem integration across wallets/DEXs.",
+      "contract": "DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263",
+      "current": 0.000006243,
+      "pnl": 0
+    },
+    {
+      "ticker": "NIRE",
+      "type": "crypto",
+      "risk": "risky",
+      "entry": 0.003359,
+      "date": "2026-02-26",
+      "thesis": "NotInRetardEducation — trending #11 on DexScreener. $26.9M 24h volume, +44.58% on the day, $3.3M mcap. Narrative + volume spike.",
+      "contract": "GwQf2oUBkvwuVVpkP4NIVcAgZMfUs845Kx5CWFJRzw8D",
+      "current": 0.003359,
+      "pnl": 0
+    },
+    {
+      "ticker": "JANESTREET",
+      "type": "crypto",
+      "risk": "risky",
+      "entry": 0.04427,
+      "date": "2026-02-26",
+      "thesis": "Jane Street meme — trending #8 on DexScreener. $44.2M mcap, +84,001% lifetime, +47.7% today. Finance meme narrative is hot.",
+      "contract": "4lQo14ZB7Mg6TZm6P48d9nD3l4aKaHcG3QYj44FxUVAa",
+      "current": 0.04427,
+      "pnl": 0
+    }
+  ],
   "metadata": {
     "created": "2026-02-25",
-    "lastUpdated": null,
+    "lastUpdated": "2026-02-26",
     "description": "The Investor pick history — stocks & Solana meme coins"
   }
 }
