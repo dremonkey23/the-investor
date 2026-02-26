@@ -129,7 +129,7 @@
         <div class="tabs">
           <div class="tab active" id="tab-all" onclick="showTab('all')">All Plays</div>
           <div class="tab" id="tab-stocks" onclick="showTab('stocks')">Stocks</div>
-          <div class="tab" id="tab-crypto" onclick="showTab('crypto')">Crypto</div>
+    
         </div>
         
         <div class="plays" id="plays-list">
@@ -233,8 +233,7 @@
         const res = await fetch('picks.json?t=' + Date.now());
         const data = await res.json();
         const stocks = (data.stocks || []).map(p => ({ ...p, asset: 'stock' }));
-        const crypto = (data.crypto || []).map(p => ({ ...p, asset: 'crypto' }));
-        allPicks = [...stocks, ...crypto];
+        allPicks = [...stocks];
         
         // Portfolio stats
         const active = allPicks.filter(p => p.status !== 'closed');
