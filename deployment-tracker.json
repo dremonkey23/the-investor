@@ -1,17 +1,13 @@
 {
   "date": "2026-02-27",
-  "cashAtStart": 1.19,
-  "note": "9:30 AM - Market open check. Portfolio $99,032.51. All positions within risk parameters. Insufficient cash ($1.19) for new deployment. API issues from earlier resolved.",
-  "pendingSells": ["FSLY partial fill (39/217)", "NIO", "PLUG", "DELL"],
-  "pendingBuys": ["AAT x50 (duplicate detected)", "MWA x80 (duplicate detected)"],
-  "ordersPlaced": [
-    {"symbol": "FSLY", "qty": -39, "side": "sell", "order_id": "9042243f-753d-4633-a5cd-85f2e30cd27f", "status": "partially_filled", "filled_price": 17.46},
-    {"symbol": "AAT", "qty": 50, "side": "buy", "order_id": "a1a3afeb-0c6b-40ed-912a-babc6c584a90", "status": "pending"},
-    {"symbol": "MWA", "qty": 80, "side": "buy", "order_id": "8517bf0c-c76d-46d2-9842-7e57ead9cb98", "status": "pending"}
-  ],
-  "estimatedDeployment": 0,
+  "cashAtStart": 94.86,
+  "deployedToday": 0,
   "dayNumber": 2,
   "staggerComplete": false,
-  "lastActivity": "2026-02-27T14:30:00Z",
-  "apiIssues": "Resolved - orders endpoint working"
+  "note": "9:45 AM run. Only $94 cash at start. Sold 3 DELL shares @ $140.78 (+15.1% profit take). Freed $422. Tried LOGC (massive $12.3M insider buy) but not tradable on Alpaca (OTCQB). Cash now ~$517. Portfolio nearly fully deployed. Top insider signals: AAT (Rady $212K buy, already holding), MWA (Sengstack $739K buy, already holding), LOGC ($12.3M buy, not tradable).",
+  "ordersPlaced": [
+    {"symbol": "DELL", "qty": -3, "side": "sell", "order_id": "9ff7faf5-6cd0-4c00-b464-946662bee4d6", "status": "filled", "filled_price": 140.78},
+    {"symbol": "DELL", "qty": -1, "side": "sell", "order_id": "a7a42421-11ec-4145-bf3f-2d73270fb326", "status": "filled", "filled_price": 141.15}
+  ],
+  "lastActivity": "2026-02-27T14:47:30Z"
 }
