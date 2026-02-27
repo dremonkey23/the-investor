@@ -4,11 +4,12 @@
   "deployedToday": 0,
   "dayNumber": 2,
   "staggerComplete": false,
-  "note": "9:45 AM run. Only $94 cash at start. Sold 3 DELL shares @ $140.78 (+15.1% profit take). Freed $422. Tried LOGC (massive $12.3M insider buy) but not tradable on Alpaca (OTCQB). Cash now ~$517. Portfolio nearly fully deployed. Top insider signals: AAT (Rady $212K buy, already holding), MWA (Sengstack $739K buy, already holding), LOGC ($12.3M buy, not tradable).",
+  "note": "10:30 AM run. Sold final DELL share @ $144.45 (+18.1% profit take). All DELL position now closed with strong gains. Cash ~$944. Same insider signals as earlier: LOGC ($12.3M buy, not tradable), MWA (Sengstack $739K buy, already holding), AAT (Rady $212K buy, already holding). No new deployable signals found. Portfolio well-positioned.",
   "ordersPlaced": [
     {"symbol": "DELL", "qty": -3, "side": "sell", "order_id": "9ff7faf5-6cd0-4c00-b464-946662bee4d6", "status": "filled", "filled_price": 140.78},
     {"symbol": "DELL", "qty": -1, "side": "sell", "order_id": "a7a42421-11ec-4145-bf3f-2d73270fb326", "status": "filled", "filled_price": 141.15},
-    {"symbol": "DELL", "qty": -1, "side": "sell", "order_id": "766f7132-c64b-4b47-9410-c8343704ef6b", "status": "filled", "filled_price": 141.62}
+    {"symbol": "DELL", "qty": -1, "side": "sell", "order_id": "766f7132-c64b-4b47-9410-c8343704ef6b", "status": "filled", "filled_price": 141.62},
+    {"symbol": "DELL", "qty": -1, "side": "sell", "order_id": "c3cce5cf-afd1-4cd4-9e0e-640db577d41d", "status": "filled", "filled_price": 144.45}
   ],
-  "lastActivity": "2026-02-27T15:00:32Z"
+  "lastActivity": "2026-02-27T15:30:31Z"
 }
