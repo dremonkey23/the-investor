@@ -1,10 +1,17 @@
 {
   "date": "2026-02-27",
   "cashAtStart": 1.19,
-  "note": "Portfolio fully deployed from Day 1 (Feb 26). Rotating today: selling DELL (profit), FSLY (stop), NIO/PLUG (cleanup) to fund insider-signal buys AAT and MWA.",
-  "pendingSells": ["DELL 13 shares", "FSLY 217 shares", "NIO 2 shares", "PLUG 1 share"],
-  "pendingBuys": ["AAT 50 shares", "MWA 80 shares"],
-  "estimatedDeployment": 3500,
+  "note": "9:30 AM - Market open check. Portfolio $99,032.51. All positions within risk parameters. Insufficient cash ($1.19) for new deployment. API issues from earlier resolved.",
+  "pendingSells": ["FSLY partial fill (39/217)", "NIO", "PLUG", "DELL"],
+  "pendingBuys": ["AAT x50 (duplicate detected)", "MWA x80 (duplicate detected)"],
+  "ordersPlaced": [
+    {"symbol": "FSLY", "qty": -39, "side": "sell", "order_id": "9042243f-753d-4633-a5cd-85f2e30cd27f", "status": "partially_filled", "filled_price": 17.46},
+    {"symbol": "AAT", "qty": 50, "side": "buy", "order_id": "a1a3afeb-0c6b-40ed-912a-babc6c584a90", "status": "pending"},
+    {"symbol": "MWA", "qty": 80, "side": "buy", "order_id": "8517bf0c-c76d-46d2-9842-7e57ead9cb98", "status": "pending"}
+  ],
+  "estimatedDeployment": 0,
   "dayNumber": 2,
-  "staggerComplete": false
+  "staggerComplete": false,
+  "lastActivity": "2026-02-27T14:30:00Z",
+  "apiIssues": "Resolved - orders endpoint working"
 }
