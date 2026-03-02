@@ -1,12 +1,12 @@
 {
   "date": "2026-03-02",
-  "cashAtStart": 1968.87,
-  "cashAfterDeployment": 93.87,
-  "deployedToday": 3900,
-  "profitTaken": 2025,
+  "cashAtStart": 93.77,
+  "cashAfterDeployment": 0.43,
+  "deployedToday": 4171,
+  "profitTaken": 4077.76,
   "dayNumber": 3,
   "staggerComplete": true,
-  "note": "10:30 AM MONDAY: Took profit on PLTR calls +29% ($2,025). Added to AXON winner position $3.9K. Options allocation remains compliant at ~10%.",
+  "note": "10:45 AM MONDAY: 2nd run - Took profit PLTR calls +44% ($2,225), CGAU +6% ($1,853). Deployed on insider signals: AAT+77 shares, MWA+34 shares, AXON+2.9 shares. Total cash deployment $4,171.",
   "ordersPlaced": [
     {
       "symbol": "TSM",
@@ -87,7 +87,57 @@
       "status": "filled",
       "price": 566.5,
       "total": 3900.00
+    },
+    {
+      "symbol": "PLTR260306C00145000",
+      "action": "sell",
+      "qty": "5",
+      "reason": "profit_take_+44%",
+      "orderId": "33c6c346-815a-4818-ab9e-e4f404207ef7",
+      "status": "filled",
+      "price": 4.45,
+      "total": 2225.00
+    },
+    {
+      "symbol": "CGAU",
+      "action": "sell",
+      "qty": "91",
+      "reason": "profit_take_+6%",
+      "orderId": "c065825c-502f-4359-9360-acc34226840a",
+      "status": "filled",
+      "price": 20.36,
+      "total": 1852.76
+    },
+    {
+      "symbol": "AAT",
+      "action": "buy",
+      "qty": "77.160493827",
+      "reason": "insider_signal_RADY_purchase_Feb26",
+      "orderId": "7cd27f70-10ca-4cf6-938d-53d985acb5ab",
+      "status": "filled",
+      "price": 19.44,
+      "total": 1500.00
+    },
+    {
+      "symbol": "MWA",
+      "action": "buy",
+      "qty": "34.002040122",
+      "reason": "insider_signal_SENGSTACK_purchase_Feb25",
+      "orderId": "a4e7d358-40c2-4aa2-9aeb-5c94f4805d1a",
+      "status": "filled",
+      "price": 29.41,
+      "total": 1000.00
+    },
+    {
+      "symbol": "AXON",
+      "action": "buy",
+      "qty": "2.921379744",
+      "reason": "add_to_winner_+4.3%_momentum",
+      "orderId": "d5bf7ca8-98ea-4aba-9155-e89a8e9c13c0",
+      "status": "filled",
+      "price": 571.99,
+      "total": 1671.00
     }
   ],
-  "lastActivity": "2026-03-02T15:30:46Z"
+  "lastActivity": "2026-03-02T15:47:00Z"
 }
