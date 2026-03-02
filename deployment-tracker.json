@@ -1,11 +1,12 @@
 {
   "date": "2026-03-02",
-  "cashAtStart": 6405.93,
-  "cashAfterDeployment": 1974.8,
-  "deployedToday": 7380,
+  "cashAtStart": 1968.87,
+  "cashAfterDeployment": 93.87,
+  "deployedToday": 3900,
+  "profitTaken": 2025,
   "dayNumber": 3,
   "staggerComplete": true,
-  "note": "10:15 AM OPTIONS MANDATE: Bought AXON 580C 3/20 calls $7.38K (portfolio now 10.7% options). Sold MWA $2.94K to fix margin violation from options purchase. Current options allocation: PLTR calls $3.6K + AXON calls $7.38K = $10.98K (10.9% of portfolio) - now compliant with 5-10% mandate.",
+  "note": "10:30 AM MONDAY: Took profit on PLTR calls +29% ($2,025). Added to AXON winner position $3.9K. Options allocation remains compliant at ~10%.",
   "ordersPlaced": [
     {
       "symbol": "TSM",
@@ -66,7 +67,27 @@
       "status": "filled",
       "price": 29.43,
       "total": 2943.00
+    },
+    {
+      "symbol": "PLTR260306C00145000",
+      "action": "sell",
+      "qty": "5",
+      "reason": "profit_take_+29%",
+      "orderId": "d8d2e7d1-f820-4322-a750-d139f6c0e960",
+      "status": "filled",
+      "price": 4.05,
+      "total": 2025.00
+    },
+    {
+      "symbol": "AXON",
+      "action": "buy",
+      "qty": "6.884377758",
+      "reason": "add_to_winner_+4.6%",
+      "orderId": "97e72005-7f67-4bd7-9e31-f6a44165ed1c",
+      "status": "filled",
+      "price": 566.5,
+      "total": 3900.00
     }
   ],
-  "lastActivity": "2026-03-02T15:16:19Z"
+  "lastActivity": "2026-03-02T15:30:46Z"
 }
