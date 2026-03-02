@@ -139,5 +139,29 @@
       "total": 1671.00
     }
   ],
-  "lastActivity": "2026-03-02T15:47:00Z"
+  ],
+  "3pmRun": [
+    {
+      "symbol": "FSLY",
+      "action": "sell",
+      "qty": "0.756158642",
+      "reason": "profit_take_+11.53%",
+      "orderId": "6b164a9d-312b-40a4-b611-0d947e166158",
+      "status": "filled",
+      "price": 20.644,
+      "total": 15.61
+    },
+    {
+      "symbol": "PLTR",
+      "action": "buy",
+      "qty": "0.110249024",
+      "reason": "add_to_winner_+3.29%",
+      "orderId": "d5ef3fb2-1ba6-4779-a789-04f70fa84e25",
+      "status": "filled",
+      "price": 145.126,
+      "total": 16.00
+    }
+  ],
+  "lastActivity": "2026-03-02T20:01:00Z",
+  "lastCheckNote": "3:00 PM Monday - Took profit FSLY +11.53% ($1.61), deployed cash on PLTR +3.29% ($16). Portfolio $101,198, cash ~$0. LOGC insider signal ($12.3M) noted but not tradable on Alpaca. Options allocation 5.12%."
 }
