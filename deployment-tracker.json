@@ -1,13 +1,72 @@
 {
-  "date": "2026-02-27",
-  "cashAtStart": 7.35,
-  "cashAfterSales": 7.35,
-  "deployedToday": 7,
-  "dayNumber": 2,
-  "staggerComplete": false,
-  "note": "3:30 PM run. Deployed remaining $7 into FSLY (0.375 shares @ $18.67) to maintain zero idle cash rule. Portfolio fully deployed at ~$99K. No positions triggered stop loss or profit taking thresholds.",
+  "date": "2026-03-02",
+  "cashAtStart": 6405.93,
+  "cashAfterDeployment": 1974.8,
+  "deployedToday": 7380,
+  "dayNumber": 3,
+  "staggerComplete": true,
+  "note": "10:15 AM OPTIONS MANDATE: Bought AXON 580C 3/20 calls $7.38K (portfolio now 10.7% options). Sold MWA $2.94K to fix margin violation from options purchase. Current options allocation: PLTR calls $3.6K + AXON calls $7.38K = $10.98K (10.9% of portfolio) - now compliant with 5-10% mandate.",
   "ordersPlaced": [
-    {"symbol": "FSLY", "qty": 0.374973216, "side": "buy", "order_id": "967a943d-3457-4870-95fe-33b98721a9ce", "status": "filled", "filled_price": 18.668}
+    {
+      "symbol": "TSM",
+      "action": "sell",
+      "qty": "40",
+      "reason": "margin_violation_fix",
+      "orderId": "74403419-fdaa-4e7c-90bc-0af6252ad618",
+      "status": "filled",
+      "price": 368.63,
+      "total": 14745.20
+    },
+    {
+      "symbol": "CAVA",
+      "action": "sell",
+      "qty": "60",
+      "reason": "margin_violation_fix",
+      "orderId": "27fc2c4b-82e9-4f17-85f7-9fc9d4da84d2",
+      "status": "filled",
+      "price": 78.75,
+      "total": 4725.00
+    },
+    {
+      "symbol": "XOM",
+      "action": "buy",
+      "qty": "12.846993833",
+      "reason": "energy_momentum_+2.58%",
+      "orderId": "b88c91de-48b1-48e9-bda7-5ad0b45b7037",
+      "status": "filled",
+      "price": 155.678443,
+      "total": 2000.00
+    },
+    {
+      "symbol": "PLTR",
+      "action": "buy",
+      "qty": "13.957708144",
+      "reason": "momentum_+4.83%",
+      "orderId": "38617573-88a8-46e6-b8e1-3af249cc8dd2",
+      "status": "filled",
+      "price": 143.29,
+      "total": 2000.00
+    },
+    {
+      "symbol": "AXON260320C00580000",
+      "action": "buy",
+      "qty": "3",
+      "reason": "options_mandate_5-10%",
+      "orderId": "4e92a1e0-79bb-4cf8-8d5f-5253ad3eede0",
+      "status": "filled",
+      "price": 24.6,
+      "total": 7380.00
+    },
+    {
+      "symbol": "MWA",
+      "action": "sell",
+      "qty": "100",
+      "reason": "margin_fix_after_options",
+      "orderId": "50770573-be5a-4b6d-a47d-045d73aab5e0",
+      "status": "filled",
+      "price": 29.43,
+      "total": 2943.00
+    }
   ],
-  "lastActivity": "2026-02-27T20:30:58Z"
+  "lastActivity": "2026-03-02T15:16:19Z"
 }
