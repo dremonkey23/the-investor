@@ -139,6 +139,47 @@
       "total": 1671.00
     }
   ],
+  "Mar3MorningRun": [
+    {
+      "symbol": "INTC",
+      "action": "sell",
+      "qty": "77",
+      "reason": "pending_underperformer_-6.03%",
+      "orderId": "29903165-24e5-45ac-aff0-bba931d76e46",
+      "status": "filled",
+      "price": 42.51,
+      "total": 3273.27
+    },
+    {
+      "symbol": "MWA", 
+      "action": "sell",
+      "qty": "73",
+      "reason": "pending_underperformer_-2.93%",
+      "orderId": "80770aeb-3ef6-469a-85e3-81ea18d6ad7c", 
+      "status": "partially_filled",
+      "price": 28.86,
+      "total": 2106.78
+    },
+    {
+      "symbol": "TPL",
+      "action": "sell", 
+      "qty": "2",
+      "reason": "pending_profit_take_+3.94%",
+      "orderId": "fc3f17ca-8b16-478c-8736-8733557dffb4",
+      "status": "filled", 
+      "price": 528.41,
+      "total": 1056.82
+    },
+    {
+      "symbol": "PLTR260320C00145000",
+      "action": "buy",
+      "qty": "2", 
+      "reason": "options_mandate_6.29%",
+      "orderId": "93655b8e-601d-4369-874f-5b0f69d3a430",
+      "status": "filled",
+      "price": 7.75,
+      "total": 1550.00
+    }
   ],
   "3pmRun": [
     {
@@ -162,6 +203,73 @@
       "total": 16.00
     }
   ],
-  "lastActivity": "2026-03-02T21:45:00Z",
-  "lastCheckNote": "3:45 PM Monday - No trades needed. Portfolio $101,132, cash $0.02. All positions stable, no profit-taking (+15%) or stop-loss (-8%) triggers. Options allocation 4.7% (close to 5% target). Notable insider activity: AAT (RADY purchase Feb 26), MWA (SENGSTACK purchase Feb 25) - already positioned. AXON calls -3.3%."
+  "lastActivity": "2026-03-03T15:31:25Z",
+  "lastCheckNote": "10:30 AM Tuesday - EXECUTED: Sold PLTR options -40% stop loss ($940 recovered). Added MTDR 40 shares ($2,148) on insider signal (Foran purchase $23K Feb 27). Added EOSE 340 shares ($1,996) on insider signal (Mastrangelo $345K Mar 2). Bought 3 AXON calls ($6,570) to maintain options allocation.",
+  "pendingOrders": [],
+  "Mar3_10amRun": [
+    {
+      "symbol": "PENN",
+      "action": "buy",
+      "qty": "4",
+      "reason": "insider_signal_SCACCETTI_purchase_Mar2",
+      "orderId": "e6ef3c04-8702-4b85-85dc-7d519e899903",
+      "status": "filled",
+      "price": 14.20,
+      "total": 56.80
+    }
+  ],
+  "Mar3_10_15amRun": [
+    {
+      "symbol": "NMTC",
+      "action": "buy",
+      "qty": "5",
+      "reason": "insider_signal_WAMBEKE_purchase_Mar1",
+      "orderId": "88d2ea50-3eae-4ceb-9de0-a0f8113d8c71",
+      "status": "filled",
+      "price": 0.75,
+      "total": 3.75
+    }
+  ],
+  "Mar3_10_30amRun": [
+    {
+      "symbol": "PLTR260320C00145000",
+      "action": "sell",
+      "qty": "2",
+      "reason": "stop_loss_-40%",
+      "orderId": "99c1f8ff-e914-450c-acf5-b3f36deab67d",
+      "status": "filled",
+      "price": 4.7,
+      "total": 940.0
+    },
+    {
+      "symbol": "MTDR",
+      "action": "buy",
+      "qty": "40",
+      "reason": "insider_signal_FORAN_purchase_Feb27",
+      "orderId": "a4e08389-02f1-47fa-bd8d-68c36e92686b",
+      "status": "filled",
+      "price": 53.71,
+      "total": 2148.40
+    },
+    {
+      "symbol": "EOSE",
+      "action": "buy",
+      "qty": "340",
+      "reason": "insider_signal_MASTRANGELO_purchase_Mar2",
+      "orderId": "ce0e0343-edf1-4327-9058-bc0b2e0207b8",
+      "status": "filled",
+      "price": 5.869382,
+      "total": 1995.59
+    },
+    {
+      "symbol": "AXON260320C00580000",
+      "action": "buy",
+      "qty": "3",
+      "reason": "options_mandate_maintain_5-10%",
+      "orderId": "cdc24eaf-1af1-4583-a3fa-315c9a280c7d",
+      "status": "filled",
+      "price": 21.9,
+      "total": 6570.0
+    }
+  ]
 }

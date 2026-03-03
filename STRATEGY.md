@@ -1,19 +1,30 @@
 # The Investor — Strategy Documentation
-*Last updated: 2026-02-27*
+*Last updated: 2026-03-02*
 
-## Primary Strategy: Insider Following
-Trade based on SEC Form 4 insider PURCHASES. Insiders know their companies better than anyone.
+## Primary Strategy: Insider + Congressional Following
+Trade based on SEC Form 4 insider PURCHASES and Congressional stock trades. Two alpha sources, one portfolio.
 
-### Signal Hierarchy (highest to lowest priority)
+### Corporate Insider Signal Hierarchy (highest to lowest priority)
 1. **Cluster buys** — multiple insiders buying same stock within days
-2. **CEO/CFO purchases >$500K** — highest conviction
+2. **CEO/CFO purchases >$250K** — highest conviction
 3. **Director/Officer purchases >$50K** — strong signal
 4. **Insider buy after price drop** — contrarian + insider confidence
 
-### Filters
+### Corporate Insider Filters
 - ✅ Open-market purchases (transaction code "P")
 - ❌ Grants (A), exercises (M), gifts (G), sales (S)
 - ❌ Automatic/planned purchases (Rule 10b5-1)
+
+### Congressional Trade Signal Hierarchy
+1. **Any purchase >$100K** — significant conviction
+2. **Committee-relevant buys** — senator on Banking Committee buying bank stocks (the real alpha)
+3. **Cluster buys** — multiple Congress members buying same stock
+4. **Speaker/Chair purchases** — leadership has the most inside info
+
+### Congressional Trade Filters
+- ✅ Purchases only (not sales, unless massive)
+- ✅ Individual stock picks (not index funds/ETFs)
+- Data sources: Senate/House financial disclosure portals, Quiver Quantitative, Capitol Trades
 
 ## Cash Management
 - **Zero idle cash** — deploy everything, always

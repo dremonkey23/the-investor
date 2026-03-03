@@ -24,10 +24,37 @@
         { "player": "Luke Clanton", "type": "longshot", "odds": "+12500" }
       ],
       "fades": ["Brooks Koepka", "Will Zalatoris", "Max Homa"],
+      "actualWinner": "Nico Echavarria"
+    },
+    {
+      "week": 2,
+      "tournament": "Arnold Palmer Invitational",
+      "course": "Bay Hill Club & Lodge",
+      "dates": "Mar 6-9, 2026",
+      "winnerPick": {
+        "player": "Rory McIlroy",
+        "odds": "+1000",
+        "result": null,
+        "hit": null
+      },
+      "otherPicks": [
+        { "player": "Scottie Scheffler", "type": "outright", "odds": "+340" },
+        { "player": "Tommy Fleetwood", "type": "outright", "odds": "+1900" },
+        { "player": "Matt Fitzpatrick", "type": "outright", "odds": "+2500" },
+        { "player": "Collin Morikawa", "type": "outright", "odds": "+2700" },
+        { "player": "Hideki Matsuyama", "type": "outright", "odds": "+3000" },
+        { "player": "Russell Henley", "type": "top10", "odds": "+200" },
+        { "player": "Si Woo Kim", "type": "top20", "odds": "+120" },
+        { "player": "Cameron Young", "type": "top10", "odds": "+400" },
+        { "player": "Rory McIlroy over Tommy Fleetwood", "type": "matchup", "odds": "-110" },
+        { "player": "Matt Fitzpatrick Top 10", "type": "prop", "odds": "+180" },
+        { "player": "Chris Gotterup", "type": "longshot", "odds": "+4500" }
+      ],
+      "fades": ["Viktor Hovland", "Jordan Spieth", "Patrick Cantlay"],
       "actualWinner": null
     }
   ],
-  "seasonRecord": { "correct": 0, "total": 1 },
+  "seasonRecord": { "correct": 0, "total": 2 },
   "metadata": {
     "created": "2026-02-25",
     "description": "The Golf Analyst — weekly winner picks and season record"
