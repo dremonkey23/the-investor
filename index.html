@@ -224,7 +224,7 @@
     
     async function loadData() {
       try {
-        const res = await fetch('alpaca-data.json?t=' + Date.now());
+        const res = await fetch('https://raw.githubusercontent.com/dremonkey23/the-investor/main/alpaca-data.json?t=' + Date.now());
         const data = await res.json();
         const a = data.account;
         

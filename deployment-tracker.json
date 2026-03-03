@@ -1,341 +1,113 @@
 {
-  "date": "2026-03-03",
-  "cashAtStart": 93.77,
-  "cashAfterDeployment": 0.43,
-  "deployedToday": 4171,
-  "profitTaken": 4077.76,
-  "dayNumber": 3,
-  "staggerComplete": true,
-  "note": "10:45 AM MONDAY: 2nd run - Took profit PLTR calls +44% ($2,225), CGAU +6% ($1,853). Deployed on insider signals: AAT+77 shares, MWA+34 shares, AXON+2.9 shares. Total cash deployment $4,171.",
-  "ordersPlaced": [
+  "lastUpdate": "2026-03-03T18:15:00Z",
+  "portfolioValue": 95960.98,
+  "cashPosition": 544.03,
+  "optionsAllocation": {
+    "percentage": 12.2,
+    "value": 11703,
+    "positions": [
+      {
+        "symbol": "PENN260320C00015000", 
+        "contracts": 1,
+        "value": 78,
+        "unrealizedPL": -7,
+        "unrealizedPercent": -8.2,
+        "status": "HOLDING - within normal range"
+      },
+      {
+        "symbol": "PLTR260320C00145000", 
+        "contracts": 15,
+        "value": 11625,
+        "unrealizedPL": 225,
+        "unrealizedPercent": 2.0,
+        "status": "HOLDING - slight gain"
+      }
+    ],
+    "expiredOptions": [
+      {
+        "symbol": "MSDL260320C00016000", 
+        "contracts": 10,
+        "value": 0,
+        "unrealizedPL": -250,
+        "unrealizedPercent": -100,
+        "status": "PENDING_SELL_ORDER - worthless, selling at $0.01"
+      }
+    ]
+  },
+  "pendingOrders": [
     {
-      "symbol": "TSM",
-      "action": "sell",
-      "qty": "40",
-      "reason": "margin_violation_fix",
-      "orderId": "74403419-fdaa-4e7c-90bc-0af6252ad618",
-      "status": "filled",
-      "price": 368.63,
-      "total": 14745.20
-    },
-    {
-      "symbol": "CAVA",
-      "action": "sell",
-      "qty": "60",
-      "reason": "margin_violation_fix",
-      "orderId": "27fc2c4b-82e9-4f17-85f7-9fc9d4da84d2",
-      "status": "filled",
-      "price": 78.75,
-      "total": 4725.00
-    },
-    {
-      "symbol": "XOM",
-      "action": "buy",
-      "qty": "12.846993833",
-      "reason": "energy_momentum_+2.58%",
-      "orderId": "b88c91de-48b1-48e9-bda7-5ad0b45b7037",
-      "status": "filled",
-      "price": 155.678443,
-      "total": 2000.00
-    },
-    {
-      "symbol": "PLTR",
-      "action": "buy",
-      "qty": "13.957708144",
-      "reason": "momentum_+4.83%",
-      "orderId": "38617573-88a8-46e6-b8e1-3af249cc8dd2",
-      "status": "filled",
-      "price": 143.29,
-      "total": 2000.00
-    },
-    {
-      "symbol": "AXON260320C00580000",
-      "action": "buy",
-      "qty": "3",
-      "reason": "options_mandate_5-10%",
-      "orderId": "4e92a1e0-79bb-4cf8-8d5f-5253ad3eede0",
-      "status": "filled",
-      "price": 24.6,
-      "total": 7380.00
-    },
-    {
-      "symbol": "MWA",
-      "action": "sell",
-      "qty": "100",
-      "reason": "margin_fix_after_options",
-      "orderId": "50770573-be5a-4b6d-a47d-045d73aab5e0",
-      "status": "filled",
-      "price": 29.43,
-      "total": 2943.00
-    },
-    {
-      "symbol": "PLTR260306C00145000",
-      "action": "sell",
-      "qty": "5",
-      "reason": "profit_take_+29%",
-      "orderId": "d8d2e7d1-f820-4322-a750-d139f6c0e960",
-      "status": "filled",
-      "price": 4.05,
-      "total": 2025.00
-    },
-    {
-      "symbol": "AXON",
-      "action": "buy",
-      "qty": "6.884377758",
-      "reason": "add_to_winner_+4.6%",
-      "orderId": "97e72005-7f67-4bd7-9e31-f6a44165ed1c",
-      "status": "filled",
-      "price": 566.5,
-      "total": 3900.00
-    },
-    {
-      "symbol": "PLTR260306C00145000",
-      "action": "sell",
-      "qty": "5",
-      "reason": "profit_take_+44%",
-      "orderId": "33c6c346-815a-4818-ab9e-e4f404207ef7",
-      "status": "filled",
-      "price": 4.45,
-      "total": 2225.00
-    },
-    {
-      "symbol": "CGAU",
-      "action": "sell",
-      "qty": "91",
-      "reason": "profit_take_+6%",
-      "orderId": "c065825c-502f-4359-9360-acc34226840a",
-      "status": "filled",
-      "price": 20.36,
-      "total": 1852.76
-    },
-    {
-      "symbol": "AAT",
-      "action": "buy",
-      "qty": "77.160493827",
-      "reason": "insider_signal_RADY_purchase_Feb26",
-      "orderId": "7cd27f70-10ca-4cf6-938d-53d985acb5ab",
-      "status": "filled",
-      "price": 19.44,
-      "total": 1500.00
-    },
-    {
-      "symbol": "MWA",
-      "action": "buy",
-      "qty": "34.002040122",
-      "reason": "insider_signal_SENGSTACK_purchase_Feb25",
-      "orderId": "a4e7d358-40c2-4aa2-9aeb-5c94f4805d1a",
-      "status": "filled",
-      "price": 29.41,
-      "total": 1000.00
-    },
-    {
-      "symbol": "AXON",
-      "action": "buy",
-      "qty": "2.921379744",
-      "reason": "add_to_winner_+4.3%_momentum",
-      "orderId": "d5bf7ca8-98ea-4aba-9155-e89a8e9c13c0",
-      "status": "filled",
-      "price": 571.99,
-      "total": 1671.00
-    }
-  ],
-  "Mar3MorningRun": [
-    {
-      "symbol": "INTC",
-      "action": "sell",
-      "qty": "77",
-      "reason": "pending_underperformer_-6.03%",
-      "orderId": "29903165-24e5-45ac-aff0-bba931d76e46",
-      "status": "filled",
-      "price": 42.51,
-      "total": 3273.27
-    },
-    {
-      "symbol": "MWA", 
-      "action": "sell",
-      "qty": "73",
-      "reason": "pending_underperformer_-2.93%",
-      "orderId": "80770aeb-3ef6-469a-85e3-81ea18d6ad7c", 
-      "status": "partially_filled",
-      "price": 28.86,
-      "total": 2106.78
-    },
-    {
-      "symbol": "TPL",
-      "action": "sell", 
-      "qty": "2",
-      "reason": "pending_profit_take_+3.94%",
-      "orderId": "fc3f17ca-8b16-478c-8736-8733557dffb4",
-      "status": "filled", 
-      "price": 528.41,
-      "total": 1056.82
-    },
-    {
-      "symbol": "PLTR260320C00145000",
-      "action": "buy",
-      "qty": "2", 
-      "reason": "options_mandate_6.29%",
-      "orderId": "93655b8e-601d-4369-874f-5b0f69d3a430",
-      "status": "filled",
-      "price": 7.75,
-      "total": 1550.00
-    }
-  ],
-  "3pmRun": [
-    {
-      "symbol": "FSLY",
-      "action": "sell",
-      "qty": "0.756158642",
-      "reason": "profit_take_+11.53%",
-      "orderId": "6b164a9d-312b-40a4-b611-0d947e166158",
-      "status": "filled",
-      "price": 20.644,
-      "total": 15.61
-    },
-    {
-      "symbol": "PLTR",
-      "action": "buy",
-      "qty": "0.110249024",
-      "reason": "add_to_winner_+3.29%",
-      "orderId": "d5ef3fb2-1ba6-4779-a789-04f70fa84e25",
-      "status": "filled",
-      "price": 145.126,
-      "total": 16.00
-    }
-  ],
-  "lastActivity": "2026-03-03T17:01:26Z",
-  "lastCheckNote": "12:00 PM Tuesday - EXECUTED: Zero cash deployment - added to PENN winner +5.61% ($932). All cash now deployed.",
-  "Mar3_12pmRun": [
-    {
-      "symbol": "PENN",
-      "action": "buy",
-      "qty": "62.476190476",
-      "reason": "zero_cash_deployment_winner_+5.61%",
-      "orderId": "35675bee-2751-4ccb-aba9-f109ea57ad49",
-      "status": "filled",
-      "price": 14.91,
-      "total": 931.52
-    }
-  ],
-  "Mar3_11_45amRun": [
-    {
-      "symbol": "PENN260320C00015000",
-      "action": "buy",
-      "qty": "1",
-      "reason": "options_mandate_compliance",
-      "orderId": "dc4f1d6a-42fa-4b5d-9774-bf38f3668307",
-      "status": "filled",
-      "price": 0.85,
-      "total": 85.0
-    },
-    {
-      "symbol": "MSDL",
-      "action": "sell",
-      "qty": "67.750677506",
-      "reason": "emergency_margin_fix",
-      "orderId": "ed65707a-79af-46e6-a1a0-bb55a45c9e10",
-      "status": "filled",
-      "price": 14.66,
-      "total": 993.47
-    }
-  ],
-  "pendingOrders": [],
-  "Mar3_10amRun": [
-    {
-      "symbol": "PENN",
-      "action": "buy",
-      "qty": "4",
-      "reason": "insider_signal_SCACCETTI_purchase_Mar2",
-      "orderId": "e6ef3c04-8702-4b85-85dc-7d519e899903",
-      "status": "filled",
-      "price": 14.20,
-      "total": 56.80
-    }
-  ],
-  "Mar3_10_15amRun": [
-    {
-      "symbol": "NMTC",
-      "action": "buy",
-      "qty": "5",
-      "reason": "insider_signal_WAMBEKE_purchase_Mar1",
-      "orderId": "88d2ea50-3eae-4ceb-9de0-a0f8113d8c71",
-      "status": "filled",
-      "price": 0.75,
-      "total": 3.75
-    }
-  ],
-  "Mar3_10_30amRun": [
-    {
-      "symbol": "PLTR260320C00145000",
-      "action": "sell",
-      "qty": "2",
-      "reason": "stop_loss_-40%",
-      "orderId": "99c1f8ff-e914-450c-acf5-b3f36deab67d",
-      "status": "filled",
-      "price": 4.7,
-      "total": 940.0
-    },
-    {
-      "symbol": "MTDR",
-      "action": "buy",
-      "qty": "40",
-      "reason": "insider_signal_FORAN_purchase_Feb27",
-      "orderId": "a4e08389-02f1-47fa-bd8d-68c36e92686b",
-      "status": "filled",
-      "price": 53.71,
-      "total": 2148.40
-    },
-    {
-      "symbol": "EOSE",
-      "action": "buy",
-      "qty": "340",
-      "reason": "insider_signal_MASTRANGELO_purchase_Mar2",
-      "orderId": "ce0e0343-edf1-4327-9058-bc0b2e0207b8",
-      "status": "filled",
-      "price": 5.869382,
-      "total": 1995.59
-    },
-    {
-      "symbol": "AXON260320C00580000",
-      "action": "buy",
-      "qty": "3",
-      "reason": "options_mandate_maintain_5-10%",
-      "orderId": "cdc24eaf-1af1-4583-a3fa-315c9a280c7d",
-      "status": "filled",
-      "price": 21.9,
-      "total": 6570.0
-    }
-  ],
-  "Mar3_10_45amRun": [
-    {
+      "orderId": "5af24d80-e731-48e6-a1a0-53ec225c15a0",
       "symbol": "MSDL260320C00016000",
-      "action": "buy",
-      "qty": "10",
-      "reason": "options_mandate_0%_to_target_5%",
-      "orderId": "40c63811-4d2e-4136-885b-3160c48e9892",
-      "status": "filled",
-      "price": 0.25,
-      "total": 250.0
-    },
-    {
-      "symbol": "LRMR", 
-      "action": "buy",
-      "qty": "181",
-      "reason": "insider_signal_HAMILTON_purchase_Feb27_$500K",
-      "orderId": "304c000b-5eee-4568-92ff-c32a7d924105",
-      "status": "filled",
-      "price": 5.45,
-      "total": 986.45
-    },
-    {
-      "symbol": "MSDL",
-      "action": "buy", 
-      "qty": "67.750677506",
-      "reason": "insider_signal_OCCI_purchase_Mar2_$104K",
-      "orderId": "a6a6e35e-ef54-4f4a-959a-f572382b4125",
-      "status": "filled",
-      "price": 14.76,
-      "total": 1000.0
+      "type": "sell",
+      "qty": 10,
+      "limitPrice": 0.01,
+      "status": "OPEN",
+      "reason": "Selling worthless options (-100% loss)"
     }
-  ]
+  ],
+  "topPerformers": [
+    {
+      "ticker": "AXON",
+      "unrealizedPercent": 3.1,
+      "value": 21521.75,
+      "reason": "Strong defense sector performance"
+    },
+    {
+      "ticker": "PLTR",
+      "unrealizedPercent": 3.5,
+      "value": 8477.35,
+      "reason": "Continued AI/data analytics momentum"
+    },
+    {
+      "ticker": "NMTC", 
+      "unrealizedPercent": 2.7,
+      "value": 3.85,
+      "reason": "Following massive insider purchase (1M shares)"
+    },
+    {
+      "ticker": "PENN",
+      "unrealizedPercent": 2.6,
+      "value": 5633.04,
+      "reason": "Gaming sector strength, recent insider purchase"
+    },
+    {
+      "ticker": "TPL",
+      "unrealizedPercent": 2.6,
+      "value": 6781.06,
+      "reason": "Land/energy royalties performing well"
+    }
+  ],
+  "newInsiderSignals": [
+    {
+      "ticker": "MSDL",
+      "insider": "Michael Occi Jr.",
+      "action": "Purchase",
+      "shares": 7000,
+      "price": 14.87,
+      "date": "2026-03-02",
+      "value": 104098.40,
+      "signal": "Large insider purchase",
+      "actionTaken": "NOT_TRADEABLE_ON_ALPACA"
+    },
+    {
+      "ticker": "LRMR",
+      "insider": "Thomas Edward Hamilton",
+      "action": "Purchase", 
+      "shares": 100000,
+      "price": 5.00,
+      "date": "2026-02-27",
+      "value": 500000.00,
+      "signal": "Very large insider purchase",
+      "actionTaken": "NOT_TRADEABLE_ON_ALPACA"
+    }
+  ],
+  "positionManagement": {
+    "sellCandidates": [],
+    "trimCandidates": [],
+    "noPositionsTriggeredSellRules": true,
+    "strongPerformersNeedingAttention": [],
+    "optionsStatus": "Above target allocation (12.2% vs 5-10% target)"
+  },
+  "deploymentStatus": "MINIMAL_CASH_AVAILABLE",
+  "reasoning": "Portfolio performing well with most positions up 2-4%. Options allocation above target at 12.2%. Only $44.03 available for new positions above $500 cash floor. New insider signals MSDL & LRMR not tradeable on Alpaca. Maintaining pending sell order for worthless MSDL options. No new trades executed, no Discord alerts needed."
 }
