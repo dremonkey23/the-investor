@@ -1,47 +1,36 @@
 {
   "account": {
-    "portfolioValue": 95222.38,
-    "cash": 0.48,
-    "buyingPower": 233002.15,
-    "equity": 95222.38,
-    "longMarketValue": 95221.9,
+    "portfolioValue": 96027.46,
+    "cash": 544.03,
+    "buyingPower": 223802.15,
+    "equity": 96027.46,
+    "longMarketValue": 95483.43,
     "shortMarketValue": 0,
-    "pnl": -4777.619999999995,
-    "pnlPct": -4.777619999999995
+    "pnl": -3972.5399999999936,
+    "pnlPct": -3.9725399999999937
   },
   "positions": [
     {
       "symbol": "AXON",
-      "qty": 32.405996724,
+      "qty": 37.657362078,
       "side": "long",
-      "avgEntry": 551.564581,
-      "currentPrice": 569.02,
-      "marketValue": 18439.660256,
-      "unrealizedPnl": 565.660251,
-      "unrealizedPnlPct": 3.1649999999999996,
-      "change": -0.524
+      "avgEntry": 554.31392,
+      "currentPrice": 570.83,
+      "marketValue": 21495.951995,
+      "unrealizedPnl": 621.952005,
+      "unrealizedPnlPct": 2.98,
+      "change": -0.208
     },
     {
       "symbol": "EOSE",
-      "qty": 854.067912376,
+      "qty": 1209.479867141,
       "side": "long",
-      "avgEntry": 5.953379,
-      "currentPrice": 6.1799,
-      "marketValue": 5278.054292,
-      "unrealizedPnl": 193.464318,
-      "unrealizedPnlPct": 3.805,
-      "change": 4.744000000000001
-    },
-    {
-      "symbol": "META",
-      "qty": 15,
-      "side": "long",
-      "avgEntry": 651.02,
-      "currentPrice": 650.64,
-      "marketValue": 9759.6,
-      "unrealizedPnl": -5.7,
-      "unrealizedPnlPct": -0.058,
-      "change": -0.447
+      "avgEntry": 6.022912,
+      "currentPrice": 6.165,
+      "marketValue": 7456.443381,
+      "unrealizedPnl": 171.852575,
+      "unrealizedPnlPct": 2.359,
+      "change": 4.492
     },
     {
       "symbol": "MSDL260320C00016000",
@@ -59,113 +48,173 @@
       "qty": 19.920209189,
       "side": "long",
       "avgEntry": 401.602208,
-      "currentPrice": 401.555,
-      "marketValue": 7999.059601,
-      "unrealizedPnl": -0.940393,
-      "unrealizedPnlPct": -0.012,
-      "change": 0.754
+      "currentPrice": 402.57,
+      "marketValue": 8019.278613,
+      "unrealizedPnl": 19.278619,
+      "unrealizedPnlPct": 0.241,
+      "change": 1.009
     },
     {
       "symbol": "MTDR",
-      "qty": 40,
+      "qty": 76.818851251,
       "side": "long",
-      "avgEntry": 53.71,
-      "currentPrice": 54.27,
-      "marketValue": 2170.8,
-      "unrealizedPnl": 22.4,
-      "unrealizedPnlPct": 1.043,
-      "change": 0.27699999999999997
+      "avgEntry": 54.00237,
+      "currentPrice": 54.15,
+      "marketValue": 4159.740795,
+      "unrealizedPnl": 11.340767,
+      "unrealizedPnlPct": 0.27299999999999996,
+      "change": 0.055
     },
     {
       "symbol": "NMTC",
       "qty": 5,
       "side": "long",
       "avgEntry": 0.75,
-      "currentPrice": 0.7549,
-      "marketValue": 3.7745,
-      "unrealizedPnl": 0.0245,
-      "unrealizedPnlPct": 0.653,
-      "change": 13.178
+      "currentPrice": 0.7699,
+      "marketValue": 3.8495,
+      "unrealizedPnl": 0.0995,
+      "unrealizedPnlPct": 2.653,
+      "change": 15.427
     },
     {
       "symbol": "PENN",
-      "qty": 243.154635705,
+      "qty": 376.665984169,
       "side": "long",
-      "avgEntry": 14.346097,
-      "currentPrice": 14.91,
-      "marketValue": 3625.435618,
-      "unrealizedPnl": 137.115628,
-      "unrealizedPnlPct": 3.9309999999999996,
-      "change": 0.404
+      "avgEntry": 14.570788,
+      "currentPrice": 14.97,
+      "marketValue": 5638.689783,
+      "unrealizedPnl": 150.369581,
+      "unrealizedPnlPct": 2.74,
+      "change": 0.808
     },
     {
       "symbol": "PENN260320C00015000",
       "qty": 1,
       "side": "long",
       "avgEntry": 0.85,
-      "currentPrice": 0.73,
-      "marketValue": 73,
-      "unrealizedPnl": -12,
-      "unrealizedPnlPct": -14.118,
-      "change": -1.351
+      "currentPrice": 0.77,
+      "marketValue": 77,
+      "unrealizedPnl": -8,
+      "unrealizedPnlPct": -9.411999999999999,
+      "change": 4.054
     },
     {
       "symbol": "PLTR",
       "qty": 58.195734936,
       "side": "long",
       "avgEntry": 140.735399,
-      "currentPrice": 144.77,
-      "marketValue": 8424.996547,
-      "unrealizedPnl": 234.796571,
-      "unrealizedPnlPct": 2.867,
-      "change": -0.27599999999999997
+      "currentPrice": 145.68,
+      "marketValue": 8477.954665,
+      "unrealizedPnl": 287.754689,
+      "unrealizedPnlPct": 3.5130000000000003,
+      "change": 0.35100000000000003
     },
     {
       "symbol": "PLTR260320C00145000",
       "qty": 15,
       "side": "long",
       "avgEntry": 7.6,
-      "currentPrice": 7.3,
-      "marketValue": 10950,
-      "unrealizedPnl": -450,
-      "unrealizedPnlPct": -3.9469999999999996,
-      "change": -2.013
+      "currentPrice": 7.8,
+      "marketValue": 11700,
+      "unrealizedPnl": 300,
+      "unrealizedPnlPct": 2.632,
+      "change": 4.698
     },
     {
       "symbol": "TPL",
       "qty": 13,
       "side": "long",
       "avgEntry": 508.38,
-      "currentPrice": 523.14,
-      "marketValue": 6800.82,
-      "unrealizedPnl": 191.88,
-      "unrealizedPnlPct": 2.903,
-      "change": -1.497
+      "currentPrice": 523.36,
+      "marketValue": 6803.68,
+      "unrealizedPnl": 194.74,
+      "unrealizedPnlPct": 2.947,
+      "change": -1.455
     },
     {
       "symbol": "XLE",
       "qty": 124.622346956,
       "side": "long",
       "avgEntry": 56.085607,
-      "currentPrice": 56.835,
-      "marketValue": 7082.911089,
-      "unrealizedPnl": 93.391114,
-      "unrealizedPnlPct": 1.336,
-      "change": -0.359
+      "currentPrice": 56.74,
+      "marketValue": 7071.071966,
+      "unrealizedPnl": 81.551991,
+      "unrealizedPnlPct": 1.167,
+      "change": -0.526
     },
     {
       "symbol": "XOM",
       "qty": 95.846993833,
       "side": "long",
       "avgEntry": 151.965121,
-      "currentPrice": 152.47,
-      "marketValue": 14613.79115,
-      "unrealizedPnl": 48.391135,
-      "unrealizedPnlPct": 0.332,
-      "change": -1.135
+      "currentPrice": 152.115,
+      "marketValue": 14579.765467,
+      "unrealizedPnl": 14.365452,
+      "unrealizedPnlPct": 0.099,
+      "change": -1.365
     }
   ],
   "orders": [
+    {
+      "id": "e75cac7e-1d35-4332-be62-a27e681e7f24",
+      "symbol": "EOSE",
+      "side": "buy",
+      "qty": 2200,
+      "type": "market",
+      "status": "filled",
+      "filledQty": 355.411954765,
+      "filledAvgPrice": 6.19,
+      "submittedAt": "2026-03-03T18:02:23.747553295Z",
+      "filledAt": "2026-03-03T18:02:24.12170419Z"
+    },
+    {
+      "id": "221666cd-0f16-4f45-b44a-f9c95aaecf43",
+      "symbol": "PENN",
+      "side": "buy",
+      "qty": 2000,
+      "type": "market",
+      "status": "filled",
+      "filledQty": 133.511348464,
+      "filledAvgPrice": 14.98,
+      "submittedAt": "2026-03-03T18:02:03.729885Z",
+      "filledAt": "2026-03-03T18:02:04.368422Z"
+    },
+    {
+      "id": "3b542536-9dee-410a-8ff6-5c8fe07c58c6",
+      "symbol": "AXON",
+      "side": "buy",
+      "qty": 3000,
+      "type": "market",
+      "status": "filled",
+      "filledQty": 5.251365354,
+      "filledAvgPrice": 571.28,
+      "submittedAt": "2026-03-03T18:01:49.624827Z",
+      "filledAt": "2026-03-03T18:01:51.111292Z"
+    },
+    {
+      "id": "994433c2-0544-4c83-bf0f-69d0133fa2f0",
+      "symbol": "MTDR",
+      "side": "buy",
+      "qty": 2000,
+      "type": "market",
+      "status": "filled",
+      "filledQty": 36.818851251,
+      "filledAvgPrice": 54.32,
+      "submittedAt": "2026-03-03T18:01:34.430629Z",
+      "filledAt": "2026-03-03T18:01:34.827485Z"
+    },
+    {
+      "id": "b346c5be-f5a0-416e-a95b-435cbc9324cc",
+      "symbol": "META",
+      "side": "sell",
+      "qty": 15,
+      "type": "market",
+      "status": "filled",
+      "filledQty": 15,
+      "filledAvgPrice": 649.57,
+      "submittedAt": "2026-03-03T18:00:37.952449Z",
+      "filledAt": "2026-03-03T18:00:40.073737Z"
+    },
     {
       "id": "2e9e7930-ef2f-4002-bebd-030233761efc",
       "symbol": "EOSE",
@@ -175,8 +224,8 @@
       "status": "filled",
       "filledQty": 95.307443365,
       "filledAvgPrice": 6.18,
-      "submittedAt": "2026-03-03T17:47:57.574447322Z",
-      "filledAt": "2026-03-03T17:47:58.43216642Z"
+      "submittedAt": "2026-03-03T17:47:57.574447Z",
+      "filledAt": "2026-03-03T17:47:58.432166Z"
     },
     {
       "id": "b1eb5b98-ff74-4c1f-baaa-e20547c36cdc",
@@ -705,69 +754,126 @@
       "filledAvgPrice": 29.43,
       "submittedAt": "2026-03-02T15:16:17.146217Z",
       "filledAt": "2026-03-02T15:16:19.139179Z"
-    },
-    {
-      "id": "4e92a1e0-79bb-4cf8-8d5f-5253ad3eede0",
-      "symbol": "AXON260320C00580000",
-      "side": "buy",
-      "qty": 3,
-      "type": "market",
-      "status": "filled",
-      "filledQty": 3,
-      "filledAvgPrice": 24.6,
-      "submittedAt": "2026-03-02T15:16:02.416335Z",
-      "filledAt": "2026-03-02T15:16:02.737544Z"
-    },
-    {
-      "id": "ab6b8d59-a29f-4cbd-bc88-f24870f66900",
-      "symbol": "XLE",
-      "side": "buy",
-      "qty": 3000,
-      "type": "market",
-      "status": "filled",
-      "filledQty": 52.622346956,
-      "filledAvgPrice": 57.01,
-      "submittedAt": "2026-03-02T15:02:58.166061Z",
-      "filledAt": "2026-03-02T15:02:59.120525Z"
-    },
-    {
-      "id": "27b27ee0-8f97-4b7b-afee-2fbc8dae33cd",
-      "symbol": "AAT",
-      "side": "buy",
-      "qty": 3000,
-      "type": "market",
-      "status": "filled",
-      "filledQty": 154.241645244,
-      "filledAvgPrice": 19.45,
-      "submittedAt": "2026-03-02T15:02:52.67247Z",
-      "filledAt": "2026-03-02T15:02:53.962212Z"
-    },
-    {
-      "id": "38617573-88a8-46e6-b8e1-3af249cc8dd2",
-      "symbol": "PLTR",
-      "side": "buy",
-      "qty": 2000,
-      "type": "market",
-      "status": "filled",
-      "filledQty": 13.957708144,
-      "filledAvgPrice": 143.29,
-      "submittedAt": "2026-03-02T15:01:40.358622Z",
-      "filledAt": "2026-03-02T15:01:40.802423Z"
-    },
-    {
-      "id": "b88c91de-48b1-48e9-bda7-5ad0b45b7037",
-      "symbol": "XOM",
-      "side": "buy",
-      "qty": 2000,
-      "type": "market",
-      "status": "filled",
-      "filledQty": 12.846993833,
-      "filledAvgPrice": 155.678443,
-      "submittedAt": "2026-03-02T15:01:34.982343Z",
-      "filledAt": "2026-03-02T15:01:37.404045Z"
     }
   ],
   "history": [
+    {
+      "action": "BUY",
+      "ticker": "EOSE",
+      "qty": 1.411954765,
+      "price": 6.19,
+      "date": "2026-03-03",
+      "time": "2026-03-03T18:02:24.123969Z",
+      "orderId": "e75cac7e-1d35-4332-be62-a27e681e7f24"
+    },
+    {
+      "action": "BUY",
+      "ticker": "EOSE",
+      "qty": 354,
+      "price": 6.19,
+      "date": "2026-03-03",
+      "time": "2026-03-03T18:02:24.121704Z",
+      "orderId": "e75cac7e-1d35-4332-be62-a27e681e7f24"
+    },
+    {
+      "action": "BUY",
+      "ticker": "PENN",
+      "qty": 1.511348464,
+      "price": 14.98,
+      "date": "2026-03-03",
+      "time": "2026-03-03T18:02:04.371069Z",
+      "orderId": "221666cd-0f16-4f45-b44a-f9c95aaecf43"
+    },
+    {
+      "action": "BUY",
+      "ticker": "PENN",
+      "qty": 132,
+      "price": 14.98,
+      "date": "2026-03-03",
+      "time": "2026-03-03T18:02:04.368422Z",
+      "orderId": "221666cd-0f16-4f45-b44a-f9c95aaecf43"
+    },
+    {
+      "action": "BUY",
+      "ticker": "AXON",
+      "qty": 1.251365354,
+      "price": 571.28,
+      "date": "2026-03-03",
+      "time": "2026-03-03T18:01:51.122377Z",
+      "orderId": "3b542536-9dee-410a-8ff6-5c8fe07c58c6"
+    },
+    {
+      "action": "BUY",
+      "ticker": "AXON",
+      "qty": 1,
+      "price": 571.28,
+      "date": "2026-03-03",
+      "time": "2026-03-03T18:01:51.111292Z",
+      "orderId": "3b542536-9dee-410a-8ff6-5c8fe07c58c6"
+    },
+    {
+      "action": "BUY",
+      "ticker": "AXON",
+      "qty": 2,
+      "price": 571.28,
+      "date": "2026-03-03",
+      "time": "2026-03-03T18:01:50.547397Z",
+      "orderId": "3b542536-9dee-410a-8ff6-5c8fe07c58c6"
+    },
+    {
+      "action": "BUY",
+      "ticker": "AXON",
+      "qty": 1,
+      "price": 571.28,
+      "date": "2026-03-03",
+      "time": "2026-03-03T18:01:49.736143Z",
+      "orderId": "3b542536-9dee-410a-8ff6-5c8fe07c58c6"
+    },
+    {
+      "action": "BUY",
+      "ticker": "MTDR",
+      "qty": 1.818851251,
+      "price": 54.32,
+      "date": "2026-03-03",
+      "time": "2026-03-03T18:01:34.829981Z",
+      "orderId": "994433c2-0544-4c83-bf0f-69d0133fa2f0"
+    },
+    {
+      "action": "BUY",
+      "ticker": "MTDR",
+      "qty": 35,
+      "price": 54.32,
+      "date": "2026-03-03",
+      "time": "2026-03-03T18:01:34.827485Z",
+      "orderId": "994433c2-0544-4c83-bf0f-69d0133fa2f0"
+    },
+    {
+      "action": "SELL",
+      "ticker": "META",
+      "qty": 1,
+      "price": 649.57,
+      "date": "2026-03-03",
+      "time": "2026-03-03T18:00:40.073737Z",
+      "orderId": "b346c5be-f5a0-416e-a95b-435cbc9324cc"
+    },
+    {
+      "action": "SELL",
+      "ticker": "META",
+      "qty": 8,
+      "price": 649.57,
+      "date": "2026-03-03",
+      "time": "2026-03-03T18:00:38.781473Z",
+      "orderId": "b346c5be-f5a0-416e-a95b-435cbc9324cc"
+    },
+    {
+      "action": "SELL",
+      "ticker": "META",
+      "qty": 6,
+      "price": 649.57,
+      "date": "2026-03-03",
+      "time": "2026-03-03T18:00:38.16395Z",
+      "orderId": "b346c5be-f5a0-416e-a95b-435cbc9324cc"
+    },
     {
       "action": "BUY",
       "ticker": "EOSE",
@@ -1550,127 +1656,10 @@
       "date": "2026-03-02",
       "time": "2026-03-02T15:46:41.812126Z",
       "orderId": "a4e7d358-40c2-4aa2-9aeb-5c94f4805d1a"
-    },
-    {
-      "action": "BUY",
-      "ticker": "MWA",
-      "qty": 1,
-      "price": 29.41,
-      "date": "2026-03-02",
-      "time": "2026-03-02T15:46:41.355944Z",
-      "orderId": "a4e7d358-40c2-4aa2-9aeb-5c94f4805d1a"
-    },
-    {
-      "action": "BUY",
-      "ticker": "MWA",
-      "qty": 1,
-      "price": 29.41,
-      "date": "2026-03-02",
-      "time": "2026-03-02T15:46:40.671012Z",
-      "orderId": "a4e7d358-40c2-4aa2-9aeb-5c94f4805d1a"
-    },
-    {
-      "action": "BUY",
-      "ticker": "MWA",
-      "qty": 3,
-      "price": 29.41,
-      "date": "2026-03-02",
-      "time": "2026-03-02T15:46:39.869132Z",
-      "orderId": "a4e7d358-40c2-4aa2-9aeb-5c94f4805d1a"
-    },
-    {
-      "action": "BUY",
-      "ticker": "MWA",
-      "qty": 27,
-      "price": 29.41,
-      "date": "2026-03-02",
-      "time": "2026-03-02T15:46:38.563859Z",
-      "orderId": "a4e7d358-40c2-4aa2-9aeb-5c94f4805d1a"
-    },
-    {
-      "action": "BUY",
-      "ticker": "AAT",
-      "qty": 1.160493827,
-      "price": 19.44,
-      "date": "2026-03-02",
-      "time": "2026-03-02T15:46:29.743074Z",
-      "orderId": "7cd27f70-10ca-4cf6-938d-53d985acb5ab"
-    },
-    {
-      "action": "BUY",
-      "ticker": "AAT",
-      "qty": 1,
-      "price": 19.44,
-      "date": "2026-03-02",
-      "time": "2026-03-02T15:46:29.740612Z",
-      "orderId": "7cd27f70-10ca-4cf6-938d-53d985acb5ab"
-    },
-    {
-      "action": "BUY",
-      "ticker": "AAT",
-      "qty": 33,
-      "price": 19.44,
-      "date": "2026-03-02",
-      "time": "2026-03-02T15:46:29.059164Z",
-      "orderId": "7cd27f70-10ca-4cf6-938d-53d985acb5ab"
-    },
-    {
-      "action": "BUY",
-      "ticker": "AAT",
-      "qty": 42,
-      "price": 19.44,
-      "date": "2026-03-02",
-      "time": "2026-03-02T15:46:28.795262Z",
-      "orderId": "7cd27f70-10ca-4cf6-938d-53d985acb5ab"
-    },
-    {
-      "action": "SELL",
-      "ticker": "CGAU",
-      "qty": 12,
-      "price": 20.36,
-      "date": "2026-03-02",
-      "time": "2026-03-02T15:46:11.227624Z",
-      "orderId": "c065825c-502f-4359-9360-acc34226840a"
-    },
-    {
-      "action": "SELL",
-      "ticker": "CGAU",
-      "qty": 43,
-      "price": 20.36,
-      "date": "2026-03-02",
-      "time": "2026-03-02T15:46:10.973602Z",
-      "orderId": "c065825c-502f-4359-9360-acc34226840a"
-    },
-    {
-      "action": "SELL",
-      "ticker": "CGAU",
-      "qty": 36,
-      "price": 20.36,
-      "date": "2026-03-02",
-      "time": "2026-03-02T15:46:10.226421Z",
-      "orderId": "c065825c-502f-4359-9360-acc34226840a"
-    },
-    {
-      "action": "SELL",
-      "ticker": "PLTR260306C00145000",
-      "qty": 5,
-      "price": 4.45,
-      "date": "2026-03-02",
-      "time": "2026-03-02T15:46:00.015839Z",
-      "orderId": "33c6c346-815a-4818-ab9e-e4f404207ef7"
-    },
-    {
-      "action": "BUY",
-      "ticker": "AXON",
-      "qty": 1.884377758,
-      "price": 566.5,
-      "date": "2026-03-02",
-      "time": "2026-03-02T15:31:15.290361Z",
-      "orderId": "97e72005-7f67-4bd7-9e31-f6a44165ed1c"
     }
   ],
   "metadata": {
-    "lastUpdated": "2026-03-03T17:48:07.628Z",
+    "lastUpdated": "2026-03-03T18:03:06.694Z",
     "startingCapital": 100000
   }
 }
