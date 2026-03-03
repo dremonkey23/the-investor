@@ -1,5 +1,5 @@
 {
-  "date": "2026-03-02",
+  "date": "2026-03-03",
   "cashAtStart": 93.77,
   "cashAfterDeployment": 0.43,
   "deployedToday": 4171,
@@ -203,8 +203,42 @@
       "total": 16.00
     }
   ],
-  "lastActivity": "2026-03-03T15:31:25Z",
-  "lastCheckNote": "10:30 AM Tuesday - EXECUTED: Sold PLTR options -40% stop loss ($940 recovered). Added MTDR 40 shares ($2,148) on insider signal (Foran purchase $23K Feb 27). Added EOSE 340 shares ($1,996) on insider signal (Mastrangelo $345K Mar 2). Bought 3 AXON calls ($6,570) to maintain options allocation.",
+  "lastActivity": "2026-03-03T17:01:26Z",
+  "lastCheckNote": "12:00 PM Tuesday - EXECUTED: Zero cash deployment - added to PENN winner +5.61% ($932). All cash now deployed.",
+  "Mar3_12pmRun": [
+    {
+      "symbol": "PENN",
+      "action": "buy",
+      "qty": "62.476190476",
+      "reason": "zero_cash_deployment_winner_+5.61%",
+      "orderId": "35675bee-2751-4ccb-aba9-f109ea57ad49",
+      "status": "filled",
+      "price": 14.91,
+      "total": 931.52
+    }
+  ],
+  "Mar3_11_45amRun": [
+    {
+      "symbol": "PENN260320C00015000",
+      "action": "buy",
+      "qty": "1",
+      "reason": "options_mandate_compliance",
+      "orderId": "dc4f1d6a-42fa-4b5d-9774-bf38f3668307",
+      "status": "filled",
+      "price": 0.85,
+      "total": 85.0
+    },
+    {
+      "symbol": "MSDL",
+      "action": "sell",
+      "qty": "67.750677506",
+      "reason": "emergency_margin_fix",
+      "orderId": "ed65707a-79af-46e6-a1a0-bb55a45c9e10",
+      "status": "filled",
+      "price": 14.66,
+      "total": 993.47
+    }
+  ],
   "pendingOrders": [],
   "Mar3_10amRun": [
     {
@@ -270,6 +304,38 @@
       "status": "filled",
       "price": 21.9,
       "total": 6570.0
+    }
+  ],
+  "Mar3_10_45amRun": [
+    {
+      "symbol": "MSDL260320C00016000",
+      "action": "buy",
+      "qty": "10",
+      "reason": "options_mandate_0%_to_target_5%",
+      "orderId": "40c63811-4d2e-4136-885b-3160c48e9892",
+      "status": "filled",
+      "price": 0.25,
+      "total": 250.0
+    },
+    {
+      "symbol": "LRMR", 
+      "action": "buy",
+      "qty": "181",
+      "reason": "insider_signal_HAMILTON_purchase_Feb27_$500K",
+      "orderId": "304c000b-5eee-4568-92ff-c32a7d924105",
+      "status": "filled",
+      "price": 5.45,
+      "total": 986.45
+    },
+    {
+      "symbol": "MSDL",
+      "action": "buy", 
+      "qty": "67.750677506",
+      "reason": "insider_signal_OCCI_purchase_Mar2_$104K",
+      "orderId": "a6a6e35e-ef54-4f4a-959a-f572382b4125",
+      "status": "filled",
+      "price": 14.76,
+      "total": 1000.0
     }
   ]
 }

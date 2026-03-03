@@ -28,7 +28,10 @@ Trade based on SEC Form 4 insider PURCHASES and Congressional stock trades. Two 
 
 ## Cash Management
 - **Zero idle cash** — deploy everything, always
-- Priority: insider signals → winning positions → sector conviction picks
+- Priority: insider signals → congressional signals → winning positions → sector conviction picks
+- **⚠️ HARD RULE: NEVER USE MARGIN. Alpaca defaults to margin (4x). ONLY use the `cash` field from /v2/account, NEVER `buying_power`. If cash < $0, IMMEDIATELY sell worst performer before doing ANYTHING else. This is non-negotiable.**
+- Before ANY buy order: verify `cash` (not buying_power) >= order cost
+- If cash goes negative for any reason: emergency sell until cash > $0
 - No cash reserve needed
 - Threshold: $1 minimum (deploy every dollar)
 
