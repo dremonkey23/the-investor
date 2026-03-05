@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🔴 The One — Mission Board</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: #0a0a0a; color: #e0e0e0; font-family: 'SF Pro Display', 'Segoe UI', system-ui, sans-serif; line-height: 1.6; }
+    .container { max-width: 900px; margin: 0 auto; padding: 24px 20px; }
+    h1 { color: #fff; font-size: 2rem; text-align: center; margin-bottom: 8px; }
+    .subtitle { text-align: center; color: #666; font-size: 0.85rem; margin-bottom: 32px; }
+    h2 { color: #00ff88; font-size: 1.2rem; margin-top: 32px; margin-bottom: 12px; border-bottom: 1px solid #1a1a1a; padding-bottom: 8px; }
+    h3 { color: #fff; font-size: 1rem; margin-top: 16px; margin-bottom: 8px; }
+    ul { padding-left: 20px; margin-bottom: 12px; }
+    li { margin-bottom: 4px; color: #b0b0b0; font-size: 0.9rem; }
+    li strong { color: #fff; }
+    .card { background: #111; border: 1px solid #1a1a1a; border-radius: 12px; padding: 20px; margin-bottom: 16px; }
+    .card-title { font-size: 1rem; font-weight: 700; color: #00ff88; margin-bottom: 8px; }
+    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    @media (max-width: 700px) { .grid { grid-template-columns: 1fr; } }
+    .stat { text-align: center; }
+    .stat-value { font-size: 1.5rem; font-weight: 700; color: #00ff88; }
+    .stat-label { font-size: 0.75rem; color: #666; text-transform: uppercase; }
+    .badge { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 0.7rem; font-weight: 700; margin-right: 4px; }
+    .badge-active { background: #00ff8820; color: #00ff88; border: 1px solid #00ff8840; }
+    .badge-paused { background: #ff444420; color: #ff4444; border: 1px solid #ff444440; }
+    .badge-pending { background: #ffaa0020; color: #ffaa00; border: 1px solid #ffaa0040; }
+    .cost-table { width: 100%; border-collapse: collapse; margin-top: 8px; }
+    .cost-table td { padding: 6px 12px; border-bottom: 1px solid #1a1a1a; font-size: 0.85rem; }
+    .cost-table td:last-child { text-align: right; color: #00ff88; font-weight: 600; }
+    .cost-total td { border-top: 2px solid #00ff88; font-weight: 700; color: #fff !important; }
+    .lesson { background: #1a0a0a; border: 1px solid #ff444430; border-radius: 8px; padding: 10px 14px; margin-bottom: 8px; font-size: 0.85rem; }
+    .lesson strong { color: #ff4444; }
+    .footer { text-align: center; color: #333; font-size: 0.7rem; margin-top: 40px; padding: 20px 0; }
+    a { color: #00ff88; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h1>🔴 The One — Mission Board</h1>
+  <p class="subtitle">Live status of all agents, projects, and systems</p>
+
+  <!-- Stats -->
+  <div class="grid" style="margin-bottom: 24px;">
+    <div class="card"><div class="stat"><div class="stat-value">8</div><div class="stat-label">Active Agents</div></div></div>
+    <div class="card"><div class="stat"><div class="stat-value">24</div><div class="stat-label">Cron Jobs</div></div></div>
+    <div class="card"><div class="stat"><div class="stat-value">~$40</div><div class="stat-label">Monthly Cost</div></div></div>
+    <div class="card"><div class="stat"><div class="stat-value">3</div><div class="stat-label">Live Products</div></div></div>
+  </div>
+
+  <h2>🤖 The Team</h2>
+  <div class="grid">
+    <div class="card">
+      <div class="card-title">🔴 The One</div>
+      <span class="badge badge-active">ACTIVE</span>
+      <p style="font-size:0.85rem; color:#888; margin-top:8px;">Orchestrator. Plans, coordinates, delegates. Never codes inline when a sub-agent can do it.</p>
+    </div>
+    <div class="card">
+      <div class="card-title">📈 The Investor</div>
+      <span class="badge badge-active">ACTIVE</span>
+      <p style="font-size:0.85rem; color:#888; margin-top:8px;">SEC Form 4 insider trader. Alpaca paper portfolio from $100K. 10-min monitoring. 13 tweet crons.</p>
+    </div>
+    <div class="card">
+      <div class="card-title">🔍 Scout</div>
+      <span class="badge badge-active">ACTIVE</span>
+      <p style="font-size:0.85rem; color:#888; margin-top:8px;">SAM.gov + state/local contract scanner. Daily 6 AM briefing.</p>
+    </div>
+    <div class="card">
+      <div class="card-title">⛳ Golf Analyst</div>
+      <span class="badge badge-active">ACTIVE</span>
+      <p style="font-size:0.85rem; color:#888; margin-top:8px;">PGA/LIV tournament previews, picks, and betting angles. Tuesday mornings.</p>
+    </div>
+    <div class="card">
+      <div class="card-title">🎰 The Degen</div>
+      <span class="badge badge-paused">PAUSED</span>
+      <p style="font-size:0.85rem; color:#888; margin-top:8px;">Solana copy trade bot. KolScan → Jupiter.</p>
+    </div>
+    <div class="card">
+      <div class="card-title">📊 Tradooor</div>
+      <span class="badge badge-paused">PAUSED</span>
+      <p style="font-size:0.85rem; color:#888; margin-top:8px;">Polymarket prediction markets. On hold.</p>
+    </div>
+    <div class="card">
+      <div class="card-title">💻 Coder</div>
+      <span class="badge badge-active">ON-DEMAND</span>
+      <p style="font-size:0.85rem; color:#888; margin-top:8px;">Sub-agent for coding tasks. Spawned as needed.</p>
+    </div>
+    <div class="card">
+      <div class="card-title">🧪 QA Tester</div>
+      <span class="badge badge-active">ON-DEMAND</span>
+      <p style="font-size:0.85rem; color:#888; margin-top:8px;">Sub-agent for API testing. Runs full test suites before builds.</p>
+    </div>
+  </div>
+
+  <h2>🚀 Live Products</h2>
+  <div class="card">
+    <div class="card-title">📱 The Inside Track <span class="badge badge-pending">APP STORE PENDING</span></div>
+    <ul>
+      <li><strong>What:</strong> iOS app — insider trading signals + congressional trades</li>
+      <li><strong>Site:</strong> <a href="https://theinsidetrack.xyz">theinsidetrack.xyz</a></li>
+      <li><strong>Backend:</strong> Render + SQLite (persistent disk)</li>
+      <li><strong>Data:</strong> EDGAR Form 4 (30 min) + Congressional (2 hrs)</li>
+      <li><strong>Features:</strong> Unified feed, watchlist w/ autocomplete, buy/sell toggle, sort by date/ticker/value, privacy/terms</li>
+      <li><strong>Next:</strong> App Store review → public launch → RevenueCat payments</li>
+    </ul>
+  </div>
+  <div class="card">
+    <div class="card-title">📈 The Investor <span class="badge badge-active">LIVE</span></div>
+    <ul>
+      <li><strong>What:</strong> AI-managed stock portfolio following insider purchases</li>
+      <li><strong>Site:</strong> <a href="https://theinvestorai.xyz">theinvestorai.xyz</a></li>
+      <li><strong>Twitter:</strong> <a href="https://x.com/TheinvestorAI">@TheinvestorAI</a></li>
+      <li><strong>Portfolio:</strong> ~$103K paper account (started $100K)</li>
+      <li><strong>Automation:</strong> 10-min monitoring, 13 daily tweets, autonomous trading</li>
+    </ul>
+  </div>
+  <div class="card">
+    <div class="card-title">🛡️ Cyber-Ops <span class="badge badge-active">LIVE</span></div>
+    <ul>
+      <li><strong>What:</strong> CMMC Level 2 SSP Builder tool</li>
+      <li><strong>Site:</strong> <a href="https://dremonkey23.github.io/cyber-ops">dremonkey23.github.io/cyber-ops</a></li>
+      <li><strong>Revenue angle:</strong> Readiness/pre-assessment consulting ($5-15K)</li>
+    </ul>
+  </div>
+
+  <h2>💰 Monthly Costs</h2>
+  <div class="card">
+    <table class="cost-table">
+      <tr><td>EAS (Expo) — app builds</td><td>$19.00</td></tr>
+      <tr><td>Render — API hosting + disk</td><td>$7.25</td></tr>
+      <tr><td>Apple Developer Program</td><td>$8.25</td></tr>
+      <tr><td>X/Twitter API (pay-per-tweet)</td><td>~$5.00</td></tr>
+      <tr><td>Domains (Porkbun)</td><td>~$0.50</td></tr>
+      <tr class="cost-total"><td>Total</td><td>~$40/mo</td></tr>
+    </table>
+  </div>
+
+  <h2>📅 Cron Schedule (24 Jobs)</h2>
+  <div class="card">
+    <ul>
+      <li><strong>2 AM</strong> — Overnight Thinking (Sonnet)</li>
+      <li><strong>4:30 AM</strong> — Backup → #monitoring</li>
+      <li><strong>6 AM</strong> — Scout → #scout-briefing</li>
+      <li><strong>6 AM Tue</strong> — Golf Analyst → #golf-analyst</li>
+      <li><strong>6:30 AM</strong> — TikTok Analytics</li>
+      <li><strong>6:45 AM</strong> — Investor Briefing (Opus) + Pre-market tweet</li>
+      <li><strong>7 AM</strong> — Morning Briefing (Sonnet)</li>
+      <li><strong>9:35 AM</strong> — Market open tweet</li>
+      <li><strong>9:45 AM</strong> — Morning tweet</li>
+      <li><strong>Every 10 min (9-4)</strong> — Investor Monitor + Price Updater (Sonnet)</li>
+      <li><strong>10:30 AM</strong> — Early movers tweet</li>
+      <li><strong>11 AM</strong> — Hot signal tweet</li>
+      <li><strong>12:30 PM</strong> — Midday tweet</li>
+      <li><strong>Wed 12 PM</strong> — Congress weekly tweet</li>
+      <li><strong>2:30 PM</strong> — Afternoon tweet</li>
+      <li><strong>4:05 PM</strong> — Closing Bell recap</li>
+      <li><strong>4:15 PM</strong> — Closing bell tweet</li>
+      <li><strong>6 PM</strong> — After-hours tweet</li>
+      <li><strong>9 PM</strong> — Nightcap tweet</li>
+      <li><strong>Sat 10 AM</strong> — Week recap tweet</li>
+      <li><strong>Sun 7 PM</strong> — Week preview tweet</li>
+    </ul>
+  </div>
+
+  <h2>⚠️ Hard Lessons</h2>
+  <div class="lesson"><strong>Margin disaster:</strong> Alpaca defaulted to margin. Discovered $27K usage. NEVER enable margin.</div>
+  <div class="lesson"><strong>X Free tier:</strong> Newlines cause 403. All tweets must be single paragraph.</div>
+  <div class="lesson"><strong>Render ephemeral disk:</strong> Without persistent disk, DB wipes on deploy. Added /data disk.</div>
+  <div class="lesson"><strong>EAS submissions:</strong> Builds 6-8 failed silently. "Bundle version must be higher" = Apple already has it.</div>
+  <div class="lesson"><strong>QA before builds:</strong> Always test API endpoints before building. Don't burn EAS credits.</div>
+  <div class="lesson"><strong>Filter "all selected":</strong> When all defaults checked, skip filter entirely or it excludes everything.</div>
+  <div class="lesson"><strong>SEC company lookup:</strong> Use company_tickers.json, NOT search-index (returns people names).</div>
+  <div class="lesson"><strong>Congressional separate table:</strong> Must merge into unified feed via mapCongressional().</div>
+
+  <div class="footer">
+    🔴 The One — Updated March 4, 2026<br>
+    Built by <a href="https://mirzayanllc.com">Mirzayan LLC</a>
+  </div>
+</div>
+</body>
+</html>
