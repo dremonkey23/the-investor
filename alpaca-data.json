@@ -1,13 +1,13 @@
 {
   "account": {
-    "portfolioValue": 80241.05,
+    "portfolioValue": 80253.15,
     "cash": 39763.23,
-    "buyingPower": 116034.78,
-    "equity": 80241.05,
-    "longMarketValue": 40477.82,
+    "buyingPower": 116046.88,
+    "equity": 80253.15,
+    "longMarketValue": 40489.92,
     "shortMarketValue": 0,
-    "pnl": -19758.949999999997,
-    "pnlPct": -19.75895
+    "pnl": -19746.850000000006,
+    "pnlPct": -19.746850000000006
   },
   "positions": [
     {
@@ -15,44 +15,44 @@
       "qty": 260,
       "side": "long",
       "avgEntry": 15.62,
-      "currentPrice": 15.64,
-      "marketValue": 4066.4,
-      "unrealizedPnl": 5.2,
-      "unrealizedPnlPct": 0.128,
-      "change": -1.2
+      "currentPrice": 15.647,
+      "marketValue": 4068.22,
+      "unrealizedPnl": 7.02,
+      "unrealizedPnlPct": 0.173,
+      "change": -1.1560000000000001
     },
     {
       "symbol": "ALG",
       "qty": 1,
       "side": "long",
       "avgEntry": 174.49,
-      "currentPrice": 175.79,
-      "marketValue": 175.79,
-      "unrealizedPnl": 1.3,
-      "unrealizedPnlPct": 0.745,
-      "change": 3.345
+      "currentPrice": 176,
+      "marketValue": 176,
+      "unrealizedPnl": 1.51,
+      "unrealizedPnlPct": 0.865,
+      "change": 3.469
     },
     {
       "symbol": "AMRZ",
       "qty": 4,
       "side": "long",
       "avgEntry": 58.06,
-      "currentPrice": 58.05,
-      "marketValue": 232.2,
-      "unrealizedPnl": -0.04,
-      "unrealizedPnlPct": -0.017,
-      "change": -1.8929999999999998
+      "currentPrice": 58.09,
+      "marketValue": 232.36,
+      "unrealizedPnl": 0.12,
+      "unrealizedPnlPct": 0.052,
+      "change": -1.825
     },
     {
       "symbol": "AUPH",
       "qty": 275,
       "side": "long",
       "avgEntry": 14.62,
-      "currentPrice": 14.745,
-      "marketValue": 4054.875,
-      "unrealizedPnl": 34.375,
-      "unrealizedPnlPct": 0.855,
-      "change": -0.372
+      "currentPrice": 14.74,
+      "marketValue": 4053.5,
+      "unrealizedPnl": 33,
+      "unrealizedPnlPct": 0.8210000000000001,
+      "change": -0.40499999999999997
     },
     {
       "symbol": "COTY",
@@ -70,55 +70,55 @@
       "qty": 38,
       "side": "long",
       "avgEntry": 106.05,
-      "currentPrice": 108.54,
-      "marketValue": 4124.52,
-      "unrealizedPnl": 94.62,
-      "unrealizedPnlPct": 2.348,
-      "change": 3.697
+      "currentPrice": 108.65,
+      "marketValue": 4128.7,
+      "unrealizedPnl": 98.8,
+      "unrealizedPnlPct": 2.452,
+      "change": 3.8019999999999996
     },
     {
       "symbol": "FOUR",
       "qty": 90,
       "side": "long",
       "avgEntry": 47.11,
-      "currentPrice": 46.97,
-      "marketValue": 4227.3,
-      "unrealizedPnl": -12.6,
-      "unrealizedPnlPct": -0.297,
-      "change": 0.192
+      "currentPrice": 46.96,
+      "marketValue": 4226.4,
+      "unrealizedPnl": -13.5,
+      "unrealizedPnlPct": -0.318,
+      "change": 0.17099999999999999
     },
     {
       "symbol": "GRNT",
       "qty": 52,
       "side": "long",
       "avgEntry": 5.120294,
-      "currentPrice": 5.09,
-      "marketValue": 264.68,
-      "unrealizedPnl": -1.575288,
-      "unrealizedPnlPct": -0.592,
-      "change": 1.394
+      "currentPrice": 5.1,
+      "marketValue": 265.2,
+      "unrealizedPnl": -1.055288,
+      "unrealizedPnlPct": -0.396,
+      "change": 1.5939999999999999
     },
     {
       "symbol": "KKR",
       "qty": 45,
       "side": "long",
       "avgEntry": 89.54,
-      "currentPrice": 87.82,
-      "marketValue": 3951.9,
-      "unrealizedPnl": -77.4,
-      "unrealizedPnlPct": -1.921,
-      "change": -2.379
+      "currentPrice": 87.84,
+      "marketValue": 3952.8,
+      "unrealizedPnl": -76.5,
+      "unrealizedPnlPct": -1.899,
+      "change": -2.357
     },
     {
       "symbol": "LMT",
       "qty": 6,
       "side": "long",
       "avgEntry": 650.83,
-      "currentPrice": 650.43,
-      "marketValue": 3902.58,
-      "unrealizedPnl": -2.4,
-      "unrealizedPnlPct": -0.061,
-      "change": -0.121
+      "currentPrice": 649.33,
+      "marketValue": 3895.98,
+      "unrealizedPnl": -9,
+      "unrealizedPnlPct": -0.22999999999999998,
+      "change": -0.29
     },
     {
       "symbol": "MSDL260320C00016000",
@@ -136,22 +136,22 @@
       "qty": 22,
       "side": "long",
       "avgEntry": 186.437273,
-      "currentPrice": 185.2261,
-      "marketValue": 4074.9742,
-      "unrealizedPnl": -26.645806,
-      "unrealizedPnlPct": -0.65,
-      "change": 0.247
+      "currentPrice": 185.58,
+      "marketValue": 4082.76,
+      "unrealizedPnl": -18.860006,
+      "unrealizedPnlPct": -0.45999999999999996,
+      "change": 0.438
     },
     {
       "symbol": "SOLV",
       "qty": 50,
       "side": "long",
       "avgEntry": 67.01,
-      "currentPrice": 67.29,
-      "marketValue": 3364.5,
-      "unrealizedPnl": 14,
-      "unrealizedPnlPct": 0.418,
-      "change": -0.459
+      "currentPrice": 67.41,
+      "marketValue": 3370.5,
+      "unrealizedPnl": 20,
+      "unrealizedPnlPct": 0.597,
+      "change": -0.281
     },
     {
       "symbol": "TTD260320C00170000",
@@ -180,11 +180,11 @@
       "qty": 60,
       "side": "long",
       "avgEntry": 67.689667,
-      "currentPrice": 67.81,
-      "marketValue": 4068.6,
-      "unrealizedPnl": 7.21998,
-      "unrealizedPnlPct": 0.178,
-      "change": -0.074
+      "currentPrice": 67.8,
+      "marketValue": 4068,
+      "unrealizedPnl": 6.61998,
+      "unrealizedPnlPct": 0.163,
+      "change": -0.08800000000000001
     }
   ],
   "orders": [
@@ -1692,16 +1692,16 @@
     }
   ],
   "metadata": {
-    "lastUpdated": "2026-03-11T18:45:45.140Z",
+    "lastUpdated": "2026-03-11T18:55:43.749Z",
     "startingCapital": 100000
   },
   "optionsExposure": {
-    "portfolioValue": 80241.05,
+    "portfolioValue": 80253.15,
     "totalOptionsValue": 0,
     "optionsPct": 0,
     "maxAllowedPct": 10,
-    "maxAllowedValue": 8024.11,
-    "remainingCapacity": 8024.11,
+    "maxAllowedValue": 8025.32,
+    "remainingCapacity": 8025.32,
     "overLimit": false,
     "nearLimit": false,
     "status": "🟢 OK",
