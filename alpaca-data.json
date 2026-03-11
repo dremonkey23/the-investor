@@ -1,13 +1,13 @@
 {
   "account": {
-    "portfolioValue": 80229.29,
+    "portfolioValue": 80258.53,
     "cash": 42041.89,
-    "buyingPower": 116518.68,
-    "equity": 80229.29,
-    "longMarketValue": 38187.4,
+    "buyingPower": 116547.92,
+    "equity": 80258.53,
+    "longMarketValue": 38216.64,
     "shortMarketValue": 0,
-    "pnl": -19770.710000000006,
-    "pnlPct": -19.770710000000005
+    "pnl": -19741.47,
+    "pnlPct": -19.74147
   },
   "positions": [
     {
@@ -15,22 +15,22 @@
       "qty": 260,
       "side": "long",
       "avgEntry": 15.62,
-      "currentPrice": 15.605,
-      "marketValue": 4057.3,
-      "unrealizedPnl": -3.9,
-      "unrealizedPnlPct": -0.096,
-      "change": -1.421
+      "currentPrice": 15.81,
+      "marketValue": 4110.6,
+      "unrealizedPnl": 49.4,
+      "unrealizedPnlPct": 1.216,
+      "change": -0.126
     },
     {
       "symbol": "AUPH",
       "qty": 275,
       "side": "long",
       "avgEntry": 14.62,
-      "currentPrice": 14.655,
-      "marketValue": 4030.125,
-      "unrealizedPnl": 9.625,
-      "unrealizedPnlPct": 0.23900000000000002,
-      "change": -0.98
+      "currentPrice": 14.7,
+      "marketValue": 4042.5,
+      "unrealizedPnl": 22,
+      "unrealizedPnlPct": 0.547,
+      "change": -0.676
     },
     {
       "symbol": "COTY",
@@ -48,44 +48,44 @@
       "qty": 38,
       "side": "long",
       "avgEntry": 106.05,
-      "currentPrice": 107.38,
-      "marketValue": 4080.44,
-      "unrealizedPnl": 50.54,
-      "unrealizedPnlPct": 1.254,
-      "change": 2.589
+      "currentPrice": 108,
+      "marketValue": 4104,
+      "unrealizedPnl": 74.1,
+      "unrealizedPnlPct": 1.839,
+      "change": 3.1809999999999996
     },
     {
       "symbol": "FOUR",
       "qty": 90,
       "side": "long",
       "avgEntry": 47.11,
-      "currentPrice": 46.93,
-      "marketValue": 4223.7,
-      "unrealizedPnl": -16.2,
-      "unrealizedPnlPct": -0.382,
-      "change": 0.107
+      "currentPrice": 46.6,
+      "marketValue": 4194,
+      "unrealizedPnl": -45.9,
+      "unrealizedPnlPct": -1.083,
+      "change": -0.597
     },
     {
       "symbol": "KKR",
       "qty": 45,
       "side": "long",
       "avgEntry": 89.54,
-      "currentPrice": 87.715,
-      "marketValue": 3947.175,
-      "unrealizedPnl": -82.125,
-      "unrealizedPnlPct": -2.038,
-      "change": -2.496
+      "currentPrice": 86.89,
+      "marketValue": 3910.05,
+      "unrealizedPnl": -119.25,
+      "unrealizedPnlPct": -2.96,
+      "change": -3.4130000000000003
     },
     {
       "symbol": "LMT",
       "qty": 6,
       "side": "long",
       "avgEntry": 650.83,
-      "currentPrice": 652.2,
-      "marketValue": 3913.2,
-      "unrealizedPnl": 8.22,
-      "unrealizedPnlPct": 0.211,
-      "change": 0.15
+      "currentPrice": 652.19,
+      "marketValue": 3913.14,
+      "unrealizedPnl": 8.16,
+      "unrealizedPnlPct": 0.209,
+      "change": 0.149
     },
     {
       "symbol": "MSDL260320C00016000",
@@ -103,11 +103,11 @@
       "qty": 22,
       "side": "long",
       "avgEntry": 186.437273,
-      "currentPrice": 186.28,
-      "marketValue": 4098.16,
-      "unrealizedPnl": -3.460006,
-      "unrealizedPnlPct": -0.084,
-      "change": 0.8170000000000001
+      "currentPrice": 186.375,
+      "marketValue": 4100.25,
+      "unrealizedPnl": -1.370006,
+      "unrealizedPnlPct": -0.033,
+      "change": 0.869
     },
     {
       "symbol": "NVDA260323C00190000",
@@ -136,11 +136,11 @@
       "qty": 60,
       "side": "long",
       "avgEntry": 67.689667,
-      "currentPrice": 68.08,
-      "marketValue": 4084.8,
-      "unrealizedPnl": 23.41998,
-      "unrealizedPnlPct": 0.577,
-      "change": 0.32399999999999995
+      "currentPrice": 68.16,
+      "marketValue": 4089.6,
+      "unrealizedPnl": 28.21998,
+      "unrealizedPnlPct": 0.695,
+      "change": 0.44200000000000006
     }
   ],
   "orders": [
@@ -1648,16 +1648,16 @@
     }
   ],
   "metadata": {
-    "lastUpdated": "2026-03-11T14:55:45.676Z",
+    "lastUpdated": "2026-03-11T15:05:43.993Z",
     "startingCapital": 100000
   },
   "optionsExposure": {
-    "portfolioValue": 80229.29,
+    "portfolioValue": 80258.53,
     "totalOptionsValue": 1800,
     "optionsPct": 2.24,
     "maxAllowedPct": 10,
-    "maxAllowedValue": 8022.93,
-    "remainingCapacity": 6222.93,
+    "maxAllowedValue": 8025.85,
+    "remainingCapacity": 6225.85,
     "overLimit": false,
     "nearLimit": false,
     "status": "🟢 OK",
