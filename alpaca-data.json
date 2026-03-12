@@ -1,13 +1,13 @@
 {
   "account": {
-    "portfolioValue": 80250.59,
+    "portfolioValue": 79988.42,
     "cash": 39736.66,
-    "buyingPower": 240416.06,
-    "equity": 80250.59,
-    "longMarketValue": 40513.93,
+    "buyingPower": 217033.06,
+    "equity": 79988.42,
+    "longMarketValue": 40251.76,
     "shortMarketValue": 0,
-    "pnl": -19749.410000000003,
-    "pnlPct": -19.749410000000005
+    "pnl": -20011.58,
+    "pnlPct": -20.011580000000002
   },
   "positions": [
     {
@@ -15,11 +15,11 @@
       "qty": 260,
       "side": "long",
       "avgEntry": 15.62,
-      "currentPrice": 16.34,
-      "marketValue": 4248.4,
-      "unrealizedPnl": 187.2,
-      "unrealizedPnlPct": 4.609,
-      "change": 4.276
+      "currentPrice": 15.53,
+      "marketValue": 4037.8,
+      "unrealizedPnl": -23.4,
+      "unrealizedPnlPct": -0.5760000000000001,
+      "change": -0.893
     },
     {
       "symbol": "ALG",
@@ -37,11 +37,11 @@
       "qty": 4,
       "side": "long",
       "avgEntry": 58.06,
-      "currentPrice": 57.39,
-      "marketValue": 229.56,
-      "unrealizedPnl": -2.68,
-      "unrealizedPnlPct": -1.154,
-      "change": -1.409
+      "currentPrice": 57.52,
+      "marketValue": 230.08,
+      "unrealizedPnl": -2.16,
+      "unrealizedPnlPct": -0.9299999999999999,
+      "change": -1.185
     },
     {
       "symbol": "AUPH",
@@ -92,22 +92,22 @@
       "qty": 56,
       "side": "long",
       "avgEntry": 5.118774,
-      "currentPrice": 5.1499,
-      "marketValue": 288.3944,
-      "unrealizedPnl": 1.743056,
-      "unrealizedPnlPct": 0.608,
-      "change": 1.576
+      "currentPrice": 5.15,
+      "marketValue": 288.4,
+      "unrealizedPnl": 1.748656,
+      "unrealizedPnlPct": 0.61,
+      "change": 1.5779999999999998
     },
     {
       "symbol": "KKR",
       "qty": 45,
       "side": "long",
       "avgEntry": 89.54,
-      "currentPrice": 85.88,
-      "marketValue": 3864.6,
-      "unrealizedPnl": -164.7,
-      "unrealizedPnlPct": -4.088,
-      "change": -1.435
+      "currentPrice": 84.9,
+      "marketValue": 3820.5,
+      "unrealizedPnl": -208.8,
+      "unrealizedPnlPct": -5.1819999999999995,
+      "change": -2.559
     },
     {
       "symbol": "LMT",
@@ -136,11 +136,11 @@
       "qty": 22,
       "side": "long",
       "avgEntry": 186.437273,
-      "currentPrice": 184.64,
-      "marketValue": 4062.08,
-      "unrealizedPnl": -39.540006,
-      "unrealizedPnlPct": -0.964,
-      "change": -0.747
+      "currentPrice": 184.2764,
+      "marketValue": 4054.0808,
+      "unrealizedPnl": -47.539206,
+      "unrealizedPnlPct": -1.159,
+      "change": -0.943
     },
     {
       "symbol": "SOLV",
@@ -189,6 +189,54 @@
   ],
   "orders": [
     {
+      "id": "2a463937-44a9-41f0-ae37-43919efda886",
+      "symbol": "CPRI",
+      "side": "buy",
+      "qty": 4000,
+      "type": "market",
+      "status": "new",
+      "filledQty": 0,
+      "filledAvgPrice": 0,
+      "submittedAt": "2026-03-12T13:11:41.698068673Z",
+      "filledAt": null
+    },
+    {
+      "id": "389fa4e6-bee7-4563-94ea-125cb831b4c8",
+      "symbol": "AMR",
+      "side": "buy",
+      "qty": 5000,
+      "type": "market",
+      "status": "new",
+      "filledQty": 0,
+      "filledAvgPrice": 0,
+      "submittedAt": "2026-03-12T13:11:33.763362Z",
+      "filledAt": null
+    },
+    {
+      "id": "550cab19-36d8-4e83-81ec-c420bb6d5fee",
+      "symbol": "TGLS",
+      "side": "buy",
+      "qty": 6000,
+      "type": "market",
+      "status": "new",
+      "filledQty": 0,
+      "filledAvgPrice": 0,
+      "submittedAt": "2026-03-12T13:11:26.63009Z",
+      "filledAt": null
+    },
+    {
+      "id": "267d15b6-c14c-4142-bdf1-510f9ce2b9ca",
+      "symbol": "ALKT",
+      "side": "buy",
+      "qty": 8000,
+      "type": "market",
+      "status": "new",
+      "filledQty": 0,
+      "filledAvgPrice": 0,
+      "submittedAt": "2026-03-12T13:11:11.018502Z",
+      "filledAt": null
+    },
+    {
       "id": "576c4fd9-b6e8-4466-921c-0d348f18f8d4",
       "symbol": "CPRI",
       "side": "buy",
@@ -197,7 +245,7 @@
       "status": "new",
       "filledQty": 0,
       "filledAvgPrice": 0,
-      "submittedAt": "2026-03-12T13:02:01.439589411Z",
+      "submittedAt": "2026-03-12T13:02:01.439589Z",
       "filledAt": null
     },
     {
@@ -739,54 +787,6 @@
       "filledAvgPrice": 4.41,
       "submittedAt": "2026-03-11T13:48:54.088662Z",
       "filledAt": "2026-03-11T13:49:03.327431Z"
-    },
-    {
-      "id": "e436b817-7a6c-4cfb-b436-bf0d83378db5",
-      "symbol": "SOLV",
-      "side": "sell",
-      "qty": 118.339184791,
-      "type": "market",
-      "status": "filled",
-      "filledQty": 118.339184791,
-      "filledAvgPrice": 67.52,
-      "submittedAt": "2026-03-11T13:48:54.084351Z",
-      "filledAt": "2026-03-11T13:49:00.086246Z"
-    },
-    {
-      "id": "f2f2a05e-0bdb-4920-9f14-55077220ecdf",
-      "symbol": "SFM",
-      "side": "sell",
-      "qty": 64.37007874,
-      "type": "market",
-      "status": "filled",
-      "filledQty": 64.37007874,
-      "filledAvgPrice": 75.4,
-      "submittedAt": "2026-03-11T13:48:54.079177Z",
-      "filledAt": "2026-03-11T13:48:57.326336Z"
-    },
-    {
-      "id": "fbb5ba8f-2f99-42d3-9707-bca4c58f7586",
-      "symbol": "ROCK",
-      "side": "sell",
-      "qty": 121.582880986,
-      "type": "market",
-      "status": "filled",
-      "filledQty": 121.582880986,
-      "filledAvgPrice": 41.48,
-      "submittedAt": "2026-03-11T13:48:54.074761Z",
-      "filledAt": "2026-03-11T13:49:06.585716Z"
-    },
-    {
-      "id": "349fe351-2969-4b71-88b6-30ccb05b25da",
-      "symbol": "QSI",
-      "side": "sell",
-      "qty": 4.339820422,
-      "type": "market",
-      "status": "filled",
-      "filledQty": 4.339820422,
-      "filledAvgPrice": 1.01,
-      "submittedAt": "2026-03-11T13:48:54.070021Z",
-      "filledAt": "2026-03-11T13:48:55.417558Z"
     }
   ],
   "history": [
@@ -1692,16 +1692,16 @@
     }
   ],
   "metadata": {
-    "lastUpdated": "2026-03-12T13:05:43.708Z",
+    "lastUpdated": "2026-03-12T13:15:44.850Z",
     "startingCapital": 100000
   },
   "optionsExposure": {
-    "portfolioValue": 80250.59,
+    "portfolioValue": 79988.42,
     "totalOptionsValue": 0,
     "optionsPct": 0,
     "maxAllowedPct": 10,
-    "maxAllowedValue": 8025.06,
-    "remainingCapacity": 8025.06,
+    "maxAllowedValue": 7998.84,
+    "remainingCapacity": 7998.84,
     "overLimit": false,
     "nearLimit": false,
     "status": "🟢 OK",
