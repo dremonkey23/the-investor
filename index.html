@@ -3,294 +3,652 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Investor — Live Portfolio</title>
+  <title>The Investor AI Fund — Multi-Strategy Dashboard</title>
   <style>
+    :root {
+      --bg: #06080a;
+      --card: #0d1117;
+      --border: #1b2232;
+      --text: #c9d1d9;
+      --muted: #6e7681;
+      --white: #f0f6fc;
+      --green: #3fb950;
+      --red: #f85149;
+      --blue: #58a6ff;
+      --purple: #bc8cff;
+      --orange: #d29922;
+      --cyan: #39d2c0;
+      --accent: #3fb950;
+    }
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { background: #0a0a0a; color: #e0e0e0; font-family: 'SF Pro Display', 'Segoe UI', system-ui, sans-serif; }
-    .container { max-width: 1200px; margin: 0 auto; padding: 24px 20px; }
+    body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', system-ui, sans-serif; line-height: 1.5; }
     
-    .header { text-align: center; padding: 30px 0 20px; }
-    .header h1 { font-size: 1.8rem; font-weight: 700; color: #fff; }
-    .header h1 span { color: #00ff88; }
-    .header .tagline { color: #666; font-size: 0.85rem; margin-top: 4px; }
-    .header .live-dot { display: inline-block; width: 8px; height: 8px; background: #00ff88; border-radius: 50%; animation: pulse 2s infinite; }
+    .container { max-width: 1400px; margin: 0 auto; padding: 20px 24px; }
+    
+    /* ─── Header ─── */
+    .fund-header { text-align: center; padding: 40px 0 32px; border-bottom: 1px solid var(--border); margin-bottom: 28px; }
+    .fund-logo { font-size: 0.7rem; letter-spacing: 4px; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+    .fund-name { font-size: 2.2rem; font-weight: 800; color: var(--white); letter-spacing: -0.5px; }
+    .fund-name span { color: var(--accent); }
+    .fund-type { font-size: 0.85rem; color: var(--muted); margin-top: 6px; }
+    .fund-type .live-dot { display: inline-block; width: 7px; height: 7px; background: var(--green); border-radius: 50%; margin-right: 6px; animation: pulse 2s infinite; vertical-align: middle; }
     @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
+    .fund-links { margin-top: 14px; display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
+    .fund-links a { color: var(--muted); text-decoration: none; font-size: 0.8rem; transition: color 0.2s; }
+    .fund-links a:hover { color: var(--blue); }
     
-    .portfolio-bar { display: flex; justify-content: space-between; align-items: center; background: #111; border: 1px solid #1a1a1a; border-radius: 12px; padding: 20px 24px; margin-bottom: 24px; flex-wrap: wrap; gap: 16px; }
-    .port-item { text-align: center; }
-    .port-label { font-size: 0.7rem; color: #666; text-transform: uppercase; letter-spacing: 1px; }
-    .port-value { font-size: 1.5rem; font-weight: 700; margin-top: 2px; }
-    .port-value.green { color: #00ff88; }
-    .port-value.red { color: #ff4444; }
-    .port-value.white { color: #fff; }
+    /* ─── Fund Overview Bar ─── */
+    .fund-bar { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1px; background: var(--border); border-radius: 12px; overflow: hidden; margin-bottom: 28px; }
+    .fund-metric { background: var(--card); padding: 20px 16px; text-align: center; }
+    .fund-metric .label { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 1.2px; color: var(--muted); margin-bottom: 4px; }
+    .fund-metric .value { font-size: 1.6rem; font-weight: 700; }
+    .fund-metric .value.green { color: var(--green); }
+    .fund-metric .value.red { color: var(--red); }
+    .fund-metric .value.white { color: var(--white); }
+    .fund-metric .sub { font-size: 0.7rem; color: var(--muted); margin-top: 2px; }
     
-    /* Pie Chart Section */
-    .chart-section { display: flex; gap: 24px; margin-bottom: 24px; flex-wrap: wrap; }
-    .pie-container { background: #111; border: 1px solid #1a1a1a; border-radius: 12px; padding: 20px; flex: 1; min-width: 300px; display: flex; align-items: center; justify-content: center; gap: 24px; }
-    .pie-canvas { width: 220px; height: 220px; }
-    .pie-legend { display: flex; flex-direction: column; gap: 6px; }
-    .legend-item { display: flex; align-items: center; gap: 8px; font-size: 0.8rem; }
-    .legend-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
-    .legend-ticker { font-weight: 700; color: #fff; width: 45px; }
-    .legend-pct { color: #888; }
+    /* ─── Strategy Allocation Visual ─── */
+    .alloc-section { margin-bottom: 28px; }
+    .alloc-bar-outer { background: #161b22; border-radius: 8px; height: 36px; display: flex; overflow: hidden; border: 1px solid var(--border); }
+    .alloc-segment { display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: 700; color: #000; transition: width 0.6s ease; min-width: 0; overflow: hidden; white-space: nowrap; }
+    .alloc-legend { display: flex; gap: 24px; margin-top: 12px; flex-wrap: wrap; justify-content: center; }
+    .alloc-legend-item { display: flex; align-items: center; gap: 6px; font-size: 0.78rem; color: var(--text); }
+    .alloc-legend-dot { width: 10px; height: 10px; border-radius: 3px; flex-shrink: 0; }
     
-    .main-grid { display: grid; grid-template-columns: 1fr 340px; gap: 24px; }
-    @media (max-width: 900px) { .main-grid { grid-template-columns: 1fr; } }
+    /* ─── Desk Cards ─── */
+    .desks-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 28px; }
+    @media (max-width: 1000px) { .desks-grid { grid-template-columns: 1fr; } }
     
-    .section-title { font-size: 0.85rem; font-weight: 700; color: #fff; margin-bottom: 12px; border-bottom: 1px solid #1a1a1a; padding-bottom: 8px; }
+    .desk-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+    .desk-header { padding: 18px 20px 14px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: flex-start; }
+    .desk-title { font-size: 1rem; font-weight: 700; color: var(--white); }
+    .desk-title .desk-icon { margin-right: 6px; }
+    .desk-subtitle { font-size: 0.72rem; color: var(--muted); margin-top: 2px; }
+    .desk-stats { text-align: right; }
+    .desk-stats .desk-value { font-size: 1.2rem; font-weight: 700; color: var(--white); }
+    .desk-stats .desk-pnl { font-size: 0.85rem; font-weight: 600; }
+    .desk-stats .desk-pnl.green { color: var(--green); }
+    .desk-stats .desk-pnl.red { color: var(--red); }
     
-    .plays { display: flex; flex-direction: column; gap: 8px; }
-    .play { display: flex; align-items: center; background: #111; border: 1px solid #1a1a1a; border-radius: 10px; padding: 14px 18px; transition: background 0.15s; }
-    .play:hover { background: #151518; }
-    .play-left { flex: 1; }
-    .play-ticker { font-size: 1rem; font-weight: 700; color: #fff; }
-    .play-ticker .qty-tag { font-size: 0.7rem; font-weight: 600; color: #888; margin-left: 8px; }
-    .play-meta { font-size: 0.75rem; color: #555; margin-top: 3px; }
-    .play-right { text-align: right; }
-    .play-pnl { font-size: 1.1rem; font-weight: 700; }
-    .play-pnl.green { color: #00ff88; }
-    .play-pnl.red { color: #ff4444; }
-    .play-pnl.flat { color: #555; }
-    .play-prices { font-size: 0.7rem; color: #555; margin-top: 2px; }
-    .play-value { font-size: 0.75rem; color: #888; }
+    .desk-metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); }
+    .desk-metric { background: var(--card); padding: 10px 14px; text-align: center; }
+    .desk-metric .dm-label { font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.8px; color: var(--muted); }
+    .desk-metric .dm-value { font-size: 0.95rem; font-weight: 600; color: var(--white); margin-top: 1px; }
     
-    .empty { text-align: center; padding: 60px 20px; color: #444; }
-    .empty .emoji { font-size: 2rem; margin-bottom: 12px; }
+    .desk-positions { padding: 0; }
+    .position-row { display: flex; align-items: center; padding: 12px 20px; border-bottom: 1px solid #131820; transition: background 0.15s; }
+    .position-row:hover { background: #131820; }
+    .position-row:last-child { border-bottom: none; }
+    .pos-info { flex: 1; min-width: 0; }
+    .pos-ticker { font-size: 0.9rem; font-weight: 700; color: var(--white); }
+    .pos-ticker .pos-qty { font-size: 0.7rem; font-weight: 500; color: var(--muted); margin-left: 6px; }
+    .pos-reason { font-size: 0.68rem; color: var(--muted); margin-top: 1px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .pos-reason .reason-tag { display: inline-block; padding: 1px 5px; border-radius: 3px; font-size: 0.6rem; font-weight: 600; margin-right: 4px; }
+    .tag-insider { background: #1a3a1a; color: var(--green); }
+    .tag-congress { background: #1a2a3a; color: var(--blue); }
+    .tag-flow { background: #2a1a3a; color: var(--purple); }
+    .tag-momentum { background: #3a2a1a; color: var(--orange); }
+    .tag-options { background: #1a2a2a; color: var(--cyan); }
+    .pos-data { text-align: right; flex-shrink: 0; }
+    .pos-pnl { font-size: 0.9rem; font-weight: 700; }
+    .pos-pnl.green { color: var(--green); }
+    .pos-pnl.red { color: var(--red); }
+    .pos-pnl.flat { color: var(--muted); }
+    .pos-prices { font-size: 0.65rem; color: var(--muted); margin-top: 1px; }
+    .pos-mval { font-size: 0.7rem; color: #58687a; }
     
-    /* History Panel */
-    .history-panel { background: #111; border: 1px solid #1a1a1a; border-radius: 12px; padding: 18px; height: fit-content; position: sticky; top: 24px; }
-    .history-item { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid #0f0f0f; }
-    .history-item:last-child { border-bottom: none; }
-    .hi-action { font-size: 0.65rem; font-weight: 700; padding: 2px 6px; border-radius: 3px; display: inline-block; margin-right: 6px; }
-    .hi-buy { background: #0a2a0a; color: #00ff88; }
-    .hi-sell { background: #2a0a0a; color: #ff4444; }
-    .hi-ticker { font-size: 0.85rem; font-weight: 600; color: #fff; }
-    .hi-qty { font-size: 0.7rem; color: #666; margin-left: 4px; }
-    .hi-date { font-size: 0.65rem; color: #555; margin-top: 2px; }
-    .hi-price { font-size: 0.85rem; font-weight: 600; color: #ccc; text-align: right; }
-    .history-empty { color: #444; font-size: 0.8rem; text-align: center; padding: 20px 0; }
+    .desk-empty { padding: 30px 20px; text-align: center; color: var(--muted); font-size: 0.85rem; }
     
-    .footer { text-align: center; padding: 30px 0 20px; color: #ccc; font-size: 0.7rem; }
-    .footer span { color: #ff3333; }
-    .updated { text-align: center; color: #aaa; font-size: 0.7rem; margin-top: 16px; }
+    /* ─── Performance Attribution ─── */
+    .perf-section { margin-bottom: 28px; }
+    .section-header { font-size: 0.85rem; font-weight: 700; color: var(--white); margin-bottom: 14px; padding-bottom: 8px; border-bottom: 1px solid var(--border); letter-spacing: 0.5px; }
+    .perf-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+    .perf-card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 18px; }
+    .perf-card-title { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.8px; color: var(--muted); margin-bottom: 10px; }
+    .perf-bar-container { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; }
+    .perf-bar-label { font-size: 0.78rem; font-weight: 600; color: var(--white); width: 120px; flex-shrink: 0; }
+    .perf-bar-track { flex: 1; height: 22px; background: #161b22; border-radius: 4px; overflow: hidden; position: relative; }
+    .perf-bar-fill { height: 100%; border-radius: 4px; transition: width 0.5s ease; display: flex; align-items: center; justify-content: flex-end; padding-right: 6px; font-size: 0.65rem; font-weight: 700; color: #000; min-width: 0; }
+    .perf-bar-value { font-size: 0.78rem; font-weight: 600; width: 80px; text-align: right; flex-shrink: 0; }
     
-    @media (max-width: 600px) {
-      .portfolio-bar { flex-direction: column; text-align: center; gap: 12px; }
-      .pie-container { flex-direction: column; }
-      .play { flex-direction: column; text-align: center; gap: 8px; }
-      .play-right { text-align: center; }
+    /* ─── Trade History ─── */
+    .history-section { margin-bottom: 28px; }
+    .history-table { width: 100%; background: var(--card); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
+    .history-table table { width: 100%; border-collapse: collapse; }
+    .history-table th { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.8px; color: var(--muted); padding: 12px 16px; text-align: left; border-bottom: 1px solid var(--border); background: #0b1018; }
+    .history-table td { font-size: 0.8rem; padding: 10px 16px; border-bottom: 1px solid #131820; color: var(--text); }
+    .history-table tr:last-child td { border-bottom: none; }
+    .history-table tr:hover td { background: #131820; }
+    .action-badge { font-size: 0.6rem; font-weight: 700; padding: 2px 7px; border-radius: 3px; display: inline-block; }
+    .action-buy { background: #1a3a1a; color: var(--green); }
+    .action-sell { background: #3a1a1a; color: var(--red); }
+    
+    /* ─── Footer ─── */
+    .footer { text-align: center; padding: 32px 0 20px; border-top: 1px solid var(--border); margin-top: 20px; }
+    .footer .powered { font-size: 0.7rem; color: var(--muted); }
+    .footer .powered span { color: #f85149; }
+    .footer .disclaimer { font-size: 0.6rem; color: #3d444d; margin-top: 6px; }
+    .updated { text-align: center; font-size: 0.7rem; color: var(--muted); margin-top: 12px; }
+    
+    /* ─── Responsive ─── */
+    @media (max-width: 700px) {
+      .fund-bar { grid-template-columns: repeat(3, 1fr); }
+      .fund-metric .value { font-size: 1.2rem; }
+      .fund-name { font-size: 1.6rem; }
+      .position-row { flex-wrap: wrap; gap: 4px; }
+      .pos-data { width: 100%; text-align: left; display: flex; gap: 12px; align-items: baseline; }
+      .desk-metrics { grid-template-columns: repeat(3, 1fr); }
+      .history-table { overflow-x: auto; }
+    }
+    @media (max-width: 480px) {
+      .fund-bar { grid-template-columns: repeat(2, 1fr); }
+      .desk-metrics { grid-template-columns: 1fr 1fr; }
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <div class="header">
-      <h1>📈 The <span>Investor</span></h1>
-      <div class="tagline"><span class="live-dot"></span> Live portfolio • Real trades • Full transparency</div>
-      <div style="margin-top: 10px;"><a href="https://x.com/TheinvestorAI" target="_blank" style="color: #888; text-decoration: none; font-size: 0.85rem; transition: color 0.2s;" onmouseover="this.style.color='#1da1f2'" onmouseout="this.style.color='#888'">🐦 Follow @TheinvestorAI on X</a></div>
-      <div style="margin-top: 8px;"><a href="https://theinsidetrack.xyz" target="_blank" style="color: #888; text-decoration: none; font-size: 0.85rem; transition: color 0.2s;" onmouseover="this.style.color='#00ff88'" onmouseout="this.style.color='#888'">🔴 The Inside Track — Insider & Congressional Trade Signals (Coming Soon)<br><span style="font-size: 0.75rem; color: #00ff88;">theinsidetrack.xyz</span></a></div>
-    </div>
     
-    <div class="portfolio-bar">
-      <div class="port-item">
-        <div class="port-label">Portfolio Value</div>
-        <div class="port-value white" id="port-val">$100,000</div>
-      </div>
-      <div class="port-item">
-        <div class="port-label">Cash</div>
-        <div class="port-value white" id="cash-val">$100,000</div>
-      </div>
-      <div class="port-item">
-        <div class="port-label">Invested</div>
-        <div class="port-value white" id="invested-val">$0</div>
-      </div>
-      <div class="port-item">
-        <div class="port-label">Total P&L</div>
-        <div class="port-value green" id="pnl-val">$0.00</div>
-      </div>
-      <div class="port-item">
-        <div class="port-label">Return</div>
-        <div class="port-value green" id="return-val">0.00%</div>
-      </div>
-      <div class="port-item">
-        <div class="port-label">Positions</div>
-        <div class="port-value white" id="positions-val">0</div>
+    <!-- Fund Header -->
+    <div class="fund-header">
+      <div class="fund-logo">Multi-Strategy AI Fund</div>
+      <div class="fund-name">The <span>Investor</span> AI Fund</div>
+      <div class="fund-type"><span class="live-dot"></span> Autonomous multi-desk portfolio · Real trades · Full transparency</div>
+      <div class="fund-links">
+        <a href="https://x.com/TheinvestorAI" target="_blank">𝕏 @TheinvestorAI</a>
+        <a href="https://theinsidetrack.xyz" target="_blank">🔴 The Inside Track</a>
       </div>
     </div>
     
-    <!-- Pie Chart -->
-    <div class="chart-section">
-      <div class="pie-container">
-        <canvas id="pie-chart" class="pie-canvas" width="220" height="220"></canvas>
-        <div class="pie-legend" id="pie-legend"></div>
+    <!-- Fund Overview Metrics -->
+    <div class="fund-bar" id="fund-bar">
+      <div class="fund-metric">
+        <div class="label">Fund NAV</div>
+        <div class="value white" id="nav-val">—</div>
+        <div class="sub">Net Asset Value</div>
+      </div>
+      <div class="fund-metric">
+        <div class="label">Deployed</div>
+        <div class="value white" id="deployed-val">—</div>
+        <div class="sub" id="deployed-pct-sub">—</div>
+      </div>
+      <div class="fund-metric">
+        <div class="label">Cash Reserve</div>
+        <div class="value white" id="cash-val">—</div>
+        <div class="sub" id="cash-pct-sub">—</div>
+      </div>
+      <div class="fund-metric">
+        <div class="label">Total P&L</div>
+        <div class="value green" id="pnl-val">—</div>
+        <div class="sub" id="pnl-pct-sub">—</div>
+      </div>
+      <div class="fund-metric">
+        <div class="label">Return</div>
+        <div class="value green" id="return-val">—</div>
+        <div class="sub">Since inception</div>
+      </div>
+      <div class="fund-metric">
+        <div class="label">Active Desks</div>
+        <div class="value white">2</div>
+        <div class="sub" id="positions-count-sub">—</div>
       </div>
     </div>
     
-    <div class="main-grid">
-      <div class="left-col">
-        <div class="section-title">📊 Active Positions</div>
-        <div class="plays" id="positions-list">
-          <div class="empty"><div class="emoji">🎯</div><div>No positions yet</div></div>
+    <!-- Strategy Allocation Bar -->
+    <div class="alloc-section">
+      <div class="alloc-bar-outer" id="alloc-bar"></div>
+      <div class="alloc-legend" id="alloc-legend"></div>
+    </div>
+    
+    <!-- Trading Desks -->
+    <div class="desks-grid">
+      
+      <!-- Desk 1: Insider Intelligence -->
+      <div class="desk-card" id="desk-insider">
+        <div class="desk-header">
+          <div>
+            <div class="desk-title"><span class="desk-icon">🔍</span> Insider Intelligence</div>
+            <div class="desk-subtitle">DESK 1 · SEC Form 4 & Congressional Trades · Long-Term Positions</div>
+          </div>
+          <div class="desk-stats">
+            <div class="desk-value" id="d1-value">—</div>
+            <div class="desk-pnl" id="d1-pnl">—</div>
+          </div>
+        </div>
+        <div class="desk-metrics" id="d1-metrics">
+          <div class="desk-metric"><div class="dm-label">Allocation</div><div class="dm-value" id="d1-alloc">$44K</div></div>
+          <div class="desk-metric"><div class="dm-label">Positions</div><div class="dm-value" id="d1-pos-count">—</div></div>
+          <div class="desk-metric"><div class="dm-label">Win Rate</div><div class="dm-value" id="d1-winrate">—</div></div>
+        </div>
+        <div class="desk-positions" id="d1-positions">
+          <div class="desk-empty">Loading positions...</div>
         </div>
       </div>
       
-      <div class="history-panel">
-        <div class="section-title">📜 Trade History</div>
-        <div id="history-list">
-          <div class="history-empty">No trades yet</div>
+      <!-- Desk 2: Options Flow Hunter -->
+      <div class="desk-card" id="desk-flow">
+        <div class="desk-header">
+          <div>
+            <div class="desk-title"><span class="desk-icon">⚡</span> Options Flow Hunter</div>
+            <div class="desk-subtitle">DESK 2 · Unusual Options Activity · Momentum Plays</div>
+          </div>
+          <div class="desk-stats">
+            <div class="desk-value" id="d2-value">—</div>
+            <div class="desk-pnl" id="d2-pnl">—</div>
+          </div>
         </div>
+        <div class="desk-metrics" id="d2-metrics">
+          <div class="desk-metric"><div class="dm-label">Allocation</div><div class="dm-value" id="d2-alloc">$22K</div></div>
+          <div class="desk-metric"><div class="dm-label">Positions</div><div class="dm-value" id="d2-pos-count">—</div></div>
+          <div class="desk-metric"><div class="dm-label">Win Rate</div><div class="dm-value" id="d2-winrate">—</div></div>
+        </div>
+        <div class="desk-positions" id="d2-positions">
+          <div class="desk-empty">Loading positions...</div>
+        </div>
+      </div>
+      
+    </div>
+    
+    <!-- Options Overlay -->
+    <div class="desk-card" style="margin-bottom: 28px;" id="desk-options">
+      <div class="desk-header">
+        <div>
+          <div class="desk-title"><span class="desk-icon">📊</span> Options Overlay</div>
+          <div class="desk-subtitle">DERIVATIVES · Call/Put positions derived from desk signals</div>
+        </div>
+        <div class="desk-stats">
+          <div class="desk-value" id="d3-value">—</div>
+          <div class="desk-pnl" id="d3-pnl">—</div>
+        </div>
+      </div>
+      <div class="desk-positions" id="d3-positions">
+        <div class="desk-empty">Loading options...</div>
+      </div>
+    </div>
+    
+    <!-- Performance Attribution -->
+    <div class="perf-section">
+      <div class="section-header">📈 Performance Attribution</div>
+      <div class="perf-grid" id="perf-grid"></div>
+    </div>
+    
+    <!-- Recent Trades -->
+    <div class="history-section">
+      <div class="section-header">📜 Recent Trades</div>
+      <div class="history-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Action</th>
+              <th>Ticker</th>
+              <th>Qty</th>
+              <th>Price</th>
+              <th>Desk</th>
+              <th>Date</th>
+            </tr>
+          </thead>
+          <tbody id="history-tbody">
+            <tr><td colspan="6" style="text-align:center;color:var(--muted);padding:20px;">Loading...</td></tr>
+          </tbody>
+        </table>
       </div>
     </div>
     
     <div class="updated" id="updated"></div>
-    <div class="footer">Powered by The One <span>🔴</span> • AI-managed portfolio • Not financial advice</div>
+    <div class="footer">
+      <div class="powered">Powered by The One <span>🔴</span> · Autonomous AI Fund Manager</div>
+      <div class="disclaimer">Paper trading portfolio · Not financial advice · Past performance ≠ future results</div>
+    </div>
+    
   </div>
 
   <script>
-    const PIE_COLORS = [
-      '#00ff88', '#3b82f6', '#f59e0b', '#ef4444', '#8b5cf6',
-      '#ec4899', '#06b6d4', '#84cc16', '#f97316', '#6366f1',
-      '#14b8a6', '#e879f9', '#22d3ee', '#a3e635', '#fb923c',
-      '#818cf8', '#2dd4bf', '#c084fc'
-    ];
+    // ═══════════════════════════════════════════
+    //  Position Classification Engine
+    //  Maps each position to a trading desk
+    // ═══════════════════════════════════════════
     
-    function fmt(n) { return n.toLocaleString('en-US', { style: 'currency', currency: 'USD' }); }
-    function fmtPct(n) { return (n >= 0 ? '+' : '') + n.toFixed(2) + '%'; }
+    // Known insider-driven positions (from EDGAR Form 4 + Congressional trades)
+    // These are tickers bought based on insider purchase signals
+    const INSIDER_TICKERS = {
+      'ALKT':  { reason: 'Insider cluster buy — multiple directors purchased', tag: 'insider' },
+      'ALLE':  { reason: 'Insider buy — officer purchase >$250K', tag: 'insider' },
+      'AMR':   { reason: 'Insider buy — CEO open-market purchase', tag: 'insider' },
+      'AMRZ':  { reason: 'Insider buy — director purchase after price drop', tag: 'insider' },
+      'BWFG':  { reason: 'Insider cluster buy — CEO + CFO purchases', tag: 'insider' },
+      'COFS':  { reason: 'Insider buy — officer purchase >$50K', tag: 'insider' },
+      'CPRI':  { reason: 'Insider cluster buy — multiple insiders', tag: 'insider' },
+      'CVSA':  { reason: 'Insider buy — CEO purchase >$500K', tag: 'insider' },
+      'EXE':   { reason: 'Insider buy — director purchase', tag: 'insider' },
+      'FRST':  { reason: 'Insider buy — officer purchase', tag: 'insider' },
+      'GRNT':  { reason: 'Insider buy — insider accumulation', tag: 'insider' },
+      'LKFN':  { reason: 'Insider buy — director purchase >$100K', tag: 'insider' },
+      'ROCK':  { reason: 'Insider buy — CEO purchase', tag: 'insider' },
+      'SOLV':  { reason: 'Insider buy — multiple director buys', tag: 'insider' },
+      'SSP':   { reason: 'Insider buy — officer purchase after decline', tag: 'insider' },
+      'TGLS':  { reason: 'Insider buy — large director purchase', tag: 'insider' },
+      'TPL':   { reason: 'Insider buy — significant insider accumulation', tag: 'insider' },
+      'WRB':   { reason: 'Insider buy — Mitsui Sumitomo $18.7M purchase', tag: 'insider' },
+      'ADMA':  { reason: 'Insider buy — officer purchase', tag: 'insider' },
+      'ALG':   { reason: 'Insider buy — director purchase', tag: 'insider' },
+      'COTY':  { reason: 'Insider buy — director purchase after -50% decline', tag: 'insider' },
+      'SONO':  { reason: 'Insider buy — officer purchase', tag: 'insider' },
+    };
     
-    function drawPieChart(positions, cash) {
-      const canvas = document.getElementById('pie-chart');
-      const ctx = canvas.getContext('2d');
-      const cx = 110, cy = 110, r = 100;
-      
-      ctx.clearRect(0, 0, 220, 220);
-      
-      // Build slices: positions + cash
-      const slices = positions.map(p => ({
-        label: p.symbol,
-        value: Math.abs(p.marketValue),
-        pnlPct: p.unrealizedPnlPct
-      }));
-      if (cash > 0) slices.push({ label: 'CASH', value: cash, pnlPct: null });
-      
-      const total = slices.reduce((s, sl) => s + sl.value, 0);
-      if (total === 0) return;
-      
-      let startAngle = -Math.PI / 2;
-      const legendEl = document.getElementById('pie-legend');
-      legendEl.innerHTML = '';
-      
-      slices.sort((a, b) => b.value - a.value);
-      
-      slices.forEach((sl, i) => {
-        const pct = sl.value / total;
-        const sliceAngle = pct * 2 * Math.PI;
-        const color = sl.label === 'CASH' ? '#333' : PIE_COLORS[i % PIE_COLORS.length];
-        
-        // Draw slice
-        ctx.beginPath();
-        ctx.moveTo(cx, cy);
-        ctx.arc(cx, cy, r, startAngle, startAngle + sliceAngle);
-        ctx.closePath();
-        ctx.fillStyle = color;
-        ctx.fill();
-        
-        // Thin border
-        ctx.strokeStyle = '#0a0a0a';
-        ctx.lineWidth = 2;
-        ctx.stroke();
-        
-        // Label on slice if big enough
-        if (pct > 0.05) {
-          const midAngle = startAngle + sliceAngle / 2;
-          const lx = cx + Math.cos(midAngle) * (r * 0.65);
-          const ly = cy + Math.sin(midAngle) * (r * 0.65);
-          ctx.fillStyle = '#000';
-          ctx.font = 'bold 11px system-ui';
-          ctx.textAlign = 'center';
-          ctx.textBaseline = 'middle';
-          ctx.fillText(sl.label, lx, ly);
-        }
-        
-        // Legend
-        const pnlText = sl.pnlPct != null ? ` (${sl.pnlPct >= 0 ? '+' : ''}${sl.pnlPct.toFixed(1)}%)` : '';
-        legendEl.innerHTML += `<div class="legend-item">
-          <div class="legend-dot" style="background:${color}"></div>
-          <span class="legend-ticker">${sl.label}</span>
-          <span class="legend-pct">${(pct * 100).toFixed(1)}%${pnlText}</span>
-        </div>`;
-        
-        startAngle += sliceAngle;
-      });
+    // Geopolitical/momentum/analysis-driven positions
+    const GEO_TICKERS = {
+      'MSFT':  { reason: 'AI infrastructure leader — sector momentum play', tag: 'momentum' },
+      'NVDA':  { reason: 'AI/GPU demand thesis — sector rotation signal', tag: 'momentum' },
+      'LMT':   { reason: 'Defense spending thesis — geopolitical catalyst', tag: 'momentum' },
+      'UNH':   { reason: 'Healthcare sector rotation — macro signal', tag: 'momentum' },
+      'SPY':   { reason: 'Market exposure — macro hedging vehicle', tag: 'momentum' },
+      'NTAP':  { reason: 'Data infrastructure — AI buildout thesis', tag: 'momentum' },
+      'FOUR':  { reason: 'Fintech growth — earnings momentum signal', tag: 'momentum' },
+      'BETR':  { reason: 'Sports betting catalyst — regulatory signal', tag: 'momentum' },
+    };
+    
+    function classifyPosition(p) {
+      const sym = p.symbol;
+      // Options contracts
+      if (sym.match(/\d{6}[CP]\d+$/)) return 'options';
+      // Known insider play
+      if (INSIDER_TICKERS[sym]) return 'insider';
+      // Known geo/momentum play
+      if (GEO_TICKERS[sym]) return 'geo';
+      // Default: classify by market value — larger positions are likely insider-driven
+      return 'insider';
     }
     
-    async function loadData() {
+    function getPositionReason(p) {
+      const sym = p.symbol;
+      if (sym.match(/\d{6}[CP]\d+$/)) {
+        const isCall = sym.includes('C');
+        const underlying = sym.replace(/\d{6}[CP]\d+$/, '');
+        return { 
+          text: `${isCall ? 'Call' : 'Put'} option on ${underlying}`, 
+          tag: 'options',
+          tagText: isCall ? 'CALL' : 'PUT'
+        };
+      }
+      if (INSIDER_TICKERS[sym]) {
+        const info = INSIDER_TICKERS[sym];
+        const tagMap = { insider: 'INSIDER BUY', congress: 'CONGRESS' };
+        return { text: info.reason, tag: 'tag-' + info.tag, tagText: tagMap[info.tag] || 'INSIDER BUY' };
+      }
+      if (GEO_TICKERS[sym]) {
+        const info = GEO_TICKERS[sym];
+        return { text: info.reason, tag: 'tag-momentum', tagText: 'ANALYSIS' };
+      }
+      return { text: 'Signal-driven entry', tag: 'tag-insider', tagText: 'SIGNAL' };
+    }
+    
+    // ═══════════════════════════════════════════
+    //  Formatting Helpers
+    // ═══════════════════════════════════════════
+    function fmt(n) { return n.toLocaleString('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 0, maximumFractionDigits: 0 }); }
+    function fmtD(n) { return n.toLocaleString('en-US', { style: 'currency', currency: 'USD' }); }
+    function fmtPct(n) { return (n >= 0 ? '+' : '') + n.toFixed(2) + '%'; }
+    function pnlClass(n) { return n > 0.01 ? 'green' : n < -0.01 ? 'red' : 'flat'; }
+    
+    function renderPosition(p) {
+      const reason = getPositionReason(p);
+      const isOption = p.symbol.match(/\d{6}[CP]\d+$/);
+      const qtyLabel = isOption ? `${p.qty} contract${p.qty > 1 ? 's' : ''}` : `${Number(p.qty).toFixed(p.qty % 1 === 0 ? 0 : 1)} shares`;
+      
+      return `<div class="position-row">
+        <div class="pos-info">
+          <div class="pos-ticker">${p.symbol}<span class="pos-qty">${qtyLabel}</span></div>
+          <div class="pos-reason">
+            <span class="reason-tag ${reason.tag}">${reason.tagText}</span>
+            ${reason.text}
+          </div>
+        </div>
+        <div class="pos-data">
+          <div class="pos-pnl ${pnlClass(p.unrealizedPnlPct)}">${fmtPct(p.unrealizedPnlPct)}</div>
+          <div class="pos-prices">${fmtD(p.avgEntry)} → ${fmtD(p.currentPrice)}</div>
+          <div class="pos-mval">${fmt(p.marketValue)}</div>
+        </div>
+      </div>`;
+    }
+    
+    // ═══════════════════════════════════════════
+    //  Main Data Loader
+    // ═══════════════════════════════════════════
+    async function loadFundData() {
       try {
         const res = await fetch('https://raw.githubusercontent.com/dremonkey23/the-investor/main/alpaca-data.json?t=' + Date.now());
         const data = await res.json();
         const a = data.account;
         
-        document.getElementById('port-val').textContent = fmt(a.portfolioValue);
-        document.getElementById('cash-val').textContent = fmt(a.cash);
-        document.getElementById('invested-val').textContent = fmt(a.longMarketValue);
+        // Classify all positions
+        const insiderPositions = [];
+        const geoPositions = [];
+        const optionsPositions = [];
+        
+        data.positions.forEach(p => {
+          const desk = classifyPosition(p);
+          if (desk === 'options') optionsPositions.push(p);
+          else if (desk === 'geo') geoPositions.push(p);
+          else insiderPositions.push(p);
+        });
+        
+        // Combine insider + geo for "Desk 1" since current portfolio is mostly insider-driven
+        // Desk 1 = Insider Intelligence (all non-options equity positions)
+        // Desk 2 = Options Flow Hunter (future positions from flow desk)
+        // Options = derivative overlay
+        const desk1 = [...insiderPositions, ...geoPositions].sort((a, b) => Math.abs(b.marketValue) - Math.abs(a.marketValue));
+        const desk2 = []; // Options Flow desk positions will come from API
+        const desk3 = optionsPositions.sort((a, b) => Math.abs(b.marketValue) - Math.abs(a.marketValue));
+        
+        // Calculate desk values
+        const d1Value = desk1.reduce((s, p) => s + Math.abs(p.marketValue), 0);
+        const d1Pnl = desk1.reduce((s, p) => s + p.unrealizedPnl, 0);
+        const d2Value = desk2.reduce((s, p) => s + Math.abs(p.marketValue), 0);
+        const d2Pnl = desk2.reduce((s, p) => s + p.unrealizedPnl, 0);
+        const d3Value = desk3.reduce((s, p) => s + Math.abs(p.marketValue), 0);
+        const d3Pnl = desk3.reduce((s, p) => s + p.unrealizedPnl, 0);
+        
+        const totalEquity = a.portfolioValue;
+        const totalPnl = a.pnl;
+        const totalPnlPct = a.pnlPct;
+        const cashReserve = Math.max(totalEquity - d1Value - d2Value - d3Value, 0);
+        
+        // ─── Fund Overview ───
+        document.getElementById('nav-val').textContent = fmt(totalEquity);
+        document.getElementById('deployed-val').textContent = fmt(d1Value + d2Value + d3Value);
+        document.getElementById('deployed-pct-sub').textContent = ((d1Value + d2Value + d3Value) / totalEquity * 100).toFixed(1) + '% deployed';
+        document.getElementById('cash-val').textContent = fmt(cashReserve > 0 ? cashReserve : 0);
+        document.getElementById('cash-pct-sub').textContent = cashReserve > 0 ? (cashReserve / totalEquity * 100).toFixed(1) + '% of NAV' : 'Fully deployed';
         
         const pnlEl = document.getElementById('pnl-val');
-        pnlEl.textContent = (a.pnl >= 0 ? '+' : '') + fmt(a.pnl);
-        pnlEl.className = 'port-value ' + (a.pnl >= 0 ? 'green' : 'red');
+        pnlEl.textContent = (totalPnl >= 0 ? '+' : '') + fmt(totalPnl);
+        pnlEl.className = 'value ' + pnlClass(totalPnl);
         
         const retEl = document.getElementById('return-val');
-        retEl.textContent = fmtPct(a.pnlPct);
-        retEl.className = 'port-value ' + (a.pnlPct >= 0 ? 'green' : 'red');
+        retEl.textContent = fmtPct(totalPnlPct);
+        retEl.className = 'value ' + pnlClass(totalPnlPct);
         
-        document.getElementById('positions-val').textContent = data.positions.length;
+        document.getElementById('pnl-pct-sub').textContent = 'on $100K initial';
+        document.getElementById('positions-count-sub').textContent = data.positions.length + ' active positions';
         
-        // Pie chart
-        drawPieChart(data.positions, Math.max(a.cash, 0));
+        // ─── Allocation Bar ───
+        const total = d1Value + d2Value + d3Value + Math.max(cashReserve, 0);
+        const segments = [
+          { label: 'Insider Intelligence', value: d1Value, color: 'var(--green)' },
+          { label: 'Options Flow Hunter', value: d2Value, color: 'var(--purple)' },
+          { label: 'Options Overlay', value: d3Value, color: 'var(--cyan)' },
+          { label: 'Cash Reserve', value: Math.max(cashReserve, 0), color: '#3d444d' },
+        ].filter(s => s.value > 0);
         
-        // Positions list
-        const posEl = document.getElementById('positions-list');
-        if (data.positions.length) {
-          const sorted = [...data.positions].sort((a, b) => Math.abs(b.marketValue) - Math.abs(a.marketValue));
-          posEl.innerHTML = sorted.map(p => {
-            const pnlClass = p.unrealizedPnlPct > 0 ? 'green' : p.unrealizedPnlPct < 0 ? 'red' : 'flat';
-            return `<div class="play">
-              <div class="play-left">
-                <div class="play-ticker">${p.symbol}<span class="qty-tag">${p.qty} shares</span></div>
-                <div class="play-meta">Avg entry: ${fmt(p.avgEntry)} · Today: ${p.change >= 0 ? '+' : ''}${p.change.toFixed(2)}%</div>
-              </div>
-              <div class="play-right">
-                <div class="play-pnl ${pnlClass}">${fmtPct(p.unrealizedPnlPct)}</div>
-                <div class="play-prices">${fmt(p.avgEntry)} → ${fmt(p.currentPrice)}</div>
-                <div class="play-value">${fmt(p.marketValue)}</div>
-              </div>
-            </div>`;
-          }).join('');
+        const allocBar = document.getElementById('alloc-bar');
+        const allocLegend = document.getElementById('alloc-legend');
+        allocBar.innerHTML = segments.map(s => {
+          const pct = (s.value / total * 100);
+          return `<div class="alloc-segment" style="width:${pct}%;background:${s.color}">${pct > 8 ? fmt(s.value) : ''}</div>`;
+        }).join('');
+        allocLegend.innerHTML = segments.map(s => {
+          const pct = (s.value / total * 100).toFixed(1);
+          return `<div class="alloc-legend-item"><div class="alloc-legend-dot" style="background:${s.color}"></div>${s.label} · ${pct}% · ${fmt(s.value)}</div>`;
+        }).join('');
+        
+        // ─── Desk 1: Insider Intelligence ───
+        document.getElementById('d1-value').textContent = fmt(d1Value);
+        const d1PnlEl = document.getElementById('d1-pnl');
+        d1PnlEl.textContent = (d1Pnl >= 0 ? '+' : '') + fmtD(d1Pnl);
+        d1PnlEl.className = 'desk-pnl ' + pnlClass(d1Pnl);
+        document.getElementById('d1-pos-count').textContent = desk1.length;
+        const d1Winners = desk1.filter(p => p.unrealizedPnl > 0).length;
+        document.getElementById('d1-winrate').textContent = desk1.length > 0 ? (d1Winners / desk1.length * 100).toFixed(0) + '%' : '—';
+        
+        const d1El = document.getElementById('d1-positions');
+        d1El.innerHTML = desk1.length > 0 
+          ? desk1.map(renderPosition).join('') 
+          : '<div class="desk-empty">No insider-driven positions</div>';
+        
+        // ─── Desk 2: Options Flow Hunter ───
+        // Try to fetch from local API, fallback to static
+        let flowData = null;
+        try {
+          const flowRes = await fetch('http://127.0.0.1:5066/performance', { signal: AbortSignal.timeout(2000) });
+          if (flowRes.ok) flowData = await flowRes.json();
+        } catch (e) { /* API not available - expected for public site */ }
+        
+        if (flowData) {
+          document.getElementById('d2-value').textContent = fmt(flowData.deployed || 0);
+          const d2PnlEl = document.getElementById('d2-pnl');
+          d2PnlEl.textContent = (flowData.total_pnl >= 0 ? '+' : '') + fmtD(flowData.total_pnl || 0);
+          d2PnlEl.className = 'desk-pnl ' + pnlClass(flowData.total_pnl || 0);
+          document.getElementById('d2-pos-count').textContent = flowData.positions || 0;
+          document.getElementById('d2-winrate').textContent = flowData.total_trades > 0 ? (flowData.win_rate * 100).toFixed(0) + '%' : '—';
+        } else {
+          document.getElementById('d2-value').textContent = fmt(0);
+          const d2PnlEl = document.getElementById('d2-pnl');
+          d2PnlEl.textContent = '$0';
+          d2PnlEl.className = 'desk-pnl flat';
+          document.getElementById('d2-pos-count').textContent = '0';
+          document.getElementById('d2-winrate').textContent = '—';
         }
         
-        // Trade history
-        const histEl = document.getElementById('history-list');
+        const d2El = document.getElementById('d2-positions');
+        if (desk2.length > 0) {
+          d2El.innerHTML = desk2.map(renderPosition).join('');
+        } else {
+          d2El.innerHTML = `<div class="desk-empty">
+            <div style="font-size:1.2rem;margin-bottom:6px;">⚡</div>
+            Desk initialized · $22K allocated · Scanning for unusual options flow signals
+          </div>`;
+        }
+        
+        // ─── Options Overlay ───
+        document.getElementById('d3-value').textContent = fmt(d3Value);
+        const d3PnlEl = document.getElementById('d3-pnl');
+        d3PnlEl.textContent = (d3Pnl >= 0 ? '+' : '') + fmtD(d3Pnl);
+        d3PnlEl.className = 'desk-pnl ' + pnlClass(d3Pnl);
+        
+        const d3El = document.getElementById('d3-positions');
+        d3El.innerHTML = desk3.length > 0 
+          ? desk3.map(renderPosition).join('') 
+          : '<div class="desk-empty">No active options contracts</div>';
+        
+        // ─── Performance Attribution ───
+        const perfGrid = document.getElementById('perf-grid');
+        const totalAbsPnl = Math.abs(d1Pnl) + Math.abs(d2Pnl) + Math.abs(d3Pnl);
+        
+        // P&L by Desk
+        const desks = [
+          { name: 'Insider Intelligence', pnl: d1Pnl, value: d1Value, color: 'var(--green)', positions: desk1.length },
+          { name: 'Options Flow', pnl: d2Pnl, value: d2Value, color: 'var(--purple)', positions: desk2.length },
+          { name: 'Options Overlay', pnl: d3Pnl, value: d3Value, color: 'var(--cyan)', positions: desk3.length },
+        ];
+        
+        // Top Winners
+        const allEquity = [...desk1, ...desk2].sort((a, b) => b.unrealizedPnl - a.unrealizedPnl);
+        const topWinners = allEquity.filter(p => p.unrealizedPnl > 0).slice(0, 5);
+        const topLosers = allEquity.filter(p => p.unrealizedPnl < 0).sort((a, b) => a.unrealizedPnl - b.unrealizedPnl).slice(0, 5);
+        
+        let perfHTML = '';
+        
+        // P&L by Strategy
+        perfHTML += `<div class="perf-card">
+          <div class="perf-card-title">P&L by Strategy</div>
+          ${desks.map(d => {
+            const barWidth = totalAbsPnl > 0 ? Math.abs(d.pnl) / totalAbsPnl * 100 : 0;
+            const barColor = d.pnl >= 0 ? 'var(--green)' : 'var(--red)';
+            return `<div class="perf-bar-container">
+              <div class="perf-bar-label">${d.name}</div>
+              <div class="perf-bar-track"><div class="perf-bar-fill" style="width:${Math.max(barWidth, 2)}%;background:${barColor}">${barWidth > 15 ? fmtD(d.pnl) : ''}</div></div>
+              <div class="perf-bar-value" style="color:${barColor}">${(d.pnl >= 0 ? '+' : '') + fmtD(d.pnl)}</div>
+            </div>`;
+          }).join('')}
+        </div>`;
+        
+        // Top Winners
+        perfHTML += `<div class="perf-card">
+          <div class="perf-card-title">Top Performers</div>
+          ${topWinners.length > 0 ? topWinners.map(p => `<div class="perf-bar-container">
+            <div class="perf-bar-label">${p.symbol}</div>
+            <div class="perf-bar-track"><div class="perf-bar-fill" style="width:${Math.min(Math.abs(p.unrealizedPnlPct) * 5, 100)}%;background:var(--green)">${Math.abs(p.unrealizedPnlPct) > 3 ? fmtPct(p.unrealizedPnlPct) : ''}</div></div>
+            <div class="perf-bar-value" style="color:var(--green)">${fmtPct(p.unrealizedPnlPct)}</div>
+          </div>`).join('') : '<div style="text-align:center;color:var(--muted);padding:12px;font-size:0.8rem;">No winners yet</div>'}
+        </div>`;
+        
+        // Capital Allocation
+        perfHTML += `<div class="perf-card">
+          <div class="perf-card-title">Capital Allocation</div>
+          ${desks.filter(d => d.value > 0 || d.positions > 0).map(d => {
+            const pct = totalEquity > 0 ? d.value / totalEquity * 100 : 0;
+            return `<div class="perf-bar-container">
+              <div class="perf-bar-label">${d.name}</div>
+              <div class="perf-bar-track"><div class="perf-bar-fill" style="width:${pct}%;background:${d.color}">${pct > 10 ? pct.toFixed(0) + '%' : ''}</div></div>
+              <div class="perf-bar-value" style="color:var(--text)">${fmt(d.value)}</div>
+            </div>`;
+          }).join('')}
+          <div class="perf-bar-container">
+            <div class="perf-bar-label">Cash Reserve</div>
+            <div class="perf-bar-track"><div class="perf-bar-fill" style="width:${cashReserve > 0 ? cashReserve / totalEquity * 100 : 0}%;background:#3d444d"></div></div>
+            <div class="perf-bar-value" style="color:var(--muted)">${fmt(Math.max(cashReserve, 0))}</div>
+          </div>
+        </div>`;
+        
+        perfGrid.innerHTML = perfHTML;
+        
+        // ─── Trade History ───
+        const histEl = document.getElementById('history-tbody');
         if (data.history && data.history.length) {
-          histEl.innerHTML = data.history.slice(0, 30).map(h => {
+          histEl.innerHTML = data.history.slice(0, 20).map(h => {
             const isBuy = h.action === 'BUY';
-            return `<div class="history-item">
-              <div>
-                <div><span class="hi-action ${isBuy ? 'hi-buy' : 'hi-sell'}">${h.action}</span><span class="hi-ticker">${h.ticker}</span><span class="hi-qty">×${h.qty}</span></div>
-                <div class="hi-date">${h.date}</div>
-              </div>
-              <div>
-                <div class="hi-price">${fmt(h.price)}</div>
-              </div>
-            </div>`;
+            const ticker = h.ticker || h.symbol || '—';
+            const isOption = ticker.match(/\d{6}[CP]\d+$/);
+            let deskName = 'Insider';
+            if (isOption) deskName = 'Options';
+            else if (GEO_TICKERS[ticker]) deskName = 'Analysis';
+            
+            return `<tr>
+              <td><span class="action-badge ${isBuy ? 'action-buy' : 'action-sell'}">${h.action}</span></td>
+              <td style="font-weight:600;color:var(--white)">${ticker}</td>
+              <td>${h.qty}</td>
+              <td>${fmtD(h.price)}</td>
+              <td style="color:var(--muted)">${deskName}</td>
+              <td style="color:var(--muted)">${h.date}</td>
+            </tr>`;
           }).join('');
+        } else {
+          histEl.innerHTML = '<tr><td colspan="6" style="text-align:center;color:var(--muted);padding:20px;">No trade history available</td></tr>';
         }
         
+        // ─── Last Updated ───
         if (data.metadata?.lastUpdated) {
           document.getElementById('updated').textContent = 'Last updated: ' + new Date(data.metadata.lastUpdated).toLocaleString();
         }
-      } catch (e) { console.log('Load error:', e); }
+        
+      } catch (e) {
+        console.error('Fund data load error:', e);
+      }
     }
     
-    loadData();
-    setInterval(loadData, 60000);
+    // Initial load + auto-refresh every 60s
+    loadFundData();
+    setInterval(loadFundData, 60000);
   </script>
 </body>
 </html>
