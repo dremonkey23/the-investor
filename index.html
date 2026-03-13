@@ -297,22 +297,7 @@
       
     </div>
     
-    <!-- Options Overlay -->
-    <div class="desk-card" style="margin-bottom: 28px;" id="desk-options">
-      <div class="desk-header">
-        <div>
-          <div class="desk-title"><span class="desk-icon">📊</span> Options Overlay</div>
-          <div class="desk-subtitle">DERIVATIVES · Call/Put positions derived from desk signals</div>
-        </div>
-        <div class="desk-stats">
-          <div class="desk-value" id="d3-value">—</div>
-          <div class="desk-pnl" id="d3-pnl">—</div>
-        </div>
-      </div>
-      <div class="desk-positions" id="d3-positions">
-        <div class="desk-empty">Loading options...</div>
-      </div>
-    </div>
+
     
     <!-- Performance Attribution -->
     <div class="perf-section">
@@ -505,13 +490,11 @@
         const d1Pnl = desk1Positions.reduce((s, p) => s + p.unrealizedPnl, 0);
         const d2Value = desk2Positions.reduce((s, p) => s + Math.abs(p.marketValue), 0);
         const d2Pnl = desk2Positions.reduce((s, p) => s + p.unrealizedPnl, 0);
-        const d3Value = optionsPositions.reduce((s, p) => s + Math.abs(p.marketValue), 0);
-        const d3Pnl = optionsPositions.reduce((s, p) => s + p.unrealizedPnl, 0);
         
         const totalEquity = a.portfolioValue;
         const totalPnl = a.pnl;
         const totalPnlPct = a.pnlPct;
-        const cashReserve = Math.max(totalEquity - d1Value - d2Value - d3Value, 0);
+        const cashReserve = Math.max(totalEquity - d1Value - d2Value, 0);
         
         // Desk allocation targets (from fund structure)
         const d1Allocation = 37479; // Insider Intelligence target allocation
@@ -519,8 +502,8 @@
         
         // ─── Fund Overview ───
         document.getElementById('nav-val').textContent = fmt(totalEquity);
-        document.getElementById('deployed-val').textContent = fmt(d1Value + d2Value + d3Value);
-        document.getElementById('deployed-pct-sub').textContent = ((d1Value + d2Value + d3Value) / totalEquity * 100).toFixed(1) + '% deployed';
+        document.getElementById('deployed-val').textContent = fmt(d1Value + d2Value);
+        document.getElementById('deployed-pct-sub').textContent = ((d1Value + d2Value) / totalEquity * 100).toFixed(1) + '% deployed';
         document.getElementById('cash-val').textContent = fmt(cashReserve > 0 ? cashReserve : 0);
         document.getElementById('cash-pct-sub').textContent = cashReserve > 0 ? (cashReserve / totalEquity * 100).toFixed(1) + '% of NAV' : 'Fully deployed';
         
@@ -536,11 +519,10 @@
         document.getElementById('positions-count-sub').textContent = data.positions.length + ' active positions';
         
         // ─── Allocation Bar ───
-        const total = d1Value + d2Value + d3Value + Math.max(cashReserve, 0);
+        const total = d1Value + d2Value + Math.max(cashReserve, 0);
         const segments = [
           { label: 'Insider Intelligence', value: d1Value, color: 'var(--green)' },
           { label: 'Options Flow Hunter', value: d2Value, color: 'var(--purple)' },
-          { label: 'Options Overlay', value: d3Value, color: 'var(--cyan)' },
           { label: 'Cash Reserve', value: Math.max(cashReserve, 0), color: '#3d444d' },
         ].filter(s => s.value > 0);
         
@@ -596,21 +578,7 @@
           </div>`;
         }
         
-        // ─── Options Overlay (separate active vs expired) ───
-        const activeOptions = optionsPositions.filter(p => p.unrealizedPnlPct > -90 && p.marketValue > 0);
-        const expiredOptions = optionsPositions.filter(p => p.unrealizedPnlPct <= -90 || p.marketValue === 0);
-        
-        // Focus metrics on active positions only
-        const activeValue = activeOptions.reduce((s, p) => s + Math.abs(p.marketValue), 0);
-        const activePnl = activeOptions.reduce((s, p) => s + p.unrealizedPnl, 0);
-        
-        document.getElementById('d3-value').textContent = fmt(activeValue);
-        const d3PnlEl = document.getElementById('d3-pnl');
-        d3PnlEl.textContent = (activePnl >= 0 ? '+' : '') + fmtD(activePnl);
-        d3PnlEl.className = 'desk-pnl ' + pnlClass(activePnl);
-        
-        const d3El = document.getElementById('d3-positions');
-        d3El.innerHTML = renderOptionsSection(activeOptions, expiredOptions);
+
         
         // ─── Performance Attribution ───
         const perfGrid = document.getElementById('perf-grid');
