@@ -264,7 +264,7 @@
           </div>
         </div>
         <div class="desk-metrics" id="d1-metrics">
-          <div class="desk-metric"><div class="dm-label">Allocation</div><div class="dm-value" id="d1-alloc">$44K</div></div>
+          <div class="desk-metric"><div class="dm-label">Allocation</div><div class="dm-value" id="d1-alloc">$37K</div></div>
           <div class="desk-metric"><div class="dm-label">Positions</div><div class="dm-value" id="d1-pos-count">—</div></div>
           <div class="desk-metric"><div class="dm-label">Win Rate</div><div class="dm-value" id="d1-winrate">—</div></div>
         </div>
@@ -352,96 +352,35 @@
 
   <script>
     // ═══════════════════════════════════════════
-    //  Position Classification Engine
-    //  Maps each position to a trading desk
+    //  Data Loading & Fund Integration
     // ═══════════════════════════════════════════
     
-    // Known insider-driven positions (from EDGAR Form 4 + Congressional trades)
-    // These are tickers bought based on insider purchase signals
-    const INSIDER_TICKERS = {
-      'ALKT':  { reason: 'Insider cluster buy — multiple directors purchased', tag: 'insider' },
-      'ALLE':  { reason: 'Insider buy — officer purchase >$250K', tag: 'insider' },
-      'AMR':   { reason: 'Insider buy — CEO open-market purchase', tag: 'insider' },
-      'AMRZ':  { reason: 'Insider buy — director purchase after price drop', tag: 'insider' },
-      'BWFG':  { reason: 'Insider cluster buy — CEO + CFO purchases', tag: 'insider' },
-      'COFS':  { reason: 'Insider buy — officer purchase >$50K', tag: 'insider' },
-      'CPRI':  { reason: 'Insider cluster buy — multiple insiders', tag: 'insider' },
-      'CVSA':  { reason: 'Insider buy — CEO purchase >$500K', tag: 'insider' },
-      'EXE':   { reason: 'Insider buy — director purchase', tag: 'insider' },
-      'FRST':  { reason: 'Insider buy — officer purchase', tag: 'insider' },
-      'GRNT':  { reason: 'Insider buy — insider accumulation', tag: 'insider' },
-      'LKFN':  { reason: 'Insider buy — director purchase >$100K', tag: 'insider' },
-      'ROCK':  { reason: 'Insider buy — CEO purchase', tag: 'insider' },
-      'SOLV':  { reason: 'Insider buy — multiple director buys', tag: 'insider' },
-      'SSP':   { reason: 'Insider buy — officer purchase after decline', tag: 'insider' },
-      'TGLS':  { reason: 'Insider buy — large director purchase', tag: 'insider' },
-      'TPL':   { reason: 'Insider buy — significant insider accumulation', tag: 'insider' },
-      'WRB':   { reason: 'Insider buy — Mitsui Sumitomo $18.7M purchase', tag: 'insider' },
-      'ADMA':  { reason: 'Insider buy — officer purchase', tag: 'insider' },
-      'ALG':   { reason: 'Insider buy — director purchase', tag: 'insider' },
-      'COTY':  { reason: 'Insider buy — director purchase after -50% decline', tag: 'insider' },
-      'SONO':  { reason: 'Insider buy — officer purchase', tag: 'insider' },
-    };
-    
-    // Geopolitical/momentum/analysis-driven positions
-    const GEO_TICKERS = {
-      'MSFT':  { reason: 'AI infrastructure leader — sector momentum play', tag: 'momentum' },
-      'NVDA':  { reason: 'AI/GPU demand thesis — sector rotation signal', tag: 'momentum' },
-      'LMT':   { reason: 'Defense spending thesis — geopolitical catalyst', tag: 'momentum' },
-      'UNH':   { reason: 'Healthcare sector rotation — macro signal', tag: 'momentum' },
-      'SPY':   { reason: 'Market exposure — macro hedging vehicle', tag: 'momentum' },
-      'NTAP':  { reason: 'Data infrastructure — AI buildout thesis', tag: 'momentum' },
-      'FOUR':  { reason: 'Fintech growth — earnings momentum signal', tag: 'momentum' },
-      'BETR':  { reason: 'Sports betting catalyst — regulatory signal', tag: 'momentum' },
-    };
-    
-    function classifyPosition(p) {
-      const sym = p.symbol;
-      // Options contracts
-      if (sym.match(/\d{6}[CP]\d+$/)) return 'options';
-      // Known insider play
-      if (INSIDER_TICKERS[sym]) return 'insider';
-      // Known geo/momentum play
-      if (GEO_TICKERS[sym]) return 'geo';
-      // Default: classify by market value — larger positions are likely insider-driven
-      return 'insider';
-    }
-    
-    function getPositionReason(p) {
-      const sym = p.symbol;
-      if (sym.match(/\d{6}[CP]\d+$/)) {
-        const isCall = sym.includes('C');
-        const underlying = sym.replace(/\d{6}[CP]\d+$/, '');
-        return { 
-          text: `${isCall ? 'Call' : 'Put'} option on ${underlying}`, 
-          tag: 'options',
-          tagText: isCall ? 'CALL' : 'PUT'
-        };
-      }
-      if (INSIDER_TICKERS[sym]) {
-        const info = INSIDER_TICKERS[sym];
-        const tagMap = { insider: 'INSIDER BUY', congress: 'CONGRESS' };
-        return { text: info.reason, tag: 'tag-' + info.tag, tagText: tagMap[info.tag] || 'INSIDER BUY' };
-      }
-      if (GEO_TICKERS[sym]) {
-        const info = GEO_TICKERS[sym];
-        return { text: info.reason, tag: 'tag-momentum', tagText: 'ANALYSIS' };
-      }
-      return { text: 'Signal-driven entry', tag: 'tag-insider', tagText: 'SIGNAL' };
-    }
-    
-    // ═══════════════════════════════════════════
-    //  Formatting Helpers
-    // ═══════════════════════════════════════════
+    // Formatting Helpers
     function fmt(n) { return n.toLocaleString('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 0, maximumFractionDigits: 0 }); }
     function fmtD(n) { return n.toLocaleString('en-US', { style: 'currency', currency: 'USD' }); }
     function fmtPct(n) { return (n >= 0 ? '+' : '') + n.toFixed(2) + '%'; }
     function pnlClass(n) { return n > 0.01 ? 'green' : n < -0.01 ? 'red' : 'flat'; }
     
-    function renderPosition(p) {
-      const reason = getPositionReason(p);
+    // Position rendering with desk-aware attribution
+    function renderPosition(p, deskType = 'stock') {
       const isOption = p.symbol.match(/\d{6}[CP]\d+$/);
       const qtyLabel = isOption ? `${p.qty} contract${p.qty > 1 ? 's' : ''}` : `${Number(p.qty).toFixed(p.qty % 1 === 0 ? 0 : 1)} shares`;
+      
+      let reason = { text: 'Signal-driven entry', tag: 'tag-insider', tagText: 'SIGNAL' };
+      
+      if (isOption) {
+        const isCall = p.symbol.includes('C');
+        const underlying = p.symbol.replace(/\d{6}[CP]\d+$/, '');
+        reason = { 
+          text: `${isCall ? 'Call' : 'Put'} option on ${underlying}`, 
+          tag: 'tag-flow',
+          tagText: isCall ? 'CALL' : 'PUT'
+        };
+      } else if (deskType === 'flow') {
+        reason = { text: 'Options flow signal entry', tag: 'tag-flow', tagText: 'FLOW SIGNAL' };
+      } else {
+        reason = { text: 'Insider/technical signal entry', tag: 'tag-insider', tagText: 'INSIDER' };
+      }
       
       return `<div class="position-row">
         <div class="pos-info">
@@ -467,20 +406,20 @@
       
       let html = '';
       
-      // Active Options Section
+      // Active Options Section (Priority display)
       if (totalActive > 0) {
         html += `<div class="options-section">
           <div class="options-section-header active">
             <span>🟢 Active Positions</span>
-            <div class="section-stats">${totalActive} position${totalActive > 1 ? 's' : ''} · ${fmt(activeValue)} · ${fmtPct(activePnl / activeValue * 100)}</div>
+            <div class="section-stats">${totalActive} position${totalActive > 1 ? 's' : ''} · ${fmt(activeValue)} · ${activePnl !== 0 ? fmtPct(activePnl / activeValue * 100) : '0%'}</div>
           </div>
           <div class="options-section-content expanded">
-            ${activeOptions.map(p => `<div class="position-row active-position">${renderPosition(p).replace('<div class="position-row">', '').replace('</div>', '')}</div>`).join('')}
+            ${activeOptions.map(p => `<div class="position-row active-position">${renderPosition(p, 'options').replace('<div class="position-row">', '').replace('</div>', '')}</div>`).join('')}
           </div>
         </div>`;
       }
       
-      // Expired Options Section
+      // Expired Options Section (Collapsed by default)
       if (totalExpired > 0) {
         html += `<div class="options-section">
           <div class="options-section-header expired" onclick="toggleExpiredSection()">
@@ -489,68 +428,94 @@
             <div class="section-stats">${totalExpired} position${totalExpired > 1 ? 's' : ''} · All worthless (-100%)</div>
           </div>
           <div class="options-section-content collapsed" id="expired-options-content">
-            ${expiredOptions.map(p => `<div class="position-row expired-position">${renderPosition(p).replace('<div class="position-row">', '').replace('</div>', '')}</div>`).join('')}
+            ${expiredOptions.map(p => `<div class="position-row expired-position">${renderPosition(p, 'options').replace('<div class="position-row">', '').replace('</div>', '')}</div>`).join('')}
           </div>
         </div>`;
       }
       
-      return html || '<div class="desk-empty">No active options contracts</div>';
+      return html || '<div class="desk-empty">No options contracts</div>';
     }
     
     // ═══════════════════════════════════════════
-    //  Main Data Loader
+    //  Main Fund Data Loader
     // ═══════════════════════════════════════════
     async function loadFundData() {
       try {
+        // Load primary portfolio data
         const res = await fetch('https://raw.githubusercontent.com/dremonkey23/the-investor/main/alpaca-data.json?t=' + Date.now());
         const data = await res.json();
+        
+        // Load desk position attribution data
+        let deskData = null;
+        try {
+          const deskRes = await fetch('https://raw.githubusercontent.com/dremonkey23/the-investor/main/desk-positions.json?t=' + Date.now());
+          if (deskRes.ok) deskData = await deskRes.json();
+        } catch (e) { 
+          console.log('Desk positions data not available, using fallback classification'); 
+        }
+        
         const a = data.account;
         
-        // Classify all positions
-        const insiderPositions = [];
-        const geoPositions = [];
-        const optionsPositions = [];
-        const flowOptions = []; // Desk 2: Options Flow Hunter positions
-        
-        // Known Options Flow Hunter positions (Desk 2)
-        const FLOW_HUNTER_OPTIONS = ['TSLA260327P00390000', 'UNH260320C00280000', 'MSDL260320C00016000', 'TTD260320C00170000', 'UNH260320C00580000'];
+        // Position Classification with Desk Data Integration
+        let desk1Positions = []; // Insider Intelligence
+        let desk2Positions = []; // Options Flow Hunter  
+        let optionsPositions = []; // Other options
         
         data.positions.forEach(p => {
-          const desk = classifyPosition(p);
-          if (desk === 'options') {
-            // Check if this option is part of the Flow Hunter desk
-            if (FLOW_HUNTER_OPTIONS.includes(p.symbol)) {
-              flowOptions.push(p);
-            } else {
+          const isOption = p.symbol.match(/\d{6}[CP]\d+$/);
+          
+          // Use desk-positions.json data if available
+          if (deskData) {
+            const inDesk1 = deskData.desk_1?.find(d => d.symbol === p.symbol);
+            const inDesk2 = deskData.desk_2?.find(d => d.symbol === p.symbol);
+            
+            if (inDesk1) {
+              desk1Positions.push(p);
+            } else if (inDesk2) {
+              desk2Positions.push(p);
+            } else if (isOption) {
               optionsPositions.push(p);
+            } else {
+              // Fallback: stocks go to Desk 1
+              desk1Positions.push(p);
             }
-          } else if (desk === 'geo') {
-            geoPositions.push(p);
           } else {
-            insiderPositions.push(p);
+            // Fallback classification
+            if (isOption) {
+              // Known Options Flow Hunter options
+              const flowHunterOptions = ['TSLA260327P00390000', 'UNH260320C00280000', 'MSDL260320C00016000', 'TTD260320C00170000', 'UNH260320C00580000'];
+              if (flowHunterOptions.includes(p.symbol)) {
+                desk2Positions.push(p);
+              } else {
+                optionsPositions.push(p);
+              }
+            } else {
+              desk1Positions.push(p);
+            }
           }
         });
         
-        // Desk assignments
-        // Desk 1 = Insider Intelligence (all non-options equity positions)
-        // Desk 2 = Options Flow Hunter (specific options from flow signals)
-        // Desk 3 = Options Overlay (other options contracts)
-        const desk1 = [...insiderPositions, ...geoPositions].sort((a, b) => Math.abs(b.marketValue) - Math.abs(a.marketValue));
-        const desk2 = flowOptions.sort((a, b) => Math.abs(b.marketValue) - Math.abs(a.marketValue));
-        const desk3 = optionsPositions.sort((a, b) => Math.abs(b.marketValue) - Math.abs(a.marketValue));
+        // Sort by market value
+        desk1Positions.sort((a, b) => Math.abs(b.marketValue) - Math.abs(a.marketValue));
+        desk2Positions.sort((a, b) => Math.abs(b.marketValue) - Math.abs(a.marketValue));
+        optionsPositions.sort((a, b) => Math.abs(b.marketValue) - Math.abs(a.marketValue));
         
         // Calculate desk values
-        const d1Value = desk1.reduce((s, p) => s + Math.abs(p.marketValue), 0);
-        const d1Pnl = desk1.reduce((s, p) => s + p.unrealizedPnl, 0);
-        const d2Value = desk2.reduce((s, p) => s + Math.abs(p.marketValue), 0);
-        const d2Pnl = desk2.reduce((s, p) => s + p.unrealizedPnl, 0);
-        const d3Value = desk3.reduce((s, p) => s + Math.abs(p.marketValue), 0);
-        const d3Pnl = desk3.reduce((s, p) => s + p.unrealizedPnl, 0);
+        const d1Value = desk1Positions.reduce((s, p) => s + Math.abs(p.marketValue), 0);
+        const d1Pnl = desk1Positions.reduce((s, p) => s + p.unrealizedPnl, 0);
+        const d2Value = desk2Positions.reduce((s, p) => s + Math.abs(p.marketValue), 0);
+        const d2Pnl = desk2Positions.reduce((s, p) => s + p.unrealizedPnl, 0);
+        const d3Value = optionsPositions.reduce((s, p) => s + Math.abs(p.marketValue), 0);
+        const d3Pnl = optionsPositions.reduce((s, p) => s + p.unrealizedPnl, 0);
         
         const totalEquity = a.portfolioValue;
         const totalPnl = a.pnl;
         const totalPnlPct = a.pnlPct;
         const cashReserve = Math.max(totalEquity - d1Value - d2Value - d3Value, 0);
+        
+        // Desk allocation targets (from fund structure)
+        const d1Allocation = 37479; // Insider Intelligence target allocation
+        const d2Allocation = 37479; // Options Flow Hunter target allocation
         
         // ─── Fund Overview ───
         document.getElementById('nav-val').textContent = fmt(totalEquity);
@@ -591,74 +556,49 @@
         }).join('');
         
         // ─── Desk 1: Insider Intelligence ───
+        document.getElementById('d1-alloc').textContent = fmt(d1Allocation);
         document.getElementById('d1-value').textContent = fmt(d1Value);
         const d1PnlEl = document.getElementById('d1-pnl');
         d1PnlEl.textContent = (d1Pnl >= 0 ? '+' : '') + fmtD(d1Pnl);
         d1PnlEl.className = 'desk-pnl ' + pnlClass(d1Pnl);
-        document.getElementById('d1-pos-count').textContent = desk1.length;
-        const d1Winners = desk1.filter(p => p.unrealizedPnl > 0).length;
-        document.getElementById('d1-winrate').textContent = desk1.length > 0 ? (d1Winners / desk1.length * 100).toFixed(0) + '%' : '—';
+        document.getElementById('d1-pos-count').textContent = desk1Positions.length;
+        const d1Winners = desk1Positions.filter(p => p.unrealizedPnl > 0).length;
+        document.getElementById('d1-winrate').textContent = desk1Positions.length > 0 ? (d1Winners / desk1Positions.length * 100).toFixed(0) + '%' : '—';
         
         const d1El = document.getElementById('d1-positions');
-        d1El.innerHTML = desk1.length > 0 
-          ? desk1.map(renderPosition).join('') 
+        d1El.innerHTML = desk1Positions.length > 0 
+          ? desk1Positions.map(p => renderPosition(p, 'insider')).join('') 
           : '<div class="desk-empty">No insider-driven positions</div>';
         
         // ─── Desk 2: Options Flow Hunter ───
-        // Calculate values based on actual options positions from alpaca data
-        const d2AllocationTotal = 37479; // From desk-allocation data
-        const d2ActualPositions = data.optionsPositions || desk3; // Use options exposure data
-        const d2ActivePositions = d2ActualPositions.filter(p => p.marketValue > 0);
-        const d2CurrentValue = d2ActivePositions.reduce((s, p) => s + p.marketValue, 0);
-        const d2Pnl = d2ActualPositions.reduce((s, p) => s + (p.unrealizedPnl || 0), 0);
-        
-        // Update allocation display
-        document.getElementById('d2-alloc').textContent = fmt(d2AllocationTotal);
-        document.getElementById('d2-value').textContent = fmt(d2CurrentValue);
+        document.getElementById('d2-alloc').textContent = fmt(d2Allocation);
+        document.getElementById('d2-value').textContent = fmt(d2Value);
         
         const d2PnlEl = document.getElementById('d2-pnl');
         d2PnlEl.textContent = (d2Pnl >= 0 ? '+' : '') + fmtD(d2Pnl);
         d2PnlEl.className = 'desk-pnl ' + pnlClass(d2Pnl);
-        document.getElementById('d2-pos-count').textContent = d2ActivePositions.length;
+        document.getElementById('d2-pos-count').textContent = desk2Positions.length;
         
-        // Calculate win rate for options
-        const d2WinningPositions = d2ActualPositions.filter(p => (p.unrealizedPnl || 0) > 0).length;
-        document.getElementById('d2-winrate').textContent = d2ActualPositions.length > 0 ? 
-          (d2WinningPositions / d2ActualPositions.length * 100).toFixed(0) + '%' : '—';
+        // Calculate win rate for Options Flow Hunter
+        const d2Winners = desk2Positions.filter(p => p.unrealizedPnl > 0).length;
+        document.getElementById('d2-winrate').textContent = desk2Positions.length > 0 ? 
+          (d2Winners / desk2Positions.length * 100).toFixed(0) + '%' : '—';
         
         const d2El = document.getElementById('d2-positions');
-        if (d2ActivePositions.length > 0) {
-          // Show actual options positions
-          d2El.innerHTML = d2ActivePositions.map(p => {
-            // Convert options exposure format to position format for rendering
-            const position = {
-              symbol: p.symbol,
-              qty: p.qty,
-              avgEntry: 0, // Not available in exposure data
-              currentPrice: p.marketValue / (p.qty * 100) || 0, // Approximate
-              marketValue: p.marketValue,
-              unrealizedPnl: p.unrealizedPnl || 0,
-              unrealizedPnlPct: p.pctOfPortfolio || 0
-            };
-            return renderPosition(position);
-          }).join('');
+        if (desk2Positions.length > 0) {
+          // Show active Options Flow Hunter positions
+          d2El.innerHTML = desk2Positions.map(p => renderPosition(p, 'flow')).join('');
         } else {
-          // Updated status message with correct allocation
-          const tslaPuts = data.positions.find(p => p.symbol === 'TSLA260327P00390000');
-          const statusText = tslaPuts ? 
-            `5 active options positions • TSLA puts ${tslaPuts.unrealizedPnlPct >= 0 ? '+' : ''}${tslaPuts.unrealizedPnlPct.toFixed(1)}% • Deploying flow signals` :
-            `$37,479 allocated • 5 options contracts • Deploying flow signals`;
-            
+          // Show allocation and status when no positions
           d2El.innerHTML = `<div class="desk-empty">
             <div style="font-size:1.2rem;margin-bottom:6px;">⚡</div>
-            ${statusText}
+            $${d2Allocation.toLocaleString()} allocated • Scanning for flow signals • Ready to deploy
           </div>`;
         }
         
-        // ─── Options Overlay ───
-        // Separate active vs expired options
-        const activeOptions = desk3.filter(p => p.unrealizedPnlPct > -90); // Not completely worthless
-        const expiredOptions = desk3.filter(p => p.unrealizedPnlPct <= -90); // Essentially worthless
+        // ─── Options Overlay (separate active vs expired) ───
+        const activeOptions = optionsPositions.filter(p => p.unrealizedPnlPct > -90 && p.marketValue > 0);
+        const expiredOptions = optionsPositions.filter(p => p.unrealizedPnlPct <= -90 || p.marketValue === 0);
         
         // Focus metrics on active positions only
         const activeValue = activeOptions.reduce((s, p) => s + Math.abs(p.marketValue), 0);
@@ -678,15 +618,14 @@
         
         // P&L by Desk
         const desks = [
-          { name: 'Insider Intelligence', pnl: d1Pnl, value: d1Value, color: 'var(--green)', positions: desk1.length },
-          { name: 'Options Flow', pnl: d2Pnl, value: d2Value, color: 'var(--purple)', positions: desk2.length },
-          { name: 'Options Overlay', pnl: d3Pnl, value: d3Value, color: 'var(--cyan)', positions: desk3.length },
+          { name: 'Insider Intelligence', pnl: d1Pnl, value: d1Value, color: 'var(--green)', positions: desk1Positions.length },
+          { name: 'Options Flow', pnl: d2Pnl, value: d2Value, color: 'var(--purple)', positions: desk2Positions.length },
+          { name: 'Options Overlay', pnl: d3Pnl, value: d3Value, color: 'var(--cyan)', positions: optionsPositions.length },
         ];
         
         // Top Winners
-        const allEquity = [...desk1, ...desk2].sort((a, b) => b.unrealizedPnl - a.unrealizedPnl);
+        const allEquity = [...desk1Positions, ...desk2Positions, ...optionsPositions].sort((a, b) => b.unrealizedPnl - a.unrealizedPnl);
         const topWinners = allEquity.filter(p => p.unrealizedPnl > 0).slice(0, 5);
-        const topLosers = allEquity.filter(p => p.unrealizedPnl < 0).sort((a, b) => a.unrealizedPnl - b.unrealizedPnl).slice(0, 5);
         
         let perfHTML = '';
         
@@ -743,7 +682,6 @@
             const isOption = ticker.match(/\d{6}[CP]\d+$/);
             let deskName = 'Insider';
             if (isOption) deskName = 'Options';
-            else if (GEO_TICKERS[ticker]) deskName = 'Analysis';
             
             return `<tr>
               <td><span class="action-badge ${isBuy ? 'action-buy' : 'action-sell'}">${h.action}</span></td>
@@ -765,6 +703,9 @@
         
       } catch (e) {
         console.error('Fund data load error:', e);
+        // Display error state
+        document.getElementById('nav-val').textContent = 'Error';
+        document.getElementById('d2-positions').innerHTML = '<div class="desk-empty" style="color:var(--red);">⚠️ Data loading error</div>';
       }
     }
     
