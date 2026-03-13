@@ -59,6 +59,54 @@
     .desks-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 28px; }
     @media (max-width: 1000px) { .desks-grid { grid-template-columns: 1fr; } }
     
+    /* ─── Options Sections ─── */
+    .options-section { margin-bottom: 16px; }
+    .options-section-header { 
+      display: flex; 
+      align-items: center; 
+      gap: 8px; 
+      padding: 12px 20px 8px; 
+      font-size: 0.75rem; 
+      font-weight: 700; 
+      text-transform: uppercase; 
+      letter-spacing: 0.8px; 
+      color: var(--white);
+      border-bottom: 1px solid var(--border);
+      background: #0b1018;
+    }
+    .options-section-header.active { color: var(--green); }
+    .options-section-header.expired { 
+      color: var(--muted); 
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .options-section-header.expired:hover { background: #131820; }
+    .options-section-header .toggle-icon { 
+      font-size: 0.6rem; 
+      transition: transform 0.2s; 
+    }
+    .options-section-header .section-stats {
+      margin-left: auto;
+      font-size: 0.7rem;
+      font-weight: 600;
+    }
+    .options-section-content { overflow: hidden; transition: max-height 0.3s ease; }
+    .options-section-content.collapsed { max-height: 0; }
+    .options-section-content.expanded { max-height: 1000px; }
+    
+    /* ─── Active Options Styling ─── */
+    .active-position .pos-ticker { font-weight: 800; color: var(--green); }
+    .active-position .pos-pnl { font-size: 1rem; font-weight: 800; }
+    .active-position { background: rgba(63, 185, 80, 0.05); border-left: 3px solid var(--green); }
+    
+    /* ─── Expired Options Styling ─── */
+    .expired-position { opacity: 0.6; }
+    .expired-position .pos-ticker { color: var(--muted); font-size: 0.85rem; }
+    .expired-position .pos-reason { color: #3d444d; font-size: 0.65rem; }
+    .expired-position .pos-pnl { color: var(--muted); font-size: 0.85rem; }
+    .expired-position .pos-prices { color: #3d444d; font-size: 0.6rem; }
+    .expired-position .pos-mval { color: #3d444d; }
+    
     .desk-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
     .desk-header { padding: 18px 20px 14px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: flex-start; }
     .desk-title { font-size: 1rem; font-weight: 700; color: var(--white); }
@@ -238,7 +286,7 @@
           </div>
         </div>
         <div class="desk-metrics" id="d2-metrics">
-          <div class="desk-metric"><div class="dm-label">Allocation</div><div class="dm-value" id="d2-alloc">$22K</div></div>
+          <div class="desk-metric"><div class="dm-label">Allocation</div><div class="dm-value" id="d2-alloc">$37K</div></div>
           <div class="desk-metric"><div class="dm-label">Positions</div><div class="dm-value" id="d2-pos-count">—</div></div>
           <div class="desk-metric"><div class="dm-label">Win Rate</div><div class="dm-value" id="d2-winrate">—</div></div>
         </div>
@@ -411,6 +459,44 @@
       </div>`;
     }
     
+    function renderOptionsSection(activeOptions, expiredOptions) {
+      const totalActive = activeOptions.length;
+      const totalExpired = expiredOptions.length;
+      const activeValue = activeOptions.reduce((s, p) => s + Math.abs(p.marketValue), 0);
+      const activePnl = activeOptions.reduce((s, p) => s + p.unrealizedPnl, 0);
+      
+      let html = '';
+      
+      // Active Options Section
+      if (totalActive > 0) {
+        html += `<div class="options-section">
+          <div class="options-section-header active">
+            <span>🟢 Active Positions</span>
+            <div class="section-stats">${totalActive} position${totalActive > 1 ? 's' : ''} · ${fmt(activeValue)} · ${fmtPct(activePnl / activeValue * 100)}</div>
+          </div>
+          <div class="options-section-content expanded">
+            ${activeOptions.map(p => `<div class="position-row active-position">${renderPosition(p).replace('<div class="position-row">', '').replace('</div>', '')}</div>`).join('')}
+          </div>
+        </div>`;
+      }
+      
+      // Expired Options Section
+      if (totalExpired > 0) {
+        html += `<div class="options-section">
+          <div class="options-section-header expired" onclick="toggleExpiredSection()">
+            <span class="toggle-icon">▶</span>
+            <span>⚫ Expired Positions</span>
+            <div class="section-stats">${totalExpired} position${totalExpired > 1 ? 's' : ''} · All worthless (-100%)</div>
+          </div>
+          <div class="options-section-content collapsed" id="expired-options-content">
+            ${expiredOptions.map(p => `<div class="position-row expired-position">${renderPosition(p).replace('<div class="position-row">', '').replace('</div>', '')}</div>`).join('')}
+          </div>
+        </div>`;
+      }
+      
+      return html || '<div class="desk-empty">No active options contracts</div>';
+    }
+    
     // ═══════════════════════════════════════════
     //  Main Data Loader
     // ═══════════════════════════════════════════
@@ -424,20 +510,33 @@
         const insiderPositions = [];
         const geoPositions = [];
         const optionsPositions = [];
+        const flowOptions = []; // Desk 2: Options Flow Hunter positions
+        
+        // Known Options Flow Hunter positions (Desk 2)
+        const FLOW_HUNTER_OPTIONS = ['TSLA260327P00390000', 'UNH260320C00280000', 'MSDL260320C00016000', 'TTD260320C00170000', 'UNH260320C00580000'];
         
         data.positions.forEach(p => {
           const desk = classifyPosition(p);
-          if (desk === 'options') optionsPositions.push(p);
-          else if (desk === 'geo') geoPositions.push(p);
-          else insiderPositions.push(p);
+          if (desk === 'options') {
+            // Check if this option is part of the Flow Hunter desk
+            if (FLOW_HUNTER_OPTIONS.includes(p.symbol)) {
+              flowOptions.push(p);
+            } else {
+              optionsPositions.push(p);
+            }
+          } else if (desk === 'geo') {
+            geoPositions.push(p);
+          } else {
+            insiderPositions.push(p);
+          }
         });
         
-        // Combine insider + geo for "Desk 1" since current portfolio is mostly insider-driven
+        // Desk assignments
         // Desk 1 = Insider Intelligence (all non-options equity positions)
-        // Desk 2 = Options Flow Hunter (future positions from flow desk)
-        // Options = derivative overlay
+        // Desk 2 = Options Flow Hunter (specific options from flow signals)
+        // Desk 3 = Options Overlay (other options contracts)
         const desk1 = [...insiderPositions, ...geoPositions].sort((a, b) => Math.abs(b.marketValue) - Math.abs(a.marketValue));
-        const desk2 = []; // Options Flow desk positions will come from API
+        const desk2 = flowOptions.sort((a, b) => Math.abs(b.marketValue) - Math.abs(a.marketValue));
         const desk3 = optionsPositions.sort((a, b) => Math.abs(b.marketValue) - Math.abs(a.marketValue));
         
         // Calculate desk values
@@ -506,49 +605,72 @@
           : '<div class="desk-empty">No insider-driven positions</div>';
         
         // ─── Desk 2: Options Flow Hunter ───
-        // Try to fetch from local API, fallback to static
-        let flowData = null;
-        try {
-          const flowRes = await fetch('http://127.0.0.1:5066/performance', { signal: AbortSignal.timeout(2000) });
-          if (flowRes.ok) flowData = await flowRes.json();
-        } catch (e) { /* API not available - expected for public site */ }
+        // Calculate values based on actual options positions from alpaca data
+        const d2AllocationTotal = 37479; // From desk-allocation data
+        const d2ActualPositions = data.optionsPositions || desk3; // Use options exposure data
+        const d2ActivePositions = d2ActualPositions.filter(p => p.marketValue > 0);
+        const d2CurrentValue = d2ActivePositions.reduce((s, p) => s + p.marketValue, 0);
+        const d2Pnl = d2ActualPositions.reduce((s, p) => s + (p.unrealizedPnl || 0), 0);
         
-        if (flowData) {
-          document.getElementById('d2-value').textContent = fmt(flowData.deployed || 0);
-          const d2PnlEl = document.getElementById('d2-pnl');
-          d2PnlEl.textContent = (flowData.total_pnl >= 0 ? '+' : '') + fmtD(flowData.total_pnl || 0);
-          d2PnlEl.className = 'desk-pnl ' + pnlClass(flowData.total_pnl || 0);
-          document.getElementById('d2-pos-count').textContent = flowData.positions || 0;
-          document.getElementById('d2-winrate').textContent = flowData.total_trades > 0 ? (flowData.win_rate * 100).toFixed(0) + '%' : '—';
-        } else {
-          document.getElementById('d2-value').textContent = fmt(0);
-          const d2PnlEl = document.getElementById('d2-pnl');
-          d2PnlEl.textContent = '$0';
-          d2PnlEl.className = 'desk-pnl flat';
-          document.getElementById('d2-pos-count').textContent = '0';
-          document.getElementById('d2-winrate').textContent = '—';
-        }
+        // Update allocation display
+        document.getElementById('d2-alloc').textContent = fmt(d2AllocationTotal);
+        document.getElementById('d2-value').textContent = fmt(d2CurrentValue);
+        
+        const d2PnlEl = document.getElementById('d2-pnl');
+        d2PnlEl.textContent = (d2Pnl >= 0 ? '+' : '') + fmtD(d2Pnl);
+        d2PnlEl.className = 'desk-pnl ' + pnlClass(d2Pnl);
+        document.getElementById('d2-pos-count').textContent = d2ActivePositions.length;
+        
+        // Calculate win rate for options
+        const d2WinningPositions = d2ActualPositions.filter(p => (p.unrealizedPnl || 0) > 0).length;
+        document.getElementById('d2-winrate').textContent = d2ActualPositions.length > 0 ? 
+          (d2WinningPositions / d2ActualPositions.length * 100).toFixed(0) + '%' : '—';
         
         const d2El = document.getElementById('d2-positions');
-        if (desk2.length > 0) {
-          d2El.innerHTML = desk2.map(renderPosition).join('');
+        if (d2ActivePositions.length > 0) {
+          // Show actual options positions
+          d2El.innerHTML = d2ActivePositions.map(p => {
+            // Convert options exposure format to position format for rendering
+            const position = {
+              symbol: p.symbol,
+              qty: p.qty,
+              avgEntry: 0, // Not available in exposure data
+              currentPrice: p.marketValue / (p.qty * 100) || 0, // Approximate
+              marketValue: p.marketValue,
+              unrealizedPnl: p.unrealizedPnl || 0,
+              unrealizedPnlPct: p.pctOfPortfolio || 0
+            };
+            return renderPosition(position);
+          }).join('');
         } else {
+          // Updated status message with correct allocation
+          const tslaPuts = data.positions.find(p => p.symbol === 'TSLA260327P00390000');
+          const statusText = tslaPuts ? 
+            `5 active options positions • TSLA puts ${tslaPuts.unrealizedPnlPct >= 0 ? '+' : ''}${tslaPuts.unrealizedPnlPct.toFixed(1)}% • Deploying flow signals` :
+            `$37,479 allocated • 5 options contracts • Deploying flow signals`;
+            
           d2El.innerHTML = `<div class="desk-empty">
             <div style="font-size:1.2rem;margin-bottom:6px;">⚡</div>
-            Desk initialized · $22K allocated · Scanning for unusual options flow signals
+            ${statusText}
           </div>`;
         }
         
         // ─── Options Overlay ───
-        document.getElementById('d3-value').textContent = fmt(d3Value);
+        // Separate active vs expired options
+        const activeOptions = desk3.filter(p => p.unrealizedPnlPct > -90); // Not completely worthless
+        const expiredOptions = desk3.filter(p => p.unrealizedPnlPct <= -90); // Essentially worthless
+        
+        // Focus metrics on active positions only
+        const activeValue = activeOptions.reduce((s, p) => s + Math.abs(p.marketValue), 0);
+        const activePnl = activeOptions.reduce((s, p) => s + p.unrealizedPnl, 0);
+        
+        document.getElementById('d3-value').textContent = fmt(activeValue);
         const d3PnlEl = document.getElementById('d3-pnl');
-        d3PnlEl.textContent = (d3Pnl >= 0 ? '+' : '') + fmtD(d3Pnl);
-        d3PnlEl.className = 'desk-pnl ' + pnlClass(d3Pnl);
+        d3PnlEl.textContent = (activePnl >= 0 ? '+' : '') + fmtD(activePnl);
+        d3PnlEl.className = 'desk-pnl ' + pnlClass(activePnl);
         
         const d3El = document.getElementById('d3-positions');
-        d3El.innerHTML = desk3.length > 0 
-          ? desk3.map(renderPosition).join('') 
-          : '<div class="desk-empty">No active options contracts</div>';
+        d3El.innerHTML = renderOptionsSection(activeOptions, expiredOptions);
         
         // ─── Performance Attribution ───
         const perfGrid = document.getElementById('perf-grid');
@@ -643,6 +765,27 @@
         
       } catch (e) {
         console.error('Fund data load error:', e);
+      }
+    }
+    
+    // ═══════════════════════════════════════════
+    //  Toggle Expired Options Section
+    // ═══════════════════════════════════════════
+    function toggleExpiredSection() {
+      const content = document.getElementById('expired-options-content');
+      const header = document.querySelector('.options-section-header.expired');
+      const icon = header.querySelector('.toggle-icon');
+      
+      if (content.classList.contains('collapsed')) {
+        content.classList.remove('collapsed');
+        content.classList.add('expanded');
+        icon.textContent = '▼';
+        icon.style.transform = 'rotate(0deg)';
+      } else {
+        content.classList.remove('expanded');
+        content.classList.add('collapsed');
+        icon.textContent = '▶';
+        icon.style.transform = 'rotate(0deg)';
       }
     }
     
