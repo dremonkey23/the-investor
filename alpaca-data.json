@@ -1,13 +1,13 @@
 {
   "account": {
-    "portfolioValue": 72010.07,
+    "portfolioValue": 72155.57,
     "cash": 6862.57,
-    "buyingPower": 78872.64,
-    "equity": 72010.07,
-    "longMarketValue": 65147.5,
+    "buyingPower": 79018.14,
+    "equity": 72155.57,
+    "longMarketValue": 65293,
     "shortMarketValue": 0,
-    "pnl": -27989.929999999993,
-    "pnlPct": -27.98992999999999
+    "pnl": -27844.429999999993,
+    "pnlPct": -27.844429999999992
   },
   "positions": [
     {
@@ -15,11 +15,11 @@
       "qty": 1000,
       "side": "long",
       "avgEntry": 10.27,
-      "currentPrice": 10.195,
-      "marketValue": 10195,
-      "unrealizedPnl": -75,
-      "unrealizedPnlPct": -0.73,
-      "change": 4.564
+      "currentPrice": 10.25,
+      "marketValue": 10250,
+      "unrealizedPnl": -20,
+      "unrealizedPnlPct": -0.19499999999999998,
+      "change": 5.128
     },
     {
       "symbol": "KRRO",
@@ -37,11 +37,11 @@
       "qty": 500,
       "side": "long",
       "avgEntry": 65.78,
-      "currentPrice": 64.52,
-      "marketValue": 32260,
-      "unrealizedPnl": -630,
-      "unrealizedPnlPct": -1.915,
-      "change": 2.3640000000000003
+      "currentPrice": 64.67,
+      "marketValue": 32335,
+      "unrealizedPnl": -555,
+      "unrealizedPnlPct": -1.687,
+      "change": 2.6020000000000003
     },
     {
       "symbol": "MSDL260320C00016000",
@@ -59,11 +59,11 @@
       "qty": 100,
       "side": "long",
       "avgEntry": 116.02,
-      "currentPrice": 115.325,
-      "marketValue": 11532.5,
-      "unrealizedPnl": -69.5,
-      "unrealizedPnlPct": -0.599,
-      "change": 1.931
+      "currentPrice": 115.48,
+      "marketValue": 11548,
+      "unrealizedPnl": -54,
+      "unrealizedPnlPct": -0.46499999999999997,
+      "change": 2.068
     },
     {
       "symbol": "TTD260320C00170000",
@@ -1593,16 +1593,16 @@
     }
   ],
   "metadata": {
-    "lastUpdated": "2026-03-13T13:55:43.649Z",
+    "lastUpdated": "2026-03-13T14:05:44.375Z",
     "startingCapital": 100000
   },
   "optionsExposure": {
-    "portfolioValue": 72010.07,
+    "portfolioValue": 72155.57,
     "totalOptionsValue": 0,
     "optionsPct": 0,
     "maxAllowedPct": 10,
-    "maxAllowedValue": 7201.01,
-    "remainingCapacity": 7201.01,
+    "maxAllowedValue": 7215.56,
+    "remainingCapacity": 7215.56,
     "overLimit": false,
     "nearLimit": false,
     "status": "🟢 OK",
