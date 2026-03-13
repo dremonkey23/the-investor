@@ -582,17 +582,16 @@
         
         // ─── Performance Attribution ───
         const perfGrid = document.getElementById('perf-grid');
-        const totalAbsPnl = Math.abs(d1Pnl) + Math.abs(d2Pnl) + Math.abs(d3Pnl);
+        const totalAbsPnl = Math.abs(d1Pnl) + Math.abs(d2Pnl);
         
         // P&L by Desk
         const desks = [
           { name: 'Insider Intelligence', pnl: d1Pnl, value: d1Value, color: 'var(--green)', positions: desk1Positions.length },
           { name: 'Options Flow', pnl: d2Pnl, value: d2Value, color: 'var(--purple)', positions: desk2Positions.length },
-          { name: 'Options Overlay', pnl: d3Pnl, value: d3Value, color: 'var(--cyan)', positions: optionsPositions.length },
         ];
         
         // Top Winners
-        const allEquity = [...desk1Positions, ...desk2Positions, ...optionsPositions].sort((a, b) => b.unrealizedPnl - a.unrealizedPnl);
+        const allEquity = [...desk1Positions, ...desk2Positions].sort((a, b) => b.unrealizedPnl - a.unrealizedPnl);
         const topWinners = allEquity.filter(p => p.unrealizedPnl > 0).slice(0, 5);
         
         let perfHTML = '';
