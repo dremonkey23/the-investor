@@ -1,13 +1,13 @@
 {
   "account": {
-    "portfolioValue": 71413.52,
+    "portfolioValue": 71393.43,
     "cash": 9660.41,
-    "buyingPower": 213416.96,
-    "equity": 71413.52,
-    "longMarketValue": 61753.11,
+    "buyingPower": 205907.46,
+    "equity": 71393.43,
+    "longMarketValue": 61733.02,
     "shortMarketValue": 0,
-    "pnl": -28586.479999999996,
-    "pnlPct": -28.586479999999998
+    "pnl": -28606.570000000007,
+    "pnlPct": -28.60657000000001
   },
   "positions": [
     {
@@ -37,11 +37,11 @@
       "qty": 20,
       "side": "long",
       "avgEntry": 332.94,
-      "currentPrice": 325.95,
-      "marketValue": 6519,
-      "unrealizedPnl": -139.8,
-      "unrealizedPnlPct": -2.099,
-      "change": 1.176
+      "currentPrice": 325.5,
+      "marketValue": 6510,
+      "unrealizedPnl": -148.8,
+      "unrealizedPnlPct": -2.235,
+      "change": 1.0370000000000001
     },
     {
       "symbol": "BWFG",
@@ -125,11 +125,11 @@
       "qty": 15,
       "side": "long",
       "avgEntry": 401.1,
-      "currentPrice": 398.03,
-      "marketValue": 5970.45,
-      "unrealizedPnl": -46.05,
-      "unrealizedPnlPct": -0.765,
-      "change": 0.627
+      "currentPrice": 397.9322,
+      "marketValue": 5968.983,
+      "unrealizedPnl": -47.517,
+      "unrealizedPnlPct": -0.79,
+      "change": 0.602
     },
     {
       "symbol": "NBTB",
@@ -213,11 +213,11 @@
       "qty": 13,
       "side": "long",
       "avgEntry": 280.231538,
-      "currentPrice": 283.27,
-      "marketValue": 3682.51,
-      "unrealizedPnl": 39.500006,
-      "unrealizedPnlPct": 1.084,
-      "change": 0.418
+      "currentPrice": 282.53,
+      "marketValue": 3672.89,
+      "unrealizedPnl": 29.880006,
+      "unrealizedPnlPct": 0.8200000000000001,
+      "change": 0.156
     },
     {
       "symbol": "UNH260320C00580000",
@@ -243,6 +243,30 @@
     }
   ],
   "orders": [
+    {
+      "id": "50bea8e8-dd1e-474a-bfd1-111d621fe943",
+      "symbol": "NP",
+      "side": "buy",
+      "qty": 50,
+      "type": "market",
+      "status": "new",
+      "filledQty": 0,
+      "filledAvgPrice": 0,
+      "submittedAt": "2026-03-16T13:11:54.951787495Z",
+      "filledAt": null
+    },
+    {
+      "id": "430cdc47-3f64-4f22-a22f-c2ad57126e24",
+      "symbol": "TSLA260330C00410000",
+      "side": "buy",
+      "qty": 2,
+      "type": "limit",
+      "status": "accepted",
+      "filledQty": 0,
+      "filledAvgPrice": 0,
+      "submittedAt": "2026-03-16T13:11:24.835655Z",
+      "filledAt": null
+    },
     {
       "id": "d24afb10-18c2-4b44-be2a-d8a721d662d3",
       "symbol": "NP",
@@ -818,30 +842,6 @@
       "filledAvgPrice": 116.02,
       "submittedAt": "2026-03-13T13:51:27.355954Z",
       "filledAt": "2026-03-13T13:51:28.852002Z"
-    },
-    {
-      "id": "b095d3e4-7bba-4ea5-b7d9-fed0133c27f7",
-      "symbol": "KRRO",
-      "side": "buy",
-      "qty": 800,
-      "type": "market",
-      "status": "filled",
-      "filledQty": 800,
-      "filledAvgPrice": 14.64,
-      "submittedAt": "2026-03-13T13:41:22.440268Z",
-      "filledAt": "2026-03-13T13:41:24.774092Z"
-    },
-    {
-      "id": "6c4d1201-4d3e-4dd9-8ca7-2125dff44017",
-      "symbol": "LOAR",
-      "side": "buy",
-      "qty": 500,
-      "type": "market",
-      "status": "filled",
-      "filledQty": 500,
-      "filledAvgPrice": 65.78,
-      "submittedAt": "2026-03-13T13:41:18.301359Z",
-      "filledAt": "2026-03-13T13:41:19.694344Z"
     }
   ],
   "history": [
@@ -1747,16 +1747,16 @@
     }
   ],
   "metadata": {
-    "lastUpdated": "2026-03-16T13:05:45.740Z",
+    "lastUpdated": "2026-03-16T13:15:44.232Z",
     "startingCapital": 100000
   },
   "optionsExposure": {
-    "portfolioValue": 71413.52,
+    "portfolioValue": 71393.43,
     "totalOptionsValue": 2515,
     "optionsPct": 3.52,
     "maxAllowedPct": 10,
-    "maxAllowedValue": 7141.35,
-    "remainingCapacity": 4626.35,
+    "maxAllowedValue": 7139.34,
+    "remainingCapacity": 4624.34,
     "overLimit": false,
     "nearLimit": false,
     "status": "🟢 OK",
