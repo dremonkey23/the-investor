@@ -1,13 +1,13 @@
 {
   "account": {
-    "portfolioValue": 71393.43,
+    "portfolioValue": 71402.23,
     "cash": 9660.41,
-    "buyingPower": 205907.46,
-    "equity": 71393.43,
-    "longMarketValue": 61733.02,
+    "buyingPower": 202907.46,
+    "equity": 71402.23,
+    "longMarketValue": 61741.82,
     "shortMarketValue": 0,
-    "pnl": -28606.570000000007,
-    "pnlPct": -28.60657000000001
+    "pnl": -28597.770000000004,
+    "pnlPct": -28.597770000000004
   },
   "positions": [
     {
@@ -37,11 +37,11 @@
       "qty": 20,
       "side": "long",
       "avgEntry": 332.94,
-      "currentPrice": 325.5,
-      "marketValue": 6510,
-      "unrealizedPnl": -148.8,
-      "unrealizedPnlPct": -2.235,
-      "change": 1.0370000000000001
+      "currentPrice": 325.6,
+      "marketValue": 6512,
+      "unrealizedPnl": -146.8,
+      "unrealizedPnlPct": -2.205,
+      "change": 1.068
     },
     {
       "symbol": "BWFG",
@@ -125,11 +125,11 @@
       "qty": 15,
       "side": "long",
       "avgEntry": 401.1,
-      "currentPrice": 397.9322,
-      "marketValue": 5968.983,
-      "unrealizedPnl": -47.517,
-      "unrealizedPnlPct": -0.79,
-      "change": 0.602
+      "currentPrice": 397.9,
+      "marketValue": 5968.5,
+      "unrealizedPnl": -48,
+      "unrealizedPnlPct": -0.7979999999999999,
+      "change": 0.594
     },
     {
       "symbol": "NBTB",
@@ -213,11 +213,11 @@
       "qty": 13,
       "side": "long",
       "avgEntry": 280.231538,
-      "currentPrice": 282.53,
-      "marketValue": 3672.89,
-      "unrealizedPnl": 29.880006,
-      "unrealizedPnlPct": 0.8200000000000001,
-      "change": 0.156
+      "currentPrice": 283.09,
+      "marketValue": 3680.17,
+      "unrealizedPnl": 37.160006,
+      "unrealizedPnlPct": 1.02,
+      "change": 0.35400000000000004
     },
     {
       "symbol": "UNH260320C00580000",
@@ -244,6 +244,30 @@
   ],
   "orders": [
     {
+      "id": "4027b03b-1aea-4775-b161-ce9ed3f2b524",
+      "symbol": "AI",
+      "side": "buy",
+      "qty": 3000,
+      "type": "market",
+      "status": "new",
+      "filledQty": 0,
+      "filledAvgPrice": 0,
+      "submittedAt": "2026-03-16T13:21:54.459701281Z",
+      "filledAt": null
+    },
+    {
+      "id": "827f63ea-f0cc-4531-ad07-569eea302ecf",
+      "symbol": "KRRO",
+      "side": "sell",
+      "qty": 183.20610687,
+      "type": "market",
+      "status": "new",
+      "filledQty": 0,
+      "filledAvgPrice": 0,
+      "submittedAt": "2026-03-16T13:21:47.453321Z",
+      "filledAt": null
+    },
+    {
       "id": "50bea8e8-dd1e-474a-bfd1-111d621fe943",
       "symbol": "NP",
       "side": "buy",
@@ -252,7 +276,7 @@
       "status": "new",
       "filledQty": 0,
       "filledAvgPrice": 0,
-      "submittedAt": "2026-03-16T13:11:54.951787495Z",
+      "submittedAt": "2026-03-16T13:11:54.951787Z",
       "filledAt": null
     },
     {
@@ -818,30 +842,6 @@
       "filledAvgPrice": 47.09,
       "submittedAt": "2026-03-13T14:11:38.051895Z",
       "filledAt": "2026-03-13T14:11:38.450014Z"
-    },
-    {
-      "id": "c0e045d0-385f-4683-8d62-15ced9f260cf",
-      "symbol": "KRRO",
-      "side": "sell",
-      "qty": 800,
-      "type": "market",
-      "status": "filled",
-      "filledQty": 800,
-      "filledAvgPrice": 13.23,
-      "submittedAt": "2026-03-13T14:11:06.528968Z",
-      "filledAt": "2026-03-13T14:11:07.333278Z"
-    },
-    {
-      "id": "13151a76-aba2-4855-bd2b-4f850f90a504",
-      "symbol": "PATK",
-      "side": "buy",
-      "qty": 100,
-      "type": "market",
-      "status": "filled",
-      "filledQty": 100,
-      "filledAvgPrice": 116.02,
-      "submittedAt": "2026-03-13T13:51:27.355954Z",
-      "filledAt": "2026-03-13T13:51:28.852002Z"
     }
   ],
   "history": [
@@ -1747,16 +1747,16 @@
     }
   ],
   "metadata": {
-    "lastUpdated": "2026-03-16T13:15:44.232Z",
+    "lastUpdated": "2026-03-16T13:25:46.199Z",
     "startingCapital": 100000
   },
   "optionsExposure": {
-    "portfolioValue": 71393.43,
+    "portfolioValue": 71402.23,
     "totalOptionsValue": 2515,
     "optionsPct": 3.52,
     "maxAllowedPct": 10,
-    "maxAllowedValue": 7139.34,
-    "remainingCapacity": 4624.34,
+    "maxAllowedValue": 7140.22,
+    "remainingCapacity": 4625.22,
     "overLimit": false,
     "nearLimit": false,
     "status": "🟢 OK",
