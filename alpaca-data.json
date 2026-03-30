@@ -1,13 +1,13 @@
 {
   "account": {
-    "portfolioValue": 43583.88,
-    "cash": -56546.9,
+    "portfolioValue": 43359.92,
+    "cash": -52173.9,
     "buyingPower": 0,
-    "equity": 43583.88,
-    "longMarketValue": 100130.78,
+    "equity": 43359.92,
+    "longMarketValue": 95533.82,
     "shortMarketValue": 0,
-    "pnl": -56416.12,
-    "pnlPct": -56.41612000000001
+    "pnl": -56640.08,
+    "pnlPct": -56.640080000000005
   },
   "positions": [
     {
@@ -15,11 +15,11 @@
       "qty": 95.648015303,
       "side": "long",
       "avgEntry": 20.91,
-      "currentPrice": 20.95,
-      "marketValue": 2003.825921,
-      "unrealizedPnl": 3.825921,
-      "unrealizedPnlPct": 0.191,
-      "change": 0.964
+      "currentPrice": 21.04,
+      "marketValue": 2012.434242,
+      "unrealizedPnl": 12.434242,
+      "unrealizedPnlPct": 0.622,
+      "change": 1.398
     },
     {
       "symbol": "ACOG",
@@ -37,88 +37,88 @@
       "qty": 6.172307439,
       "side": "long",
       "avgEntry": 243.020947,
-      "currentPrice": 242.349,
-      "marketValue": 1495.852536,
-      "unrealizedPnl": -4.147463,
-      "unrealizedPnlPct": -0.27599999999999997,
-      "change": 3.197
+      "currentPrice": 241.445,
+      "marketValue": 1490.27277,
+      "unrealizedPnl": -9.727229,
+      "unrealizedPnlPct": -0.6479999999999999,
+      "change": 2.8129999999999997
     },
     {
       "symbol": "AERO",
       "qty": 278.616944243,
       "side": "long",
       "avgEntry": 13.828305,
-      "currentPrice": 13.57,
-      "marketValue": 3780.831933,
-      "unrealizedPnl": -71.96815,
-      "unrealizedPnlPct": -1.8679999999999999,
-      "change": -1.809
+      "currentPrice": 13.54,
+      "marketValue": 3772.473425,
+      "unrealizedPnl": -80.326658,
+      "unrealizedPnlPct": -2.085,
+      "change": -2.026
     },
     {
       "symbol": "AFL",
       "qty": 15,
       "side": "long",
       "avgEntry": 107.87,
-      "currentPrice": 108.6,
-      "marketValue": 1629,
-      "unrealizedPnl": 10.95,
-      "unrealizedPnlPct": 0.677,
-      "change": 2.0580000000000003
+      "currentPrice": 108.52,
+      "marketValue": 1627.8,
+      "unrealizedPnl": 9.75,
+      "unrealizedPnlPct": 0.603,
+      "change": 1.983
     },
     {
       "symbol": "AHCO",
       "qty": 209.333240162,
       "side": "long",
       "avgEntry": 10.816325,
-      "currentPrice": 11.43,
-      "marketValue": 2392.678935,
-      "unrealizedPnl": 128.462576,
-      "unrealizedPnlPct": 5.6739999999999995,
-      "change": 2.054
+      "currentPrice": 11.375,
+      "marketValue": 2381.165607,
+      "unrealizedPnl": 116.949248,
+      "unrealizedPnlPct": 5.165,
+      "change": 1.5630000000000002
     },
     {
       "symbol": "AIRS",
       "qty": 16,
       "side": "long",
       "avgEntry": 2.86,
-      "currentPrice": 2.665,
-      "marketValue": 42.64,
-      "unrealizedPnl": -3.12,
-      "unrealizedPnlPct": -6.8180000000000005,
-      "change": -7.142999999999999
+      "currentPrice": 2.6307,
+      "marketValue": 42.0912,
+      "unrealizedPnl": -3.6688,
+      "unrealizedPnlPct": -8.017000000000001,
+      "change": -8.338
     },
     {
       "symbol": "ALG",
       "qty": 5.846243788,
       "side": "long",
       "avgEntry": 171.05,
-      "currentPrice": 164.02,
-      "marketValue": 958.900906,
-      "unrealizedPnl": -41.099094,
-      "unrealizedPnlPct": -4.109999999999999,
-      "change": -1.7840000000000003
+      "currentPrice": 164.85,
+      "marketValue": 963.753288,
+      "unrealizedPnl": -36.246712,
+      "unrealizedPnlPct": -3.6249999999999996,
+      "change": -1.287
     },
     {
       "symbol": "AMR",
       "qty": 0.687891116,
       "side": "long",
       "avgEntry": 199.868959,
-      "currentPrice": 217.47,
-      "marketValue": 149.595681,
-      "unrealizedPnl": 12.1076,
-      "unrealizedPnlPct": 8.806,
-      "change": -2.593
+      "currentPrice": 217.54,
+      "marketValue": 149.643833,
+      "unrealizedPnl": 12.155752,
+      "unrealizedPnlPct": 8.841000000000001,
+      "change": -2.562
     },
     {
       "symbol": "APG",
       "qty": 25.902345619,
       "side": "long",
       "avgEntry": 41.78,
-      "currentPrice": 39.3,
-      "marketValue": 1017.962183,
-      "unrealizedPnl": -64.237817,
-      "unrealizedPnlPct": -5.936,
-      "change": -1.528
+      "currentPrice": 39.28,
+      "marketValue": 1017.444136,
+      "unrealizedPnl": -64.755864,
+      "unrealizedPnlPct": -5.984,
+      "change": -1.5789999999999997
     },
     {
       "symbol": "AVBC",
@@ -136,55 +136,55 @@
       "qty": 4.955736403,
       "side": "long",
       "avgEntry": 302.679537,
-      "currentPrice": 293.96,
-      "marketValue": 1456.788273,
-      "unrealizedPnl": -43.211727,
-      "unrealizedPnlPct": -2.881,
-      "change": -2.235
+      "currentPrice": 293.36,
+      "marketValue": 1453.814831,
+      "unrealizedPnl": -46.185169,
+      "unrealizedPnlPct": -3.079,
+      "change": -2.434
     },
     {
       "symbol": "AVO",
       "qty": 19.872102318,
       "side": "long",
       "avgEntry": 12.51,
-      "currentPrice": 13.86,
-      "marketValue": 275.427338,
-      "unrealizedPnl": 26.827338,
-      "unrealizedPnlPct": 10.791,
-      "change": -0.5740000000000001
+      "currentPrice": 13.84,
+      "marketValue": 275.029896,
+      "unrealizedPnl": 26.429896,
+      "unrealizedPnlPct": 10.631,
+      "change": -0.717
     },
     {
       "symbol": "BCIC",
       "qty": 204.638472032,
       "side": "long",
       "avgEntry": 7.33,
-      "currentPrice": 7.505,
-      "marketValue": 1535.811733,
-      "unrealizedPnl": 35.811733,
-      "unrealizedPnlPct": 2.387,
-      "change": 3.375
+      "currentPrice": 7.46,
+      "marketValue": 1526.603001,
+      "unrealizedPnl": 26.603001,
+      "unrealizedPnlPct": 1.7739999999999998,
+      "change": 2.7550000000000003
     },
     {
       "symbol": "BETR",
       "qty": 45.013950904,
       "side": "long",
       "avgEntry": 31.398313,
-      "currentPrice": 33.36,
-      "marketValue": 1501.665402,
-      "unrealizedPnl": 88.303282,
-      "unrealizedPnlPct": 6.248,
-      "change": 8.806
+      "currentPrice": 33.2,
+      "marketValue": 1494.46317,
+      "unrealizedPnl": 81.10105,
+      "unrealizedPnlPct": 5.738,
+      "change": 8.283999999999999
     },
     {
       "symbol": "BORR",
       "qty": 212,
       "side": "long",
       "avgEntry": 5.777065,
-      "currentPrice": 5.875,
-      "marketValue": 1245.5,
-      "unrealizedPnl": 20.76222,
-      "unrealizedPnlPct": 1.695,
-      "change": -2.8930000000000002
+      "currentPrice": 5.855,
+      "marketValue": 1241.26,
+      "unrealizedPnl": 16.52222,
+      "unrealizedPnlPct": 1.349,
+      "change": -3.2230000000000003
     },
     {
       "symbol": "CLIR",
@@ -202,143 +202,143 @@
       "qty": 0.496037745,
       "side": "long",
       "avgEntry": 377.26,
-      "currentPrice": 376.0699,
-      "marketValue": 186.544865,
-      "unrealizedPnl": -0.590335,
-      "unrealizedPnlPct": -0.315,
-      "change": -0.22599999999999998
+      "currentPrice": 375.23,
+      "marketValue": 186.128243,
+      "unrealizedPnl": -1.006957,
+      "unrealizedPnlPct": -0.538,
+      "change": -0.44799999999999995
     },
     {
       "symbol": "CRTO",
       "qty": 0.00356408,
       "side": "long",
       "avgEntry": 18.408358,
-      "currentPrice": 17.755,
-      "marketValue": 0.06328,
-      "unrealizedPnl": -0.002329,
-      "unrealizedPnlPct": -3.55,
-      "change": 3.347
+      "currentPrice": 17.75,
+      "marketValue": 0.063262,
+      "unrealizedPnl": -0.002347,
+      "unrealizedPnlPct": -3.5770000000000004,
+      "change": 3.318
     },
     {
       "symbol": "CTRN",
       "qty": 20,
       "side": "long",
       "avgEntry": 44.2,
-      "currentPrice": 43.155,
-      "marketValue": 863.1,
-      "unrealizedPnl": -20.9,
-      "unrealizedPnlPct": -2.3640000000000003,
-      "change": 1.949
+      "currentPrice": 42.175,
+      "marketValue": 843.5,
+      "unrealizedPnl": -40.5,
+      "unrealizedPnlPct": -4.5809999999999995,
+      "change": -0.366
     },
     {
       "symbol": "DNTH",
       "qty": 33,
       "side": "long",
       "avgEntry": 80.579697,
-      "currentPrice": 79.595,
-      "marketValue": 2626.635,
-      "unrealizedPnl": -32.495001,
-      "unrealizedPnlPct": -1.222,
-      "change": -1.892
+      "currentPrice": 79.84,
+      "marketValue": 2634.72,
+      "unrealizedPnl": -24.410001,
+      "unrealizedPnlPct": -0.918,
+      "change": -1.59
     },
     {
       "symbol": "ESOA",
       "qty": 108.105187319,
       "side": "long",
       "avgEntry": 13.875375,
-      "currentPrice": 13.51,
-      "marketValue": 1460.501081,
-      "unrealizedPnl": -39.498932,
-      "unrealizedPnlPct": -2.633,
-      "change": -1.17
+      "currentPrice": 13.52,
+      "marketValue": 1461.582133,
+      "unrealizedPnl": -38.41788,
+      "unrealizedPnlPct": -2.561,
+      "change": -1.097
     },
     {
       "symbol": "FCFS",
       "qty": 10.620682544,
       "side": "long",
       "avgEntry": 193.98,
-      "currentPrice": 191.61,
-      "marketValue": 2035.028982,
-      "unrealizedPnl": -25.171018,
-      "unrealizedPnlPct": -1.222,
-      "change": 0.382
+      "currentPrice": 190.77,
+      "marketValue": 2026.107609,
+      "unrealizedPnl": -34.092391,
+      "unrealizedPnlPct": -1.6549999999999998,
+      "change": -0.058
     },
     {
       "symbol": "FFIN",
       "qty": 4,
       "side": "long",
       "avgEntry": 29.37,
-      "currentPrice": 29.2406,
-      "marketValue": 116.9624,
-      "unrealizedPnl": -0.5176,
-      "unrealizedPnlPct": -0.441,
-      "change": 0.864
+      "currentPrice": 29.2,
+      "marketValue": 116.8,
+      "unrealizedPnl": -0.68,
+      "unrealizedPnlPct": -0.579,
+      "change": 0.724
     },
     {
       "symbol": "FIVE",
       "qty": 5,
       "side": "long",
       "avgEntry": 229.36,
-      "currentPrice": 221.56,
-      "marketValue": 1107.8,
-      "unrealizedPnl": -39,
-      "unrealizedPnlPct": -3.401,
-      "change": -0.07200000000000001
+      "currentPrice": 221.43,
+      "marketValue": 1107.15,
+      "unrealizedPnl": -39.65,
+      "unrealizedPnlPct": -3.457,
+      "change": -0.131
     },
     {
       "symbol": "FLYX",
       "qty": 0.755226273,
       "side": "long",
       "avgEntry": 2.217265,
-      "currentPrice": 2.145,
-      "marketValue": 1.61996,
-      "unrealizedPnl": -0.054577,
-      "unrealizedPnlPct": -3.259,
-      "change": -1.1520000000000001
+      "currentPrice": 2.13,
+      "marketValue": 1.608632,
+      "unrealizedPnl": -0.065905,
+      "unrealizedPnlPct": -3.936,
+      "change": -1.8429999999999997
     },
     {
       "symbol": "FOSL",
       "qty": 0.545893719,
       "side": "long",
       "avgEntry": 4.14,
-      "currentPrice": 4.035,
-      "marketValue": 2.202681,
-      "unrealizedPnl": -0.057319,
-      "unrealizedPnlPct": -2.536,
-      "change": 1.3820000000000001
+      "currentPrice": 4.03,
+      "marketValue": 2.199952,
+      "unrealizedPnl": -0.060048,
+      "unrealizedPnlPct": -2.657,
+      "change": 1.256
     },
     {
       "symbol": "FOX",
       "qty": 64,
       "side": "long",
       "avgEntry": 52.5704,
-      "currentPrice": 53.73,
-      "marketValue": 3438.72,
-      "unrealizedPnl": 74.2144,
-      "unrealizedPnlPct": 2.206,
-      "change": 0.656
+      "currentPrice": 53.76,
+      "marketValue": 3440.64,
+      "unrealizedPnl": 76.1344,
+      "unrealizedPnlPct": 2.263,
+      "change": 0.712
     },
     {
       "symbol": "FSUN",
       "qty": 0.028188056,
       "side": "long",
       "avgEntry": 34.693749,
-      "currentPrice": 36.13,
-      "marketValue": 1.018434,
-      "unrealizedPnl": 0.040485,
-      "unrealizedPnlPct": 4.14,
-      "change": 0.194
+      "currentPrice": 35.885,
+      "marketValue": 1.011528,
+      "unrealizedPnl": 0.033579,
+      "unrealizedPnlPct": 3.434,
+      "change": -0.485
     },
     {
       "symbol": "GO",
       "qty": 0.102040816,
       "side": "long",
       "avgEntry": 6.227368,
-      "currentPrice": 6.825,
-      "marketValue": 0.696429,
-      "unrealizedPnl": 0.060983,
-      "unrealizedPnlPct": 9.597,
-      "change": -3.465
+      "currentPrice": 6.8,
+      "marketValue": 0.693878,
+      "unrealizedPnl": 0.058432,
+      "unrealizedPnlPct": 9.195,
+      "change": -3.819
     },
     {
       "symbol": "HBIO",
@@ -367,22 +367,22 @@
       "qty": 96.993210475,
       "side": "long",
       "avgEntry": 20.62,
-      "currentPrice": 19.73,
-      "marketValue": 1913.676043,
-      "unrealizedPnl": -86.323957,
-      "unrealizedPnlPct": -4.316,
-      "change": 0.612
+      "currentPrice": 19.74,
+      "marketValue": 1914.645975,
+      "unrealizedPnl": -85.354025,
+      "unrealizedPnlPct": -4.268000000000001,
+      "change": 0.6629999999999999
     },
     {
       "symbol": "KYN",
       "qty": 206.939158402,
       "side": "long",
       "avgEntry": 14.168966,
-      "currentPrice": 14.38,
-      "marketValue": 2975.785098,
-      "unrealizedPnl": 43.671199,
-      "unrealizedPnlPct": 1.489,
-      "change": 0.27899999999999997
+      "currentPrice": 14.39,
+      "marketValue": 2977.854489,
+      "unrealizedPnl": 45.74059,
+      "unrealizedPnlPct": 1.5599999999999998,
+      "change": 0.349
     },
     {
       "symbol": "LAC",
@@ -400,88 +400,88 @@
       "qty": 2.129555622,
       "side": "long",
       "avgEntry": 869.58,
-      "currentPrice": 864.6019,
-      "marketValue": 1841.217837,
-      "unrealizedPnl": -10.601141,
-      "unrealizedPnlPct": -0.5720000000000001,
-      "change": 0.516
+      "currentPrice": 865.56,
+      "marketValue": 1843.258164,
+      "unrealizedPnl": -8.560814,
+      "unrealizedPnlPct": -0.462,
+      "change": 0.628
     },
     {
       "symbol": "MGM",
       "qty": 24.856117106,
       "side": "long",
       "avgEntry": 37.749951,
-      "currentPrice": 36.01,
-      "marketValue": 895.068777,
-      "unrealizedPnl": -43.248426,
-      "unrealizedPnlPct": -4.609,
-      "change": -0.8540000000000001
+      "currentPrice": 35.965,
+      "marketValue": 893.950252,
+      "unrealizedPnl": -44.366951,
+      "unrealizedPnlPct": -4.728000000000001,
+      "change": -0.9769999999999999
     },
     {
       "symbol": "MKTW",
       "qty": 0.00008875,
       "side": "long",
       "avgEntry": 16.037382,
-      "currentPrice": 19.71,
-      "marketValue": 0.001749,
-      "unrealizedPnl": 0.000326,
-      "unrealizedPnlPct": 22.909,
-      "change": 3.032
+      "currentPrice": 19.95,
+      "marketValue": 0.001771,
+      "unrealizedPnl": 0.000348,
+      "unrealizedPnlPct": 24.455,
+      "change": 4.2860000000000005
     },
     {
       "symbol": "MPWR",
       "qty": 2.813588227,
       "side": "long",
       "avgEntry": 1066.22,
-      "currentPrice": 1005.63,
-      "marketValue": 2829.428729,
-      "unrealizedPnl": -170.47531,
-      "unrealizedPnlPct": -5.683,
-      "change": -4.4990000000000006
+      "currentPrice": 1008.205,
+      "marketValue": 2836.673718,
+      "unrealizedPnl": -163.230321,
+      "unrealizedPnlPct": -5.441,
+      "change": -4.255
     },
     {
       "symbol": "NBTB",
       "qty": 17.99991,
       "side": "long",
       "avgEntry": 41.41,
-      "currentPrice": 42.12,
-      "marketValue": 758.156209,
-      "unrealizedPnl": 12.779936,
-      "unrealizedPnlPct": 1.7149999999999999,
-      "change": 0.621
+      "currentPrice": 42.04,
+      "marketValue": 756.716216,
+      "unrealizedPnl": 11.339943,
+      "unrealizedPnlPct": 1.521,
+      "change": 0.43
     },
     {
       "symbol": "NFBK",
       "qty": 82.99991,
       "side": "long",
       "avgEntry": 13.225181,
-      "currentPrice": 13.47,
-      "marketValue": 1118.008788,
-      "unrealizedPnl": 20.319955,
-      "unrealizedPnlPct": 1.851,
-      "change": 0.673
+      "currentPrice": 13.45,
+      "marketValue": 1116.34879,
+      "unrealizedPnl": 18.659957,
+      "unrealizedPnlPct": 1.7000000000000002,
+      "change": 0.523
     },
     {
       "symbol": "NP",
       "qty": 0.12491,
       "side": "long",
       "avgEntry": 22.356,
-      "currentPrice": 23.575,
-      "marketValue": 2.944753,
-      "unrealizedPnl": 0.152265,
-      "unrealizedPnlPct": 5.453,
-      "change": 2.366
+      "currentPrice": 23.62,
+      "marketValue": 2.950374,
+      "unrealizedPnl": 0.157886,
+      "unrealizedPnlPct": 5.654,
+      "change": 2.562
     },
     {
       "symbol": "NTAP",
       "qty": 34.325172551,
       "side": "long",
       "avgEntry": 103.375586,
-      "currentPrice": 102.03,
-      "marketValue": 3502.197355,
-      "unrealizedPnl": -46.187472,
-      "unrealizedPnlPct": -1.302,
-      "change": -0.303
+      "currentPrice": 101.79,
+      "marketValue": 3493.959314,
+      "unrealizedPnl": -54.425513,
+      "unrealizedPnlPct": -1.534,
+      "change": -0.5369999999999999
     },
     {
       "symbol": "NVDA260410C00300000",
@@ -499,33 +499,22 @@
       "qty": 52.050397877,
       "side": "long",
       "avgEntry": 11.31,
-      "currentPrice": 11.2101,
-      "marketValue": 583.490165,
-      "unrealizedPnl": -5.199835,
-      "unrealizedPnlPct": -0.8829999999999999,
-      "change": 2.469
-    },
-    {
-      "symbol": "OSUR",
-      "qty": 1487.414493825,
-      "side": "long",
-      "avgEntry": 3.083878,
-      "currentPrice": 2.945,
-      "marketValue": 4380.435684,
-      "unrealizedPnl": -206.56915,
-      "unrealizedPnlPct": -4.503,
-      "change": -1.833
+      "currentPrice": 11.18,
+      "marketValue": 581.923448,
+      "unrealizedPnl": -6.766552,
+      "unrealizedPnlPct": -1.149,
+      "change": 2.194
     },
     {
       "symbol": "PBF",
       "qty": 13.78477481,
       "side": "long",
       "avgEntry": 50.18,
-      "currentPrice": 50.7,
-      "marketValue": 698.888083,
-      "unrealizedPnl": 7.168083,
-      "unrealizedPnlPct": 1.036,
-      "change": -1.035
+      "currentPrice": 50.51,
+      "marketValue": 696.268976,
+      "unrealizedPnl": 4.548976,
+      "unrealizedPnlPct": 0.658,
+      "change": -1.405
     },
     {
       "symbol": "RCG",
@@ -543,22 +532,22 @@
       "qty": 14.667100208,
       "side": "long",
       "avgEntry": 93.55,
-      "currentPrice": 92.17,
-      "marketValue": 1351.866626,
-      "unrealizedPnl": -20.240598,
-      "unrealizedPnlPct": -1.4749999999999999,
-      "change": -0.368
+      "currentPrice": 92.18,
+      "marketValue": 1352.013297,
+      "unrealizedPnl": -20.093927,
+      "unrealizedPnlPct": -1.464,
+      "change": -0.357
     },
     {
       "symbol": "RVT",
       "qty": 1.667100208,
       "side": "long",
       "avgEntry": 16.94,
-      "currentPrice": 16.2238,
-      "marketValue": 27.0467,
-      "unrealizedPnl": -1.193978,
-      "unrealizedPnlPct": -4.228,
-      "change": 0.644
+      "currentPrice": 16.12,
+      "marketValue": 26.873655,
+      "unrealizedPnl": -1.367023,
+      "unrealizedPnlPct": -4.841,
+      "change": 0
     },
     {
       "symbol": "S260410C00021000",
@@ -576,110 +565,110 @@
       "qty": 221.298295862,
       "side": "long",
       "avgEntry": 11.312034,
-      "currentPrice": 11.365,
-      "marketValue": 2515.055132,
-      "unrealizedPnl": 11.721285,
-      "unrealizedPnlPct": 0.468,
-      "change": -1.516
+      "currentPrice": 11.335,
+      "marketValue": 2508.416184,
+      "unrealizedPnl": 5.082337,
+      "unrealizedPnlPct": 0.203,
+      "change": -1.7760000000000002
     },
     {
       "symbol": "SE",
       "qty": 15,
       "side": "long",
       "avgEntry": 78.83,
-      "currentPrice": 78.925,
-      "marketValue": 1183.875,
-      "unrealizedPnl": 1.425,
-      "unrealizedPnlPct": 0.121,
-      "change": 0.979
+      "currentPrice": 78.4768,
+      "marketValue": 1177.152,
+      "unrealizedPnl": -5.298,
+      "unrealizedPnlPct": -0.44799999999999995,
+      "change": 0.40499999999999997
     },
     {
       "symbol": "SFM",
       "qty": 14.80802298,
       "side": "long",
       "avgEntry": 79.46,
-      "currentPrice": 77.24,
-      "marketValue": 1143.771695,
-      "unrealizedPnl": -32.873811,
-      "unrealizedPnlPct": -2.794,
-      "change": -0.207
+      "currentPrice": 77.14,
+      "marketValue": 1142.290893,
+      "unrealizedPnl": -34.354613,
+      "unrealizedPnlPct": -2.92,
+      "change": -0.336
     },
     {
       "symbol": "SLRC",
       "qty": 199.80802298,
       "side": "long",
       "avgEntry": 14.35,
-      "currentPrice": 14.0601,
-      "marketValue": 2809.320784,
-      "unrealizedPnl": -57.924346,
-      "unrealizedPnlPct": -2.02,
-      "change": 1.079
+      "currentPrice": 14.06,
+      "marketValue": 2809.300803,
+      "unrealizedPnl": -57.944327,
+      "unrealizedPnlPct": -2.021,
+      "change": 1.078
     },
     {
       "symbol": "SPY",
       "qty": 6.80802298,
       "side": "long",
       "avgEntry": 651.678,
-      "currentPrice": 635.21,
-      "marketValue": 4324.524277,
-      "unrealizedPnl": -112.114523,
-      "unrealizedPnlPct": -2.527,
-      "change": 0.17700000000000002
+      "currentPrice": 634.16,
+      "marketValue": 4317.375853,
+      "unrealizedPnl": -119.262947,
+      "unrealizedPnlPct": -2.688,
+      "change": 0.011000000000000001
     },
     {
       "symbol": "SPY260410C00640000",
       "qty": 1,
       "side": "long",
       "avgEntry": 12.85,
-      "currentPrice": 9.92,
-      "marketValue": 992,
-      "unrealizedPnl": -293,
-      "unrealizedPnlPct": -22.802,
-      "change": -8.402999999999999
+      "currentPrice": 9.45,
+      "marketValue": 945,
+      "unrealizedPnl": -340,
+      "unrealizedPnlPct": -26.459,
+      "change": -12.742
     },
     {
       "symbol": "SPY260410C00645000",
       "qty": 1,
       "side": "long",
       "avgEntry": 9.04,
-      "currentPrice": 7.54,
-      "marketValue": 754,
-      "unrealizedPnl": -150,
-      "unrealizedPnlPct": -16.593,
-      "change": -11.294
+      "currentPrice": 7.16,
+      "marketValue": 716,
+      "unrealizedPnl": -188,
+      "unrealizedPnlPct": -20.796,
+      "change": -15.765
     },
     {
       "symbol": "SPY260417C00635000",
       "qty": 1,
       "side": "long",
       "avgEntry": 16.11,
-      "currentPrice": 15.91,
-      "marketValue": 1591,
-      "unrealizedPnl": -20,
-      "unrealizedPnlPct": -1.2409999999999999,
-      "change": -3.8089999999999997
+      "currentPrice": 15.39,
+      "marketValue": 1539,
+      "unrealizedPnl": -72,
+      "unrealizedPnlPct": -4.469,
+      "change": -6.952999999999999
     },
     {
       "symbol": "SRBK",
       "qty": 60,
       "side": "long",
       "avgEntry": 16.67,
-      "currentPrice": 17.17,
-      "marketValue": 1030.2,
-      "unrealizedPnl": 30,
-      "unrealizedPnlPct": 2.999,
-      "change": 0.822
+      "currentPrice": 17.14,
+      "marketValue": 1028.4,
+      "unrealizedPnl": 28.2,
+      "unrealizedPnlPct": 2.819,
+      "change": 0.6459999999999999
     },
     {
       "symbol": "STIM",
       "qty": 2150,
       "side": "long",
       "avgEntry": 1.355581,
-      "currentPrice": 1.285,
-      "marketValue": 2762.75,
-      "unrealizedPnl": -151.74915,
-      "unrealizedPnlPct": -5.207,
-      "change": -0.388
+      "currentPrice": 1.3,
+      "marketValue": 2795,
+      "unrealizedPnl": -119.49915,
+      "unrealizedPnlPct": -4.1000000000000005,
+      "change": 0.775
     },
     {
       "symbol": "STIM260417C00002500",
@@ -708,66 +697,66 @@
       "qty": 65,
       "side": "long",
       "avgEntry": 4.2,
-      "currentPrice": 4.05,
-      "marketValue": 263.25,
-      "unrealizedPnl": -9.75,
-      "unrealizedPnlPct": -3.5709999999999997,
-      "change": -5.152
+      "currentPrice": 4.04,
+      "marketValue": 262.6,
+      "unrealizedPnl": -10.4,
+      "unrealizedPnlPct": -3.81,
+      "change": -5.386
     },
     {
       "symbol": "TRIN",
       "qty": 171.84426521,
       "side": "long",
       "avgEntry": 14.389425,
-      "currentPrice": 14.445,
-      "marketValue": 2482.290411,
-      "unrealizedPnl": 9.550245,
-      "unrealizedPnlPct": 0.386,
-      "change": 1.085
+      "currentPrice": 14.41,
+      "marketValue": 2476.275862,
+      "unrealizedPnl": 3.535696,
+      "unrealizedPnlPct": 0.14300000000000002,
+      "change": 0.84
     },
     {
       "symbol": "TTAM",
       "qty": 13.10610365,
       "side": "long",
       "avgEntry": 14.89,
-      "currentPrice": 14.68,
-      "marketValue": 192.397602,
-      "unrealizedPnl": -2.752281,
-      "unrealizedPnlPct": -1.41,
-      "change": -0.9450000000000001
+      "currentPrice": 14.57,
+      "marketValue": 190.95593,
+      "unrealizedPnl": -4.193953,
+      "unrealizedPnlPct": -2.149,
+      "change": -1.687
     },
     {
       "symbol": "UMH",
       "qty": 102.927906585,
       "side": "long",
       "avgEntry": 14.31,
-      "currentPrice": 14.46,
-      "marketValue": 1488.337529,
-      "unrealizedPnl": 15.439186,
-      "unrealizedPnlPct": 1.048,
-      "change": 1.048
+      "currentPrice": 14.45,
+      "marketValue": 1487.30825,
+      "unrealizedPnl": 14.409907,
+      "unrealizedPnlPct": 0.9780000000000001,
+      "change": 0.9780000000000001
     },
     {
       "symbol": "UNH",
       "qty": 16.322743238,
       "side": "long",
       "avgEntry": 268.41037,
-      "currentPrice": 260.72,
-      "marketValue": 4255.665617,
-      "unrealizedPnl": -125.527935,
-      "unrealizedPnlPct": -2.8649999999999998,
-      "change": 0.656
+      "currentPrice": 260.26,
+      "marketValue": 4248.157155,
+      "unrealizedPnl": -133.036397,
+      "unrealizedPnlPct": -3.037,
+      "change": 0.479
     },
     {
       "symbol": "WFC",
       "qty": 55.863281701,
       "side": "long",
       "avgEntry": 79.707916,
-      "currentPrice": 77.42,
-      "marketValue": 4324.935269,
-      "unrealizedPnl": -127.810496,
-      "unrealizedPnlPct": -2.87,
-      "change": 0.298
+      "currentPrice": 77.24,
+      "marketValue": 4314.879879,
+      "unrealizedPnl": -137.865886,
+      "unrealizedPnlPct": -3.096,
+      "change": 0.065
     },
     {
       "symbol": "XTWO",
@@ -783,6 +772,18 @@
   ],
   "orders": [
     {
+      "id": "7006a8c8-13a4-40f4-8dd5-b18bb06f1cdf",
+      "symbol": "OSUR",
+      "side": "sell",
+      "qty": 1487.414493825,
+      "type": "market",
+      "status": "filled",
+      "filledQty": 1487.414493825,
+      "filledAvgPrice": 2.94,
+      "submittedAt": "2026-03-30T17:11:12.612839Z",
+      "filledAt": "2026-03-30T17:11:14.581031Z"
+    },
+    {
       "id": "953242b1-4972-478e-b268-6e88a218f8ec",
       "symbol": "CRDO",
       "side": "sell",
@@ -791,8 +792,8 @@
       "status": "filled",
       "filledQty": 21.021652301,
       "filledAvgPrice": 88.72,
-      "submittedAt": "2026-03-30T16:40:48.360104654Z",
-      "filledAt": "2026-03-30T16:40:48.683093837Z"
+      "submittedAt": "2026-03-30T16:40:48.360105Z",
+      "filledAt": "2026-03-30T16:40:48.683094Z"
     },
     {
       "id": "912743a1-f179-4706-a2d6-07a489d112f2",
@@ -1369,21 +1370,54 @@
       "filledAvgPrice": 592.922,
       "submittedAt": "2026-03-30T13:41:03.759462Z",
       "filledAt": "2026-03-30T13:41:03.76341Z"
-    },
-    {
-      "id": "fba42347-9b4d-4dce-bac1-24ebb0a43bd6",
-      "symbol": "SPY260410C00645000",
-      "side": "buy",
-      "qty": 1,
-      "type": "market",
-      "status": "filled",
-      "filledQty": 1,
-      "filledAvgPrice": 9.04,
-      "submittedAt": "2026-03-30T13:37:43.559084Z",
-      "filledAt": "2026-03-30T13:37:43.601054Z"
     }
   ],
   "history": [
+    {
+      "action": "SELL",
+      "ticker": "OSUR",
+      "qty": 0.414493825,
+      "price": 2.94,
+      "date": "2026-03-30",
+      "time": "2026-03-30T17:11:14.583141Z",
+      "orderId": "7006a8c8-13a4-40f4-8dd5-b18bb06f1cdf"
+    },
+    {
+      "action": "SELL",
+      "ticker": "OSUR",
+      "qty": 1,
+      "price": 2.94,
+      "date": "2026-03-30",
+      "time": "2026-03-30T17:11:14.581031Z",
+      "orderId": "7006a8c8-13a4-40f4-8dd5-b18bb06f1cdf"
+    },
+    {
+      "action": "SELL",
+      "ticker": "OSUR",
+      "qty": 92,
+      "price": 2.94,
+      "date": "2026-03-30",
+      "time": "2026-03-30T17:11:13.889288Z",
+      "orderId": "7006a8c8-13a4-40f4-8dd5-b18bb06f1cdf"
+    },
+    {
+      "action": "SELL",
+      "ticker": "OSUR",
+      "qty": 414,
+      "price": 2.94,
+      "date": "2026-03-30",
+      "time": "2026-03-30T17:11:13.62299Z",
+      "orderId": "7006a8c8-13a4-40f4-8dd5-b18bb06f1cdf"
+    },
+    {
+      "action": "SELL",
+      "ticker": "OSUR",
+      "qty": 980,
+      "price": 2.94,
+      "date": "2026-03-30",
+      "time": "2026-03-30T17:11:12.854109Z",
+      "orderId": "7006a8c8-13a4-40f4-8dd5-b18bb06f1cdf"
+    },
     {
       "action": "SELL",
       "ticker": "CRDO",
@@ -2238,64 +2272,19 @@
       "date": "2026-03-30",
       "time": "2026-03-30T13:33:39.656954Z",
       "orderId": "81f6e9b2-fb72-4c32-bf05-f5ee11c1e130"
-    },
-    {
-      "action": "SELL",
-      "ticker": "NTAP",
-      "qty": 5,
-      "price": 103.91,
-      "date": "2026-03-30",
-      "time": "2026-03-30T13:32:58.565003Z",
-      "orderId": "7a5e100b-460f-4b73-af71-ac9b205f9565"
-    },
-    {
-      "action": "SELL",
-      "ticker": "PBF",
-      "qty": 2,
-      "price": 51.01,
-      "date": "2026-03-30",
-      "time": "2026-03-30T13:32:25.551605Z",
-      "orderId": "226f754c-5af2-4fbf-9d77-08b45ae85abd"
-    },
-    {
-      "action": "SELL",
-      "ticker": "BORR",
-      "qty": 1,
-      "price": 5.93,
-      "date": "2026-03-30",
-      "time": "2026-03-30T13:32:22.598721Z",
-      "orderId": "f413dd1a-e6f1-4a58-b92e-81a58f624cfb"
-    },
-    {
-      "action": "SELL",
-      "ticker": "PBF",
-      "qty": 36,
-      "price": 51.5,
-      "date": "2026-03-30",
-      "time": "2026-03-30T13:31:18.147587Z",
-      "orderId": "226f754c-5af2-4fbf-9d77-08b45ae85abd"
-    },
-    {
-      "action": "SELL",
-      "ticker": "BORR",
-      "qty": 366,
-      "price": 6.06,
-      "date": "2026-03-30",
-      "time": "2026-03-30T13:31:10.323101Z",
-      "orderId": "f413dd1a-e6f1-4a58-b92e-81a58f624cfb"
     }
   ],
   "metadata": {
-    "lastUpdated": "2026-03-30T17:05:46.391Z",
+    "lastUpdated": "2026-03-30T17:15:43.201Z",
     "startingCapital": 100000
   },
   "optionsExposure": {
-    "portfolioValue": 43583.88,
-    "totalOptionsValue": 3337,
-    "optionsPct": 7.66,
+    "portfolioValue": 43359.92,
+    "totalOptionsValue": 3200,
+    "optionsPct": 7.38,
     "maxAllowedPct": 10,
-    "maxAllowedValue": 4358.39,
-    "remainingCapacity": 1021.39,
+    "maxAllowedValue": 4335.99,
+    "remainingCapacity": 1135.99,
     "overLimit": false,
     "nearLimit": true,
     "status": "🟡 NEAR LIMIT",
@@ -2329,8 +2318,8 @@
       "strike": 640,
       "expiry": "2026-04-10",
       "qty": 1,
-      "marketValue": 992,
-      "pctOfPortfolio": 2.28
+      "marketValue": 945,
+      "pctOfPortfolio": 2.18
     },
     {
       "symbol": "SPY260410C00645000",
@@ -2339,8 +2328,8 @@
       "strike": 645,
       "expiry": "2026-04-10",
       "qty": 1,
-      "marketValue": 754,
-      "pctOfPortfolio": 1.73
+      "marketValue": 716,
+      "pctOfPortfolio": 1.65
     },
     {
       "symbol": "SPY260417C00635000",
@@ -2349,8 +2338,8 @@
       "strike": 635,
       "expiry": "2026-04-17",
       "qty": 1,
-      "marketValue": 1591,
-      "pctOfPortfolio": 3.65
+      "marketValue": 1539,
+      "pctOfPortfolio": 3.55
     },
     {
       "symbol": "STIM260417C00002500",
